@@ -14,7 +14,7 @@ import java.util.Collection;
 public class CandidateServiceImpl implements CandidateService {
 
     @Autowired
-    public CandidateInfoRepository candidateInfoRepository;
+    private CandidateInfoRepository candidateInfoRepository;
 
     @Override
     public Collection<CandidateInfo> findAll() {

@@ -8,10 +8,10 @@ import lombok.Getter;
 
 @Getter
 public enum YesORNo {
-    YES("Yes"), NO("No");
-    private String value;
+    YES(1), NO(0);
+    private int value;
 
-    YesORNo(String value) {
+    YesORNo(int value) {
         this.value = value;
     }
 }

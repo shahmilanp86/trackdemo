@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -18,16 +19,16 @@ public class ContractInfo {
     @Id
     private Long aid;
     private Long appprovedContactNum;
-    private LocalDate contractEndDte;
-    private LocalDate cwAssignmentEndDte;
-    private Integer candidateRoleTyp; //TODO: ENUM
+    private Date contractEndDte;
+    private Date cwAssignmentEndDte;
+    private String candidateRoleTyp; //TODO: ENUM
     private String returnStatus;
     private FormerWorker formaerWorker;
-    private String priorSID;
+    private String priorSid;
     private String priorDates;
     private String supplierName;
     private String cwWorkCity;
-    private Integer cwWorkLocation;
+    private String cwWorkLocation;
     private String cwWorkMailDrop;
     private String homeZip;
     private YesORNo usArmedForces;
@@ -43,8 +44,8 @@ public class ContractInfo {
     private String paymentType;
     private String costCenter;
     private String cwJobCode;
-    private String lob;
-    private LocalDate cwAssignmentStartDte;
+    private String lobName;
+    private Date cwAssignmentStartDte;
     private String sponsorId;
     private String sponsorLastName;
     private String sponsorFirstName;

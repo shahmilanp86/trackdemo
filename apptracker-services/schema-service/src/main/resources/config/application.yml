@@ -1,0 +1,42 @@
+###
+# Data Source Configuration
+###
+
+# Hibernate
+##spring.jpa.hibernate.naming-strategy=org.hibernate.cfg.DefaultNamingStrategy
+##spring.jpa.hibernate.ddl-auto=validate
+
+# Initialization
+##spring.datasource.schema=classpath:/data/hsqldb/schema.sql
+##spring.datasource.data=classpath:/data/hsqldb/data.sql
+
+##
+# The MySQL Application Configuration File
+#
+# This file is included when the 'mysql' Spring Profile is active.
+##
+
+##
+# Data Source Configuration
+##
+# Connection
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/apptracker
+    username: apptracker
+    password: apptracker
+    name: apptracker
+
+# Initialization
+    ##schema: classpath:/data/mysql/schema.sql
+    ##data: classpath:/data/mysql/data.sql
+
+# Pool
+    initial-size: 10
+    max-active: 50
+    max-idle: 5
+    test-on-borrow: true
+    validation-query: select 1;
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000

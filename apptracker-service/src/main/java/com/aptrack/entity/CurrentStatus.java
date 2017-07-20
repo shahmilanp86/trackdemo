@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 /**
  * Created by Murthy on 7/19/2017.
  */
-@Entity
+//@Entity
 @Getter
 public class CurrentStatus {
 

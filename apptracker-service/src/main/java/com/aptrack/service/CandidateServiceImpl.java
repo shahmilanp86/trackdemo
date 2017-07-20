@@ -5,7 +5,9 @@ import com.aptrack.entity.CandidateInfo;
 //import com.aptrack.schema.repository.;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Created by Murthy on 7/16/2017.
@@ -28,6 +30,13 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public CandidateInfo create(CandidateInfo candidate) {
+
+
+
+        Optional.ofNullable(candidateInfoRepository.findOne(candidate.getAid()))
+                .map(exits -> { throw new UnsupportedOperationException("Aid already exists."); })
+                .orElse(candidateInfoRepository.save(candidate));
+
         return candidateInfoRepository.save(candidate);
     }
 

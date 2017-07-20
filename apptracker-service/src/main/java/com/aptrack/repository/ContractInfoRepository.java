@@ -1,7 +1,6 @@
-package com.aptrack.schema.repository;
+package com.aptrack.repository;
 
-import com.aptrack.schema.model.CandidateInfo;
-import com.aptrack.schema.model.ContractInfo;
+import com.aptrack.entity.ContractInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

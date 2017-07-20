@@ -1,10 +1,8 @@
-package com.aptrack.schema.service;
+package com.aptrack.service;
 
-import com.aptrack.schema.model.CandidateInfo;
-import com.aptrack.schema.model.ContractInfo;
-import com.aptrack.schema.repository.ContractInfoRepository;
+import com.aptrack.entity.ContractInfo;
+import com.aptrack.repository.ContractInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;

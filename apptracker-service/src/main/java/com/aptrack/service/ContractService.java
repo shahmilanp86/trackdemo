@@ -1,7 +1,6 @@
-package com.aptrack.schema.service;
+package com.aptrack.service;
 
-import com.aptrack.schema.model.CandidateInfo;
-import com.aptrack.schema.model.ContractInfo;
+import com.aptrack.entity.ContractInfo;
 
 import java.util.Collection;
 

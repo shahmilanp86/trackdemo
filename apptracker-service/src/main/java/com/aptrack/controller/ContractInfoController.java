@@ -1,16 +1,12 @@
-package com.aptrack.schema.controller;
+package com.aptrack.controller;
 
-import com.aptrack.schema.model.CandidateInfo;
-import com.aptrack.schema.model.ContractInfo;
-import com.aptrack.schema.service.CandidateService;
-import com.aptrack.schema.service.ContractService;
+import com.aptrack.entity.ContractInfo;
+import com.aptrack.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
 
 @RestController
 public class ContractInfoController {

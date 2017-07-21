@@ -57,7 +57,7 @@ public class CandidateInfoController {
     }
 
     @RequestMapping(
-            value = "/api/candidates/apdate/{id}",
+            value = "/api/candidates/update/{id}",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

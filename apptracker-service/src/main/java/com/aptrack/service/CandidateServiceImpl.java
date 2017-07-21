@@ -1,5 +1,6 @@
 package com.aptrack.service;
 
+import com.aptrack.entity.ContractInfo;
 import com.aptrack.repository.CandidateInfoRepository;
 import com.aptrack.entity.CandidateInfo;
 //import com.aptrack.schema.repository.;
@@ -8,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Optional;
+
+import static com.aptrack.utils.ApptrackerUtils.getNullPropertyNames;
+import static org.springframework.beans.BeanUtils.copyProperties;
 
 /**
  * Created by Murthy on 7/16/2017.
@@ -30,18 +34,16 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public CandidateInfo create(CandidateInfo candidate) {
-
-
-
-        Optional.ofNullable(candidateInfoRepository.findOne(candidate.getAid()))
+       return (CandidateInfo) Optional.ofNullable(candidateInfoRepository.findOne(candidate.getAid()))
                 .map(exits -> { throw new UnsupportedOperationException("Aid already exists."); })
                 .orElse(candidateInfoRepository.save(candidate));
 
-        return candidateInfoRepository.save(candidate);
     }
 
     @Override
-    public CandidateInfo update(CandidateInfo candidate) {
-        return candidateInfoRepository.save(candidate);
+    public CandidateInfo update(CandidateInfo updated) {
+        CandidateInfo existing = candidateInfoRepository.findOne(updated.getAid());
+        copyProperties(updated,existing, getNullPropertyNames(updated));
+        return candidateInfoRepository.save(existing);
     }
 }

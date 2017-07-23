@@ -9,7 +9,6 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ErrorComponent } from './common/error/error.component';
 
 const appRoutes: Routes = [
-
 	{
 		path: 'add-candidate',
 		component: AddCandidateComponent
@@ -19,30 +18,21 @@ const appRoutes: Routes = [
 	}, {
 		path: 'candidate-details/:id',
 		component: CandidateDetailsComponent
-	},
-
-	{
+	}, {
 		path: 'candidate-details',
 		pathMatch: 'full',
 		component: ErrorComponent,
 		data: { msg: 'Missing Mandatory info to display Candidate Details' }
 
-	},
-
-	{
+	}, {
 		path: 'idrf/:id',
 		component: IdrfComponent
-	},
-	{
+	}, {
 		path: 'idrf',
 		pathMatch: 'full',
 		component: ErrorComponent,
 		data: { msg: 'Missing Mandatory info to Display IDRF Form' }
-
-	},
-
-
-	{
+	}, {
 		path: 'settings',
 		component: SettingsComponent
 	}, {
@@ -51,7 +41,6 @@ const appRoutes: Routes = [
 		pathMatch: 'full'
 	}
 	// { path: '**', component: PageNotFoundComponent }
-
 ];
 
 

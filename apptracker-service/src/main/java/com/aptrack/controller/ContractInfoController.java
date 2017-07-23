@@ -21,7 +21,7 @@ public class ContractInfoController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ContractInfo> getContract(@PathVariable("id") Long id) {
 
-        ContractInfo contract = contractService.findOne(id);
+        ContractInfo contract = contractService.get(id);
         if (contract == null) {
             return new ResponseEntity<ContractInfo>(HttpStatus.NOT_FOUND);
         }

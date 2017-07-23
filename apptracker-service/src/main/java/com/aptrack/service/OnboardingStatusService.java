@@ -9,4 +9,7 @@ public interface OnboardingStatusService {
 
     OnboardingStatus get(Long aid);
     OnboardingStatus update(OnboardingStatus status);
+    OnboardingStatus update(Long aid);
+
+
 }

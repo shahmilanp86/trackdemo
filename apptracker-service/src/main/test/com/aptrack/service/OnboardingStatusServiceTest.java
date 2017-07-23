@@ -18,12 +18,12 @@ public class OnboardingStatusServiceTest {
 
     @Before
     public void init(){
-        onboardingStatus = new OnboardingStatus();
+        /*onboardingStatus = new OnboardingStatus();
         onboardingStatus.setAid(111L);
         onboardingStatus.setBgCheck(100);
         onboardingStatus.setComments("Comments123");
         onboardingStatus.setDemograph(200);
-        onboardingStatus.setLastUpdBy("Murthy");
+        onboardingStatus.setLastUpdBy("Murthy");*/
     }
 
     @Autowired

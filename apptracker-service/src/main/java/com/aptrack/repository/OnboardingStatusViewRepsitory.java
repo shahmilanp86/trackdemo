@@ -1,6 +1,7 @@
 package com.aptrack.repository;
 
 import com.aptrack.entity.CandidateInfo;
+import com.aptrack.entity.OnboardingSummaryView;
 import com.aptrack.entity.OnboardingView;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -20,6 +21,11 @@ public interface OnboardingStatusViewRepsitory extends CrudRepository<CandidateI
     List<OnboardingView> findStatus(@Param("id") Long id);
     @Query("SELECT c FROM OnboardingView c left join c.onboardingStatus s")
     List<OnboardingView> findStatusAll();
+
+    @Query("SELECT o FROM OnboardingSummaryView o left join o.onboardingStatus s left join o.contractInfo c  where o.aid =:id")
+    OnboardingSummaryView findStatusSummary(@Param("id") Long id);
+
+
 
    // @Query("SELECT o FROM OnboardingView o left join o.onboardingStatus s ")
    // List<OnboardingView> findStatusViewAll();

@@ -1,8 +1,6 @@
 package com.aptrack.entity;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +12,6 @@ import java.sql.Timestamp;
  */
 @Data
 @Entity
-//@Table(name = "onboarding_status",schema="apptracker")
 public class OnboardingStatus {
    @Id
     private Long aid;

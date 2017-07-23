@@ -23,7 +23,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public ContractInfo findOne(Long aid) {
+    public ContractInfo get(Long aid) {
         return contractInfoRepository.findOne(aid);
     }
 

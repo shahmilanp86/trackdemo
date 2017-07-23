@@ -11,12 +11,10 @@ import javax.persistence.OneToOne;
  * Created by Murthy on 7/15/2017.
  */
 
-@Data
-@Entity
-public class CandidateInfo {
 
-    @Id
-    private Long aid;
+public class CandidateData {
+
+
     private String lastName;
     private String firstName;
     private String midInitial;
@@ -25,7 +23,5 @@ public class CandidateInfo {
     private String contactPhone;
     private Integer curStatus;
 
-/*    @OneToOne
-    @JoinColumn(name="AID", nullable=true)
-    private OnboardingStatus onboardingStatus;*/
+
 }

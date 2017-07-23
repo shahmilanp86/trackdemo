@@ -35,7 +35,7 @@ public class CandidateInfoController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CandidateInfo> getCandidates(@PathVariable("id") Long id) {
 
-        CandidateInfo candidate = candidateService.findOne(id);
+        CandidateInfo candidate = candidateService.get(id);
         if (candidate == null) {
             return new ResponseEntity<CandidateInfo>(HttpStatus.NOT_FOUND);
         }

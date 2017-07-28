@@ -7,13 +7,16 @@ package com.aptrack.utils;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 public class Notifier {
 
-    public static void sendEmailWithAttachments(String host, String port,
-                                                final String userName, final String password, String toAddress,
+    public static void sendEmail(String host, String port,
+                                                final String userName, final String password, String[] toAddress, String[] copyAddress,
                                                 String subject, String message, String[] attachFiles)
             throws AddressException, MessagingException {
         // sets SMTP server properties
@@ -37,8 +40,14 @@ public class Notifier {
         Message msg = new MimeMessage(session);
 
         msg.setFrom(new InternetAddress(userName));
-        InternetAddress[] toAddresses = { new InternetAddress(toAddress) };
-        msg.setRecipients(Message.RecipientType.TO, toAddresses);
+        /*List<InternetAddress> in = Arrays.stream(toAddress)
+                .map(toAdd -> internetAddress(toAdd))
+                .collect(Collectors.toList());
+
+        InternetAddress[] toAddresses = new InternetAddress[in.size()];*/
+        msg.setRecipients(Message.RecipientType.TO, addresses(toAddress));
+        if (copyAddress != null && copyAddress.length > 0)
+            msg.setRecipients(Message.RecipientType.CC, addresses(copyAddress));
         msg.setSubject(subject);
         msg.setSentDate(new Date());
 
@@ -73,6 +82,25 @@ public class Notifier {
 
     }
 
+    private static InternetAddress[] addresses(String[] adresses){
+        List<InternetAddress> in = Arrays.stream(adresses)
+                .map(toAdd -> internetAddress(toAdd))
+                .collect(Collectors.toList());
+
+        InternetAddress[] toAddresses = new InternetAddress[in.size()];
+        return in.toArray(toAddresses);
+    }
+
+    private static InternetAddress internetAddress(String add){
+        try {
+            return new InternetAddress(add);
+        } catch (AddressException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     /**
      * Test sending e-mail with attachments
      */
@@ -81,13 +109,15 @@ public class Notifier {
         String host = "smtp.gmail.com";
         String port = "587";
         //TODO
-        String mailFrom = "";
-        String password = "";
+        String mailFrom = "ml.247711@gmail.com";
+        String password = "hundaidvd505";
 
         // message info
-        String mailTo = "";
+        String[] mailTo ={ "ml.247711@gmail.com"};
         String subject = "New email with attachments";
         String message = "I have some attachments for you.";
+      // String[]  copyTo = { "gsvsnmurthy@gmail.com"};
+        String[]  copyTo = null;
 
         // attachments
         String[] attachFiles = new String[1];
@@ -96,7 +126,7 @@ public class Notifier {
        // attachFiles[2] = "e:/Test/Video.mp4";
 
         try {
-            sendEmailWithAttachments(host, port, mailFrom, password, mailTo,
+            sendEmail(host, port, mailFrom, password, mailTo, copyTo,
                     subject, message, attachFiles);
             System.out.println("Email sent.");
         } catch (Exception ex) {

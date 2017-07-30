@@ -1,7 +1,6 @@
 package com.aptrack.service;
 
 import com.aptrack.entity.CandidateInfo;
-import com.aptrack.entity.OnboardingStatus;
 import com.aptrack.repository.CandidateInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +27,10 @@ public class CandidateServiceImpl implements CandidateService {
     private OnboardingStatusService onboardingStatusService;
     //private OnboardingStatusViewRepsitory onboardingStatusRepsitory;
 
+
     @Override
     public Collection<CandidateInfo> findAll() {
+
         return candidateInfoRepository.findAll();
     }
 

@@ -16,6 +16,7 @@ import { CandidateDetailsComponent } from './pages/candidate-details/candidate-d
 import { IdrfComponent } from './pages/idrf/idrf.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ErrorComponent } from './common/error/error.component';
+import { CandidateProgressComponent } from './pages/candidate-progress/candidate-progress.component';
 
 
 
@@ -31,7 +32,8 @@ import { ErrorComponent } from './common/error/error.component';
     CandidateDetailsComponent,
     IdrfComponent,
     SettingsComponent,
-    ErrorComponent
+    ErrorComponent,
+    CandidateProgressComponent
   ],
   imports: [
     AppRoutingModule,

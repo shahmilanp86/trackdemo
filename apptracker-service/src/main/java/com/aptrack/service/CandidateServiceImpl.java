@@ -2,12 +2,17 @@ package com.aptrack.service;
 
 import com.aptrack.entity.CandidateInfo;
 import com.aptrack.repository.CandidateInfoRepository;
+import com.aptrack.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static com.aptrack.utils.ApptrackerUtils.getNullPropertyNames;
 import static org.springframework.beans.BeanUtils.copyProperties;
@@ -27,15 +32,14 @@ public class CandidateServiceImpl implements CandidateService {
     private OnboardingStatusService onboardingStatusService;
     //private OnboardingStatusViewRepsitory onboardingStatusRepsitory;
 
-
     @Override
     public Collection<CandidateInfo> findAll() {
-
         return candidateInfoRepository.findAll();
     }
 
     @Override
     public CandidateInfo get(Long aid) {
+
         return candidateInfoRepository.findOne(aid);
     }
 
@@ -64,32 +68,13 @@ public class CandidateServiceImpl implements CandidateService {
         return candidateInfoRepository.save(existing);
     }
 
+
+
     private void setStat() {
 
-        /*OnboardingStatus onboardingStatus = new OnboardingStatus();
-        onboardingStatus.setAid(3333L);
-        onboardingStatus.setBgCheck(600);
-        java.util.Date date = new Date();
-
-        onboardingStatus.setBgCheckUpdTm(new Timestamp(date.getTime()));
-        onboardingStatus.setComments("Comments789");
-        onboardingStatus.setDemograph(900);
-        onboardingStatus.setDemographUpdTm(new Timestamp(date.getTime()));
-        onboardingStatus.setLastUpdBy("Milan");
-        onboardingStatus.setLastUpdTm(new Timestamp(date.getTime()));
-        //OnboardingStatusServiceImpl svc = new OnboardingStatusServiceImpl();
-        onboardingStatusService.update(onboardingStatus);*/
-/*        List<OnboardingView> in = onboardingStatusRepsitory.findStatus(1111L);
-        System.out.print(in);*/
-        //List<OnboardingView> in1 = onboardingStatusRepsitory.findStatusAll();
-        // System.out.print(in1);
-
-        ///OnboardingSummaryView in_summ = onboardingStatusRepsitory.findStatusSummary(1111L);
-        // System.out.print(in_summ);
-
-
-  /*      List<OnboardingView> view = onboardingStatusRepsitory.findStatusViewAll();
-        System.out.print(view);*/
+       /* Integer[] r = {100,101,102};
+        List<Integer> f = Arrays.stream(r).collect(Collectors.toList());
+        tempSvc.findByRole(f);*/
 
     }
 }

@@ -16,6 +16,10 @@ import { CandidateDetailsComponent } from './pages/candidate-details/candidate-d
 import { IdrfComponent } from './pages/idrf/idrf.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ErrorComponent } from './common/error/error.component';
+import { CandidateProgressComponent } from './pages/candidate-progress/candidate-progress.component';
+import { AccordianComponent } from './common/accordian/accordian.component';
+import { PageHeadingComponent } from './common/page-heading/page-heading.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -31,12 +35,16 @@ import { ErrorComponent } from './common/error/error.component';
     CandidateDetailsComponent,
     IdrfComponent,
     SettingsComponent,
-    ErrorComponent
+    ErrorComponent,
+    CandidateProgressComponent,
+    AccordianComponent,
+    PageHeadingComponent
   ],
   imports: [
     AppRoutingModule,
     RouterModule,
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,6 +17,8 @@ import { IdrfComponent } from './pages/idrf/idrf.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ErrorComponent } from './common/error/error.component';
 import { CandidateProgressComponent } from './pages/candidate-progress/candidate-progress.component';
+import { AccordianComponent } from './common/accordian/accordian.component';
+import { PageHeadingComponent } from './common/page-heading/page-heading.component';
 
 
 
@@ -33,7 +35,9 @@ import { CandidateProgressComponent } from './pages/candidate-progress/candidate
     IdrfComponent,
     SettingsComponent,
     ErrorComponent,
-    CandidateProgressComponent
+    CandidateProgressComponent,
+    AccordianComponent,
+    PageHeadingComponent
   ],
   imports: [
     AppRoutingModule,

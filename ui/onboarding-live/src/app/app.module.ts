@@ -19,6 +19,7 @@ import { ErrorComponent } from './common/error/error.component';
 import { CandidateProgressComponent } from './pages/candidate-progress/candidate-progress.component';
 import { AccordianComponent } from './common/accordian/accordian.component';
 import { PageHeadingComponent } from './common/page-heading/page-heading.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -42,7 +43,8 @@ import { PageHeadingComponent } from './common/page-heading/page-heading.compone
   imports: [
     AppRoutingModule,
     RouterModule,
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-candidate-progress',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidate-progress.component.less']
 })
 export class CandidateProgressComponent implements OnInit {
+  @Input() status: string;
 
   constructor() { }
 

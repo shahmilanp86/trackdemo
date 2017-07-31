@@ -25,4 +25,8 @@ public class OnboardingStatus {
     @Convert(converter = LocalDateTimeConverter.class)
     private String lastUpdTm;
     private String lastUpdBy;
+    private String currentStatus;
+    @Convert(converter = LocalDateTimeConverter.class)
+    private String currentStatusUpdTm;
+
 }

@@ -23,7 +23,6 @@ public class CandidateInfo {
     private String prefFirstName;
     private String email;
     private String contactPhone;
-    private Integer curStatus;
 
 /*    @OneToOne
     @JoinColumn(name="AID", nullable=true)

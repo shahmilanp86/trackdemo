@@ -5,17 +5,22 @@ import com.aptrack.entity.OnboardingStatus;
 import com.aptrack.entity.OnboardingView;
 import com.aptrack.service.OnboardingViewService;
 import com.aptrack.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static com.aptrack.utils.ApptrackerUtils.dateTimeDiffDays;
+import static com.aptrack.utils.ApptrackerUtils.daysTillDate;
+
 import static com.aptrack.utils.ApptrackerUtils.dateTimeTotring;
+import static com.aptrack.common.CommonPoperties.NO_SLA;
 
 /**
  * Created by Murthy on 7/29/2017.
  */
+@Slf4j
 public class OnboardingProcessor {
     //TODO: Implementaion Inprogrss.
     //TODO: Testing is due
@@ -41,13 +46,14 @@ public class OnboardingProcessor {
     }
 
     private void notifyWithEmail(OnboardingView status) {
+        log.debug("Notifying....{}",status);
     }
 
     private Boolean exceededSLA(OnboardingView onboardingView) {
         return Optional.ofNullable(onboardingView.getOnboardingStatus())
                 .filter(this::hasSLA)
-                .map(status -> dateTimeDiffDays(dateTimeTotring(LocalDateTime.now()), status.getCurrentStatusUpdTm()))
-                .filter(days -> days > 1)
+                .map(status -> daysTillDate(status.getCurrentStatusUpdTm()))
+                .filter(days -> days >= Status.valueFrom(onboardingView.getOnboardingStatus().getCurrentStatus()).getSla())
                 .map(yes -> true)
                 .orElse(false);
     }
@@ -55,9 +61,9 @@ public class OnboardingProcessor {
     private boolean hasSLA(OnboardingStatus status){
          return Optional.ofNullable(status)
                 .map(st -> st.getCurrentStatus() )
-                .filter(st -> Status.valueFrom(st).getSla()>0)
-                .map(yes -> true)
-                .orElse(false);
+                .filter(st -> Status.valueFrom(st).getSla()== NO_SLA)
+                .map(yes -> false)
+                .orElse(true);
     }
 
 

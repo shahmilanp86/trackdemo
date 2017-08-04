@@ -110,7 +110,7 @@ public class Notifier {
         String port = "587";
         //TODO
         String mailFrom = "ml.247711@gmail.com";
-        String password = "hundaidvd505";
+        String password = "";
 
         // message info
         String[] mailTo ={ "ml.247711@gmail.com"};

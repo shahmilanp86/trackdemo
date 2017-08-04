@@ -42,24 +42,27 @@ public class ApptrackerUtils {
 
     }
 
-    public static long dateTimeDiffDays(String startDt,String endDt){
+    public static long dateTimeDiffDays(String fromDateTime,String toDateTime){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
-        LocalDateTime dateTime1 = LocalDateTime.parse(startDt, formatter);
-        LocalDateTime dateTime2 = LocalDateTime.parse(endDt, formatter);
-        Duration duration = Duration.between(dateTime1,dateTime1);
-        return ChronoUnit.DAYS.between(dateTime1,dateTime2);
+        LocalDateTime to = LocalDateTime.parse(toDateTime, formatter);
+        LocalDateTime from = LocalDateTime.parse(fromDateTime, formatter);
+        return ChronoUnit.DAYS.between(from,to);
 
     }
 
     public static void main (String[] d){
-      /*  System.out.println(dateTimeDiffDays( "07-30-2017 21:20:34", "07-29-2017 21:20:34"));
-        System.out.println(dateTimeTotring(LocalDateTime.now()));*/
+       //System.out.println(dateTimeDiffDays( "07-30-2017 21:20:34", "07-29-2017 21:20:34"));
+        System.out.println(dateTimeDiffDays(  "07-29-2017 21:20:34","07-30-2017 21:20:34"));
+
+        /*  System.out.println(dateTimeTotring(LocalDateTime.now()));*/
 
       Integer[] d1 = {2,1,4,3,7,8,10};
         List<Integer> gg = Arrays.stream(d1)
                 .filter(f -> (f > 3))
                 .collect(Collectors.toList());
         System.out.println(gg);
+
+        System.out.println(daysTillDate( "07-30-2017 21:20:34"));
     }
 
 
@@ -80,5 +83,9 @@ public class ApptrackerUtils {
     public static String dateTimeTotring(LocalDateTime dtm){
         return dtm.format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss"));
 
+    }
+
+    public static Long daysTillDate(String fromDate) {
+        return dateTimeDiffDays( fromDate,dateTimeTotring(LocalDateTime.now()));
     }
 }

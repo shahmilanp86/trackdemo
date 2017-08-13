@@ -20,7 +20,8 @@ import { CandidateProgressComponent } from './pages/candidate-progress/candidate
 import { AccordianComponent } from './common/accordian/accordian.component';
 import { PageHeadingComponent } from './common/page-heading/page-heading.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import {ConfigService } from "./services/config.service";
+ 
 
 
 
@@ -46,7 +47,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

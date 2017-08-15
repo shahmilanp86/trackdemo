@@ -4,36 +4,42 @@
 
     <!-- we will place our fields here -->
 
-    
-    <div>
-        <label>AID</label>
-        <input type="text" name="id">
-    </div>
-    
-    <div>
-         <label>First Name</label>
-         <input type="text" name="firstName">
-    </div>
-    
-    <div>
-            <label>Last Name</label>
-            <input type="text" name="lastName">
-    </div>
-    
-    <div>
-            <label>Email ID</label>
-            <input type="email" name="eMailAddr">
-    </div>
-    
-    <div>
-            <label>Mobile</label>
-            <input type="tel" name="mobileNum">
-    </div>
+ <form>
 
-    
-    <tr>
-      <td><button type="submit">Save & E-mail Candidate</button></td>
-      <td><button type="submit">Cancel</button></td>
-    </tr>
+  <div class="container">
+    <div class="row">
+        <label class="col-md-2">AID</label>
+        <input type="text" class="col-md-2" name="id" id="id">
+    </div>
+    &nbsp;
+    <div class="row">
+         <label class="col-md-2">First Name</label>
+         <input type="text" class="col-md-3" name="firstName" id="firstName">
+    </div>
+    &nbsp;
+    <div class="row">
+         <label class="col-md-2">Last Name</label>
+         <input type="text" class="col-md-3" name="lastName" id="lastName">
+    </div>
+    &nbsp;
+    <div class="row">
+         <label class="col-md-2">Email ID</label>
+         <input type="email" class="col-md-3" name="eMailAddr" id="eMailAddr">
+    </div>
+    &nbsp;
+    <div class="row">
+          <label class="col-md-2">Mobile</label>
+          <input type="tel" class="col-md-2" name="mobileNum" id="mobileNum">
+    </div>
+    &nbsp;
+    &nbsp;
+    <div class="row">
+      <button type="submit" class="col-md-3">Save & E-mail Candidate</button>
+      &nbsp;&nbsp;
+      <button type="submit" class="col-md-2">Cancel</button>
+    </div>
+  </div>
+
+ </form>
 
 

@@ -8,35 +8,35 @@
 
   <div class="container">
     <div class="row">
-        <label class="col-md-2">AID</label>
-        <input type="text" class="col-md-2" name="id" id="id">
+        <label class="col-md-2" for="id">AID</label>
+        <input type="text" class="col-md-2" ngControl="candidateBasicInfo.aid" (ngModel)="candidateBasicInfo.aid" required>
     </div>
     &nbsp;
     <div class="row">
-         <label class="col-md-2">First Name</label>
-         <input type="text" class="col-md-3" name="firstName" id="firstName">
+         <label class="col-md-2" for="firstName">First Name</label>
+         <input type="text" class="col-md-3" ngControl="candidateBasicInfo.firstName" (ngModel)="candidateBasicInfo.firstName" required>
     </div>
     &nbsp;
     <div class="row">
-         <label class="col-md-2">Last Name</label>
-         <input type="text" class="col-md-3" name="lastName" id="lastName">
+         <label class="col-md-2" for="lastName">Last Name</label>
+         <input type="text" class="col-md-3" ngControl="candidateBasicInfo.lastName" (ngModel)="candidateBasicInfo.lastName" required>
     </div>
     &nbsp;
     <div class="row">
-         <label class="col-md-2">Email ID</label>
-         <input type="email" class="col-md-3" name="eMailAddr" id="eMailAddr">
+         <label class="col-md-2" for="eMailAddr">Email ID</label>
+         <input type="email" class="col-md-3" ngControl="candidateBasicInfo.email" (ngModel)="candidateBasicInfo.email" required>
     </div>
     &nbsp;
     <div class="row">
-          <label class="col-md-2">Mobile</label>
-          <input type="tel" class="col-md-2" name="mobileNum" id="mobileNum">
+          <label class="col-md-2" for="mobileNum">Mobile</label>
+          <input type="tel" class="col-md-2" ngControl="candidateBasicInfo.contactNumber" (ngModel)="candidateBasicInfo.contactNumber" required>
     </div>
     &nbsp;
     &nbsp;
     <div class="row">
-      <button type="submit" class="col-md-3">Save & E-mail Candidate</button>
+      <button type="submit" class="col-md-3" (click)="onSaveEmail()">Save & E-mail Candidate</button>
       &nbsp;&nbsp;
-      <button type="submit" class="col-md-2">Cancel</button>
+      <button type="submit" class="col-md-2" (click)="onCancel()">Cancel</button>
     </div>
   </div>
 

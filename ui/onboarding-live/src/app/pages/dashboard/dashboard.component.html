@@ -1,11 +1,36 @@
 <app-page-heading heading="Dashboard">
-<div class="row">
-  <div class="">
- 
-</div>
- <div class="row">
-    <div class="col-sm-12" style="background-color:yellow;">
-      <p> dashboard works!</p>
-    </div>
-
-  </div>
+</app-page-heading>
+<div class="content-box-large">
+  				<div class="panel panel-primary">
+					<div class="panel-heading">Onboarding Live</div>
+				
+  				<div class="panel-body">
+  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+						<thead>
+							<tr>
+								<th>AID</th>
+								<th>Name</th>
+								<th>Status</th>
+								<th>BG Check</th>
+								<th>Demographics</th>
+                <th>SLA</th>
+                <th>Contact</th>
+                <th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor='let onBoardingDetail of onBoardingDetails'>
+								<td>{{ onBoardingDetail.Aid }}</td>
+								<td>{{ onBoardingDetail.Name }}</td>
+								<td>{{ onBoardingDetail.Status }}</td>
+								<td>{{ onBoardingDetail.BG }}</td>
+								<td>{{ onBoardingDetail.Demographics }}</td>
+                <td>{{ onBoardingDetail.SLA }}</td>
+								<td>{{ onBoardingDetail.Contact }}</td>
+								<td>{{ onBoardingDetail.Notes }}</td>
+							</tr>							
+						</tbody>
+					</table>
+  				</div>
+  			</div>
+        </div>

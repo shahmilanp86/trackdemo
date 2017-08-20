@@ -35,6 +35,7 @@ export class AddCandidateComponent implements OnInit {
   //todo;
     //serviceResp.aid = this.candidateBasicInfo.aid;
     //serviceResp.firstName = this.candidateBasicInfo.firstName;
+    //serviceResp.midInitial = this.candidateBasicInfo.middleName;
     //serviceResp.lastName = this.candidateBasicInfo.lastName;
     //serviceResp.email = this.candidateBasicInfo.email;
     //serviceResp.contactPhone = this.candidateBasicInfo.contactNumber;
@@ -44,6 +45,7 @@ export class AddCandidateComponent implements OnInit {
   //todo;
   this.candidateBasicInfo.aid="";
   this.candidateBasicInfo.firstName="";
+  this.candidateBasicInfo.middleName="";
   this.candidateBasicInfo.lastName="";
   this.candidateBasicInfo.email="";
   this.candidateBasicInfo.contactNumber="";

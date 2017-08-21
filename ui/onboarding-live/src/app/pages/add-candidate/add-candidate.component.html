@@ -1,0 +1,45 @@
+<app-page-heading heading="Add Candidate">
+</app-page-heading>
+
+
+    <!-- we will place our fields here -->
+
+ <form>
+
+  <div class="container">
+    <div class="row">
+        <label class="col-md-2" for="id">AID</label>
+        <input type="text" class="col-md-2" ngControl="candidateBasicInfo.aid" (ngModel)="candidateBasicInfo.aid" required>
+    </div>
+    &nbsp;
+    <div class="row">
+         <label class="col-md-2" for="firstName">First Name</label>
+         <input type="text" class="col-md-3" ngControl="candidateBasicInfo.firstName" (ngModel)="candidateBasicInfo.firstName" required>
+    </div>
+    &nbsp;
+    <div class="row">
+         <label class="col-md-2" for="lastName">Last Name</label>
+         <input type="text" class="col-md-3" ngControl="candidateBasicInfo.lastName" (ngModel)="candidateBasicInfo.lastName" required>
+    </div>
+    &nbsp;
+    <div class="row">
+         <label class="col-md-2" for="eMailAddr">Email ID</label>
+         <input type="email" class="col-md-3" ngControl="candidateBasicInfo.email" (ngModel)="candidateBasicInfo.email" required>
+    </div>
+    &nbsp;
+    <div class="row">
+          <label class="col-md-2" for="mobileNum">Mobile</label>
+          <input type="tel" class="col-md-2" ngControl="candidateBasicInfo.contactNumber" (ngModel)="candidateBasicInfo.contactNumber" required>
+    </div>
+    &nbsp;
+    &nbsp;
+    <div class="row">
+      <button type="submit" class="col-md-3" (click)="onSaveEmail()">Save & E-mail Candidate</button>
+      &nbsp;&nbsp;
+      <button type="submit" class="col-md-2" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+
+ </form>
+
+

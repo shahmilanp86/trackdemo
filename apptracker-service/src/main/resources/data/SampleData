@@ -1,7 +1,48 @@
 
-localhost:8080/api/candidates/all
+localhost:8080/api/candidate/add
+POST
+{
+    "aid": 1100,
+    "lastName": "LN-1100",
+    "firstName": "FN-1100",
+    "midInitial": "M",
+    "email": "ln-1100@gmail.com",
+    "contactPhone": "4448883456"
+}
+
+localhost:8080/api/candidate/update
+PUT
+{
+    "aid": 1100,
+    "prefFirstName": "ln1-1100",
+    "email": "ln-1100@gmail.com"
+}
+
+localhost:8080/api/candidate/1100
+GET
+
+{
+    "aid": 1100,
+    "lastName": "LN-1100",
+    "firstName": "FN-1100",
+    "midInitial": "M",
+    "prefFirstName": "ln1-1100",
+    "email": "ln-1100@gmail.com",
+    "contactPhone": "4448883456"
+}
+
+localhost:8080/api/candidate/all
 GET
 [
+    {
+        "aid": 1100,
+        "lastName": "LN-1100",
+        "firstName": "FN-1100",
+        "midInitial": "M",
+        "prefFirstName": "ln1-1100",
+        "email": "ln-1100@gmail.com",
+        "contactPhone": "4448883456"
+    },
     {
         "aid": 1111,
         "lastName": "GARIMELLA",
@@ -9,8 +50,7 @@ GET
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
+        "contactPhone": "+011234567890"
     },
     {
         "aid": 2222,
@@ -19,8 +59,7 @@ GET
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
+        "contactPhone": "+011234567890"
     },
     {
         "aid": 3333,
@@ -29,60 +68,9 @@ GET
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
-    },
-    {
-        "aid": 4444,
-        "lastName": "GARIMELLA",
-        "firstName": "SURYA",
-        "midInitial": null,
-        "prefFirstName": "MURTHY",
-        "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
+        "contactPhone": "+011234567890"
     }
 ]
-
-
-localhost:8080/api/candidates/1111
-GET
-{
-    "aid": 1111,
-    "lastName": "GARIMELLA",
-    "firstName": "SURYA",
-    "midInitial": null,
-    "prefFirstName": "MURTHY",
-    "email": "MURTHY@MTY.COM",
-    "contactPhone": "+011234567890",
-    "curStatus": 100
-}
-
-localhost:8080/api/candidates/add
-POST
-{
-    "aid": 3333,
-    "lastName": "G",
-    "firstName": "SURYA",
-    "midInitial": null,
-    "prefFirstName": "MURTHY",
-    "email": "MURTHY@MTY.COM",
-    "contactPhone": "+011234567890",
-    "curStatus": 100
-}
-
-localhost:8080/api/candidates/update/3333
-PUT
-{
-    "aid": 3333,
-    "lastName": "G",
-    "firstName": "SURYA",
-    "midInitial": null,
-    "prefFirstName": "MURTHY",
-    "email": "MURTHY@MTY.COM",
-    "contactPhone": "+011234567890",
-    "curStatus": 100
-}
 
 ----------------------------------------
 

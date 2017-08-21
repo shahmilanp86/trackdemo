@@ -15,9 +15,23 @@ import java.util.stream.Collectors;
 
 public class Notifier {
 
-    public static void sendEmail(String host, String port,
-                                                final String userName, final String password, String[] toAddress, String[] copyAddress,
-                                                String subject, String message, String[] attachFiles)
+    // SMTP info
+    private static final String host = "smtp.gmail.com";
+    private static final String port = "587";
+    //TODO
+    private static final String mailFrom = "ml.247711@gmail.com";
+    private static final String userName = mailFrom;
+    private static final String password = "";
+
+
+    public static void sendEmail(String[] toAddress, String[] copyAddress,
+                                 String subject, String message, String[] attachFiles) throws MessagingException {
+        sendEmail(host, port, userName, password, toAddress, copyAddress, subject, message, attachFiles);
+    }
+
+    private static void sendEmail(String host, String port,
+                                 final String userName, final String password, String[] toAddress, String[] copyAddress,
+                                 String subject, String message, String[] attachFiles)
             throws AddressException, MessagingException {
         // sets SMTP server properties
         Properties properties = new Properties();
@@ -105,12 +119,7 @@ public class Notifier {
      * Test sending e-mail with attachments
      */
     public static void main(String[] args) {
-        // SMTP info
-        String host = "smtp.gmail.com";
-        String port = "587";
-        //TODO
-        String mailFrom = "ml.247711@gmail.com";
-        String password = "";
+
 
         // message info
         String[] mailTo ={ "ml.247711@gmail.com"};
@@ -134,4 +143,7 @@ public class Notifier {
             ex.printStackTrace();
         }
     }
+
+
+
 }

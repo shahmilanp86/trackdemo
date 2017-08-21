@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -52,6 +53,9 @@ public class ApptrackerUtils {
 
     public static void main (String[] d){
        //System.out.println(dateTimeDiffDays( "07-30-2017 21:20:34", "07-29-2017 21:20:34"));
+
+        System.out.println(dateTotring(LocalDate.now()));
+
         System.out.println(dateTimeDiffDays(  "07-29-2017 21:20:34","07-30-2017 21:20:34"));
 
         /*  System.out.println(dateTimeTotring(LocalDateTime.now()));*/
@@ -85,7 +89,23 @@ public class ApptrackerUtils {
 
     }
 
+    public static String dateTotring(LocalDate dt){
+        return dt.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+
+    }
+
     public static Long daysTillDate(String fromDate) {
         return dateTimeDiffDays( fromDate,dateTimeTotring(LocalDateTime.now()));
     }
+
+    public static String generateRandomString() {
+       // return UUID.randomUUID().toString();
+        return Long.toHexString(Double.doubleToLongBits(Math.random()));
+
+    }
+
+
+
+
+
 }

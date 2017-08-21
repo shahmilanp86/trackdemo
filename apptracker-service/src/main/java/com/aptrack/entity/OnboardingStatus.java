@@ -29,4 +29,8 @@ public class OnboardingStatus {
     @Convert(converter = LocalDateTimeConverter.class)
     private String currentStatusUpdTm;
 
+    private String urlString;
+    @Convert(converter = LocalDateTimeConverter.class)
+    private String urlCreatedTm;
+
 }

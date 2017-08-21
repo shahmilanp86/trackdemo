@@ -21,7 +21,7 @@ public class Notifier {
     //TODO
     private static final String mailFrom = "ml.247711@gmail.com";
     private static final String userName = mailFrom;
-    private static final String password = "hundaidvd505";
+    private static final String password = "";
 
 
     public static void sendEmail(String[] toAddress, String[] copyAddress,

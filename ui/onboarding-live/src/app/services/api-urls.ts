@@ -1,9 +1,9 @@
 export const APIURLs = {
     'getCandidateDetails': {
-        default: '/candidates',// default is used if env specific URL not specified
+        default: '/candidate',// default is used if env specific URL not specified
         dev: '/candidateDetails.json?',// This will overwrite default
-        qa: '/candidates',
-        prod: '/candidates',
+        qa: '/candidate',
+        prod: '/candidate',
         isExternal: false
     },
     'candidateList': {

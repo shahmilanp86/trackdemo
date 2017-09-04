@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Router } from '@angular/router';
+import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -20,6 +21,7 @@ import { CandidateProgressComponent } from './pages/candidate-progress/candidate
 import { AccordianComponent } from './common/accordian/accordian.component';
 import { PageHeadingComponent } from './common/page-heading/page-heading.component';
 import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import {ConfigService } from './services/config.service';
 import { PersonalComponent } from './pages/idrf/personal/personal.component';
 import { WorkComponent } from './pages/idrf/work/work.component';
@@ -59,11 +61,12 @@ import {IDRFFormFlow} from './services/idrf-flow-guard.service';
     RouterModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule
-  ],
-  providers: [ConfigService,
+    FormsModule,
+   ],
+  providers: [ConfigService,Location,
     { provide: FormDataService, useClass: FormDataService },
     { provide: WorkflowService, useClass: WorkflowService },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}          
     { provide: IDRFFormFlow, useClass: IDRFFormFlow }],
   bootstrap: [AppComponent]
 })

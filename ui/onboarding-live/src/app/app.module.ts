@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Router } from '@angular/router';
 import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
 
-import { AppRoutingModule }        from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 import { AppComponent } from './app.component';
@@ -21,9 +21,17 @@ import { CandidateProgressComponent } from './pages/candidate-progress/candidate
 import { AccordianComponent } from './common/accordian/accordian.component';
 import { PageHeadingComponent } from './common/page-heading/page-heading.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ConfigService } from "./services/config.service";
- import { FormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
+import {ConfigService } from './services/config.service';
+import { PersonalComponent } from './pages/idrf/personal/personal.component';
+import { WorkComponent } from './pages/idrf/work/work.component';
+import { AddressComponent } from './pages/idrf/address/address.component';
+import { ResultComponent } from './pages/idrf/result/result.component';
+import { NavbarComponent } from './pages/idrf/navbar/navbar.component';
+import { FormDataService } from './pages/idrf/data/formData.service';
+import { WorkflowService } from './pages/idrf/workflow/workflow.service';
+import { FormsModule } from '@angular/forms';
+import {IDRFFormFlow} from './services/idrf-flow-guard.service';
 
 
 
@@ -41,7 +49,12 @@ import {ConfigService } from "./services/config.service";
     ErrorComponent,
     CandidateProgressComponent,
     AccordianComponent,
-    PageHeadingComponent
+    PageHeadingComponent,
+    PersonalComponent,
+    WorkComponent,
+    AddressComponent,
+    ResultComponent,
+    NavbarComponent
   ],
   imports: [
     AppRoutingModule,
@@ -49,11 +62,15 @@ import {ConfigService } from "./services/config.service";
     BrowserModule,
     HttpClientModule,
     FormsModule,
-  ],
-  providers: [ConfigService,Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+   ],
+  providers: [ConfigService,Location,
+    { provide: FormDataService, useClass: FormDataService },
+    { provide: WorkflowService, useClass: WorkflowService },
+    {provide: LocationStrategy, useClass: HashLocationStrategy}          
+    { provide: IDRFFormFlow, useClass: IDRFFormFlow }],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   // Diagnostic only: inspect router configuration
   constructor(router: Router) {
   //  console.log('Routes: ', JSON.stringify(router.config, undefined, 2));

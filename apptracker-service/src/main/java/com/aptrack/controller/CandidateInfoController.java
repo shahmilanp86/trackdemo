@@ -2,6 +2,7 @@ package com.aptrack.controller;
 
 import com.aptrack.entity.CandidateInfo;
 import com.aptrack.service.CandidateService;
+import com.aptrack.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,19 +19,18 @@ public class CandidateInfoController {
     private CandidateService candidateService;
 
     @RequestMapping(
-            value = "/api/candidates/all",
+            value = "/api/candidate/all",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<CandidateInfo>> getCandidates() {
 
         Collection<CandidateInfo> candidates = candidateService.findAll();
-
         return new ResponseEntity<Collection<CandidateInfo>>(candidates,
                 HttpStatus.OK);
     }
 
     @RequestMapping(
-            value = "/api/candidates/{id}",
+            value = "/api/candidate/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CandidateInfo> getCandidates(@PathVariable("id") Long id) {
@@ -44,7 +44,7 @@ public class CandidateInfoController {
     }
 
     @RequestMapping(
-            value = "/api/candidates/add",
+            value = "/api/candidate/add",
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -57,7 +57,7 @@ public class CandidateInfoController {
     }
 
     @RequestMapping(
-            value = "/api/candidates/update/{id}",
+            value = "/api/candidate/update",
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)

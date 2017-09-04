@@ -1,7 +1,48 @@
 
-localhost:8080/api/candidates/all
+localhost:8080/api/candidate/add
+POST
+{
+    "aid": 1100,
+    "lastName": "LN-1100",
+    "firstName": "FN-1100",
+    "midInitial": "M",
+    "email": "ln-1100@gmail.com",
+    "contactPhone": "4448883456"
+}
+
+localhost:8080/api/candidate/update
+PUT
+{
+    "aid": 1100,
+    "prefFirstName": "ln1-1100",
+    "email": "ln-1100@gmail.com"
+}
+
+localhost:8080/api/candidate/1100
+GET
+
+{
+    "aid": 1100,
+    "lastName": "LN-1100",
+    "firstName": "FN-1100",
+    "midInitial": "M",
+    "prefFirstName": "ln1-1100",
+    "email": "ln-1100@gmail.com",
+    "contactPhone": "4448883456"
+}
+
+localhost:8080/api/candidate/all
 GET
 [
+    {
+        "aid": 1100,
+        "lastName": "LN-1100",
+        "firstName": "FN-1100",
+        "midInitial": "M",
+        "prefFirstName": "ln1-1100",
+        "email": "ln-1100@gmail.com",
+        "contactPhone": "4448883456"
+    },
     {
         "aid": 1111,
         "lastName": "GARIMELLA",
@@ -9,8 +50,7 @@ GET
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
+        "contactPhone": "+011234567890"
     },
     {
         "aid": 2222,
@@ -19,8 +59,7 @@ GET
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
+        "contactPhone": "+011234567890"
     },
     {
         "aid": 3333,
@@ -29,60 +68,9 @@ GET
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
-    },
-    {
-        "aid": 4444,
-        "lastName": "GARIMELLA",
-        "firstName": "SURYA",
-        "midInitial": null,
-        "prefFirstName": "MURTHY",
-        "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890",
-        "curStatus": 100
+        "contactPhone": "+011234567890"
     }
 ]
-
-
-localhost:8080/api/candidates/1111
-GET
-{
-    "aid": 1111,
-    "lastName": "GARIMELLA",
-    "firstName": "SURYA",
-    "midInitial": null,
-    "prefFirstName": "MURTHY",
-    "email": "MURTHY@MTY.COM",
-    "contactPhone": "+011234567890",
-    "curStatus": 100
-}
-
-localhost:8080/api/candidates/add
-POST
-{
-    "aid": 3333,
-    "lastName": "G",
-    "firstName": "SURYA",
-    "midInitial": null,
-    "prefFirstName": "MURTHY",
-    "email": "MURTHY@MTY.COM",
-    "contactPhone": "+011234567890",
-    "curStatus": 100
-}
-
-localhost:8080/api/candidates/update/3333
-PUT
-{
-    "aid": 3333,
-    "lastName": "G",
-    "firstName": "SURYA",
-    "midInitial": null,
-    "prefFirstName": "MURTHY",
-    "email": "MURTHY@MTY.COM",
-    "contactPhone": "+011234567890",
-    "curStatus": 100
-}
 
 ----------------------------------------
 
@@ -208,86 +196,260 @@ GET
 
 [
     {
+        "aid": 123,
+        "lastName": "CCC",
+        "firstName": "ZZZ",
+        "midInitial": "T",
+        "prefFirstName": "ccc",
+        "email": "ccc@gmail.com",
+        "contactPhone": "4448883456",
+        "onboardingStatus": null
+    },
+    {
+        "aid": 902,
+        "lastName": "Garimella",
+        "firstName": "Murthy",
+        "midInitial": "S",
+        "prefFirstName": null,
+        "email": "gsvsnmurthy@gmail.com",
+        "contactPhone": "12345677",
+        "onboardingStatus": {
+            "aid": 902,
+            "bgCheck": 100,
+            "bgCheckUpdTm": "09-03-2017 00:36:54",
+            "demograph": 200,
+            "demographUpdTm": "09-03-2017 00:36:54",
+            "comments": "Candidate was notified.",
+            "lastUpdTm": "09-03-2017 00:36:54",
+            "lastUpdBy": "Admin",
+            "currentStatus": 102,
+            "currentStatusUpdTm": "09-03-2017 00:36:54",
+            "urlString": "3fefd52ddcc6bf4a",
+            "urlCreatedTm": "09-03-2017 00:36:54",
+            "currentSLA": 1
+        }
+    },
+    {
+        "aid": 1100,
+        "lastName": "LN-1100",
+        "firstName": "FN-1100",
+        "midInitial": "M",
+        "prefFirstName": "ln1-1100",
+        "email": "ln-1100@gmail.com",
+        "contactPhone": "4448883456",
+        "onboardingStatus": {
+            "aid": 1100,
+            "bgCheck": 100,
+            "bgCheckUpdTm": "08-05-2017 14:49:57",
+            "demograph": 200,
+            "demographUpdTm": "08-05-2017 14:49:57",
+            "comments": "Initiated.",
+            "lastUpdTm": "08-05-2017 14:49:57",
+            "lastUpdBy": "Admin",
+            "currentStatus": 101,
+            "currentStatusUpdTm": "08-05-2017 14:49:57",
+            "urlString": null,
+            "urlCreatedTm": "08-20-2017 17:21:42",
+            "currentSLA": null
+        }
+    },
+    {
+        "aid": 1101,
+        "lastName": "LN-1101",
+        "firstName": "FN-1101",
+        "midInitial": "MI",
+        "prefFirstName": "ln-1101",
+        "email": "ln-1101@gmail.com",
+        "contactPhone": "4448883456",
+        "onboardingStatus": {
+            "aid": 1101,
+            "bgCheck": 100,
+            "bgCheckUpdTm": "08-06-2017 13:47:27",
+            "demograph": 200,
+            "demographUpdTm": "08-06-2017 13:47:27",
+            "comments": "Initiated",
+            "lastUpdTm": "08-06-2017 13:47:27",
+            "lastUpdBy": "Admin",
+            "currentStatus": 103,
+            "currentStatusUpdTm": "08-06-2017 13:47:27",
+            "urlString": null,
+            "urlCreatedTm": "08-20-2017 17:21:42",
+            "currentSLA": -28
+        }
+    },
+    {
+        "aid": 1102,
+        "lastName": "LN-1102",
+        "firstName": "FN-1102",
+        "midInitial": "MI",
+        "prefFirstName": "ln-1102",
+        "email": "ln-1102@gmail.com",
+        "contactPhone": "4448883456",
+        "onboardingStatus": {
+            "aid": 1102,
+            "bgCheck": 100,
+            "bgCheckUpdTm": "08-20-2017 18:57:24",
+            "demograph": 200,
+            "demographUpdTm": "08-20-2017 18:57:24",
+            "comments": "Candidate was notified.",
+            "lastUpdTm": "08-20-2017 18:57:24",
+            "lastUpdBy": "Admin",
+            "currentStatus": 102,
+            "currentStatusUpdTm": "08-20-2017 18:57:24",
+            "urlString": "3fe08d85c443b1da",
+            "urlCreatedTm": "08-20-2017 18:57:24",
+            "currentSLA": -12
+        }
+    },
+    {
+        "aid": 1111,
         "lastName": "GARIMELLA",
         "firstName": "SURYA",
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
         "contactPhone": "+011234567890",
-        "curStatus": 100,
-        "aid": 1111,
         "onboardingStatus": {
             "aid": 1111,
             "bgCheck": 100,
-            "bgCheckUpdTm": 1500781051000,
+            "bgCheckUpdTm": "07-30-2017 21:20:34",
             "demograph": 200,
-            "demographUpdTm": 1500781051000,
-            "comments": "Comments123",
-            "lastUpdTm": 1500781051000,
-            "lastUpdBy": "Murthy"
+            "demographUpdTm": "07-30-2017 21:20:34",
+            "comments": "Sample comments",
+            "lastUpdTm": "07-30-2017 21:20:34",
+            "lastUpdBy": "Mike",
+            "currentStatus": 102,
+            "currentStatusUpdTm": "07-30-2017 21:20:34",
+            "urlString": null,
+            "urlCreatedTm": "08-20-2017 17:21:42",
+            "currentSLA": -33
         }
     },
     {
+        "aid": 2222,
         "lastName": "GARIMELLA",
         "firstName": "SURYA",
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
         "contactPhone": "+011234567890",
-        "curStatus": 100,
-        "aid": 2222,
+        "onboardingStatus": null
+    },
+    {
+        "aid": 2233,
+        "lastName": "l1",
+        "firstName": "f1",
+        "midInitial": null,
+        "prefFirstName": "pf",
+        "email": "ab@mty.com",
+        "contactPhone": "123456",
         "onboardingStatus": {
-            "aid": 2222,
-            "bgCheck": 300,
-            "bgCheckUpdTm": 1500781248000,
-            "demograph": 400,
-            "demographUpdTm": 1500781248000,
-            "comments": "Comments456",
-            "lastUpdTm": 1500781248000,
-            "lastUpdBy": "Murthy"
+            "aid": 2233,
+            "bgCheck": 100,
+            "bgCheckUpdTm": "09-04-2017 13:30:45",
+            "demograph": 200,
+            "demographUpdTm": "09-04-2017 13:30:45",
+            "comments": "Candidate was notified.",
+            "lastUpdTm": "09-04-2017 13:30:45",
+            "lastUpdBy": "Admin",
+            "currentStatus": 102,
+            "currentStatusUpdTm": "09-04-2017 13:30:45",
+            "urlString": "3fd8d67840937e58",
+            "urlCreatedTm": "09-04-2017 13:30:45",
+            "currentSLA": 2
         }
     },
     {
+        "aid": 3333,
         "lastName": "Ga",
         "firstName": "SURYA",
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
         "contactPhone": "+011234567890",
-        "curStatus": 100,
-        "aid": 3333,
-        "onboardingStatus": {
-            "aid": 3333,
-            "bgCheck": 600,
-            "bgCheckUpdTm": 1500781367000,
-            "demograph": 900,
-            "demographUpdTm": 1500781367000,
-            "comments": "Comments789",
-            "lastUpdTm": 1500781367000,
-            "lastUpdBy": "Milan"
-        }
+        "onboardingStatus": null
     },
     {
+        "aid": 4444,
         "lastName": "GARIMELLA",
         "firstName": "SURYA",
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
         "contactPhone": "+011234567890",
-        "curStatus": 100,
-        "aid": 4444,
+        "onboardingStatus": null
+    },
+    {
+        "aid": 5555,
+        "lastName": "Mike",
+        "firstName": "Jojn",
+        "midInitial": "T",
+        "prefFirstName": "Mike",
+        "email": "mike@gmail.com",
+        "contactPhone": "4448883456",
+        "onboardingStatus": null
+    },
+    {
+        "aid": 6666,
+        "lastName": "Mike",
+        "firstName": "Jojn",
+        "midInitial": "T",
+        "prefFirstName": "Mike",
+        "email": "mike@gmail.com",
+        "contactPhone": "4448883456",
+        "onboardingStatus": null
+    },
+    {
+        "aid": 7777,
+        "lastName": "AAA",
+        "firstName": "XXX",
+        "midInitial": "T",
+        "prefFirstName": "aaa",
+        "email": "mike@gmail.com",
+        "contactPhone": "4448883456",
         "onboardingStatus": {
-            "aid": 4444,
+            "aid": 7777,
             "bgCheck": 100,
-            "bgCheckUpdTm": 1500834835000,
+            "bgCheckUpdTm": "08-04-2017 23:08:23",
             "demograph": 200,
-            "demographUpdTm": 1500834835000,
-            "comments": "Sample comments",
-            "lastUpdTm": 1500834835000,
-            "lastUpdBy": "Mike"
+            "demographUpdTm": "08-04-2017 23:08:25",
+            "comments": "Initiated.",
+            "lastUpdTm": "08-04-2017 23:08:26",
+            "lastUpdBy": "Admin",
+            "currentStatus": 103,
+            "currentStatusUpdTm": "08-02-2017 23:08:24",
+            "urlString": null,
+            "urlCreatedTm": "08-20-2017 17:21:42",
+            "currentSLA": -31
+        }
+    },
+    {
+        "aid": 8888,
+        "lastName": "BBB",
+        "firstName": "YYY",
+        "midInitial": "T",
+        "prefFirstName": "bbb",
+        "email": "bbb@gmail.com",
+        "contactPhone": "4448883456",
+        "onboardingStatus": {
+            "aid": 8888,
+            "bgCheck": 100,
+            "bgCheckUpdTm": "08-04-2017 23:10:38",
+            "demograph": 200,
+            "demographUpdTm": "08-04-2017 23:10:39",
+            "comments": "Initiated.",
+            "lastUpdTm": "08-04-2017 23:10:39",
+            "lastUpdBy": "Admin",
+            "currentStatus": 104,
+            "currentStatusUpdTm": "08-01-2017 23:10:38",
+            "urlString": null,
+            "urlCreatedTm": "08-20-2017 17:21:42",
+            "currentSLA": null
         }
     }
 ]
+
+
 
 localhost:8080/api/onboard/view/1111
 GET

@@ -12,9 +12,9 @@ public enum Role {
     HR(102),
     MANAGER(103);
 
-    private int code;
+    private Integer code;
 
-    Role(int code) {
+    Role(Integer code) {
         this.code = code;
     }
 

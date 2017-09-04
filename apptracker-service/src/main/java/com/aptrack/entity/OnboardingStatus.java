@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * Created by Murthy on 7/19/2017.
@@ -32,5 +33,7 @@ public class OnboardingStatus {
     private String urlString;
     @Convert(converter = LocalDateTimeConverter.class)
     private String urlCreatedTm;
+    @Transient
+    private Integer currentSLA;
 
 }

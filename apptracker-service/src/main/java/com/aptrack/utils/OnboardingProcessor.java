@@ -42,7 +42,7 @@ public class OnboardingProcessor {
     public void process() {
         onboardingViewService.viewList()
                 .stream()
-                .filter(this::exceededSLA)
+                .filter(OnboardingProcessor::exceededSLA)
                 .forEach(status -> notifyWithEmail(status));
     }
 
@@ -61,29 +61,44 @@ public class OnboardingProcessor {
                 .collect(toList());
     }
 
-    private List<Integer> toRoleCodes(Integer statusCode) {
+    private  List<Integer> toRoleCodes(Integer statusCode) {
         return Arrays.asList(Status.valueFrom(statusCode).getRoles())
                 .stream()
                 .map(role -> role.getCode())
                 .collect(toList());
     }
 
-    private Boolean exceededSLA(OnboardingView onboardingView) {
+    private static Boolean exceededSLA(OnboardingView onboardingView) {
         return Optional.ofNullable(onboardingView.getOnboardingStatus())
-                .filter(this::hasSLA)
+                .filter(OnboardingProcessor::hasSLA)
                 .map(status -> daysTillDate(status.getCurrentStatusUpdTm()))
                 .filter(days -> days >= Status.valueFrom(onboardingView.getOnboardingStatus().getCurrentStatus()).getSla())
                 .map(yes -> true)
                 .orElse(false);
     }
 
-    private boolean hasSLA(OnboardingStatus status) {
+    private static boolean hasSLA(OnboardingStatus status) {
         return Optional.ofNullable(status)
                 .map(st -> st.getCurrentStatus())
                 .filter(st -> Status.valueFrom(st).getSla() != NO_SLA)
                 .map(yes -> true)
                 .orElse(false);
     }
+
+
+    public static Integer dueSLADays(OnboardingStatus status){
+     return    Optional.ofNullable(status)
+                       .filter(OnboardingProcessor::hasSLA)
+                .map(st -> daysTillDate(status.getCurrentStatusUpdTm()))
+                .map(daysCompleted -> (int)(Status.valueFrom(status.getCurrentStatus()).getSla()-
+                        daysCompleted))
+                .orElse(null);
+
+
+    }
+
+
+
 
 
 }

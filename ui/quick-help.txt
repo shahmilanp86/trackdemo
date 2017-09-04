@@ -1,4 +1,7 @@
 Root folder: <repo>\ui\onboarding-live
 
+-Generate build/Dist folder  for QA
+	ng build --prod --env=qa
+
 -Generate new component
 	ng g component common/<component-name>

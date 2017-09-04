@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Router } from '@angular/router';
+import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
 
 import { AppRoutingModule }        from './app-routing.module';
 
@@ -21,7 +22,8 @@ import { AccordianComponent } from './common/accordian/accordian.component';
 import { PageHeadingComponent } from './common/page-heading/page-heading.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ConfigService } from "./services/config.service";
- 
+ import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -45,9 +47,10 @@ import {ConfigService } from "./services/config.service";
     AppRoutingModule,
     RouterModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [ConfigService],
+  providers: [ConfigService,Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

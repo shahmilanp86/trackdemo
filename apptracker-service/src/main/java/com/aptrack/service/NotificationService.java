@@ -1,6 +1,5 @@
 package com.aptrack.service;
 
-import com.aptrack.common.NotifyType;
 import com.aptrack.common.Status;
 
 /**

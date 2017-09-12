@@ -34,6 +34,7 @@ export class WorkflowService {
         let found = false;
         let valid = true;
         let redirectToStep = '';
+        //alert(step);
         for (let i = 0; i < this.workflow.length && !found && valid; i++) {
             const item = this.workflow[i];
             console.log(item.step + 'VALIDATION');
@@ -45,6 +46,7 @@ export class WorkflowService {
                 redirectToStep = item.step;
             }
         }
+      //alert("redirectToStep--"+redirectToStep);
         return redirectToStep;
     }
 }

@@ -65,7 +65,7 @@ import {IDRFFormFlow} from './services/idrf-flow-guard.service';
   providers: [ConfigService,Location,
     { provide: FormDataService, useClass: FormDataService },
     { provide: WorkflowService, useClass: WorkflowService },
-    {provide: LocationStrategy, useClass: HashLocationStrategy},          
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: IDRFFormFlow, useClass: IDRFFormFlow }],
   bootstrap: [AppComponent]
 })

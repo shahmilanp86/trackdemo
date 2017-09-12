@@ -1,5 +1,5 @@
 import { Component, OnInit }   from '@angular/core';
-
+import { Work } from '../data/formData.model';
 import { FormDataService }     from '../data/formData.service';
 
 @Component ({
@@ -8,15 +8,15 @@ import { FormDataService }     from '../data/formData.service';
 })
 
 export class WorkComponent implements OnInit {
-    title = 'What do you do?';
-    workType: string;
+    title = 'Contract Details';
+    work: Work;
     form: any;
 
     constructor(private formDataService: FormDataService) {
     }
 
     ngOnInit() {
-        this.workType = this.formDataService.getWork();
+        this.work = this.formDataService.getWork();
         console.log('Work feature loaded!');
     }
 
@@ -24,6 +24,6 @@ export class WorkComponent implements OnInit {
         if (!form.valid)
             return;
 
-        this.formDataService.setWork(this.workType);
+        this.formDataService.setWork(this.work);
     }
 }

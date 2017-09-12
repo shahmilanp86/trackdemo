@@ -19,7 +19,8 @@ const appRoutes: Routes = [
 		component: AddCandidateComponent
 	}, {
 		path: 'dashboard',
-		component: DashboardComponent
+		component: DashboardComponent,
+    canActivate: [IDRFFormFlow]
 	}, {
 		path: 'candidate-details/:id',
 		component: CandidateDetailsComponent
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     component: PersonalComponent,
     data : {
       "name" : "personal"
-    }
+    },
+    canActivate: [IDRFFormFlow]
   }, {
     path: 'idrf/work',
     component: WorkComponent,

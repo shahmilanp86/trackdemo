@@ -5,7 +5,7 @@
             <h4 class="head text-center">{{title}}</h4>
             <br/>
             <div class='row'>
-                <div class='col-xs-offset-4 col-xs-10 col-sm-offset-5 col-sm-4'>
+               <!-- <div class='col-xs-offset-4 col-xs-10 col-sm-offset-5 col-sm-4'>
                     <div class="form-group">
                         <div class="radio">
                             <label>
@@ -26,11 +26,222 @@
                             </label>
                         </div>
                     </div>
+                </div>-->
+              <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+                <div class="row">
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="appprovedContactNum">Approved Contract Number</label>
+                      <input class="form-control input-md" #appprovedContactNum="ngModel" id="appprovedContactNum" name="appprovedContactNum" type="text" placeholder="" [(ngModel)]="work.appprovedContactNum">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="contractEndDte">Contract End Date</label>
+                      <input class="form-control input-md" #contractEndDte="ngModel" id="contractEndDte" name="contractEndDte" type="text" placeholder="" [(ngModel)]="work.contractEndDte">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="cwAssignmentEndDte">CW Assignment End Date</label>
+                      <input class="form-control input-md" #cwAssignmentEndDte="ngModel" id="cwAssignmentEndDte" name="cwAssignmentEndDte" type="text" placeholder="" [(ngModel)]="work.cwAssignmentEndDte">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="candidateRoleTyp">Candidate Role Type</label>
+                      <input class="form-control input-md" #candidateRoleTyp="ngModel" id="candidateRoleTyp" name="candidateRoleTyp" type="text" placeholder="" [(ngModel)]="work.candidateRoleTyp">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="returnStatus">Return Status</label>
+                      <input class="form-control input-md" #returnStatus="ngModel" id="returnStatus" name="returnStatus" type="text" placeholder="" [(ngModel)]="work.returnStatus">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="formaerWorker">Former Worker</label>
+                      <input class="form-control input-md" #formaerWorker="ngModel" id="formaerWorker" name="formaerWorker" type="text" placeholder="" [(ngModel)]="work.formaerWorker">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="priorSid">Prior SID</label>
+                      <input class="form-control input-md" #priorSid="ngModel" id="priorSid" name="priorSid" type="text" placeholder="" [(ngModel)]="work.priorSid">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="priorDates">Prior Dates</label>
+                      <input class="form-control input-md" #priorDates="ngModel" id="priorDates" name="priorDates" type="text" placeholder="" [(ngModel)]="work.priorDates">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="supplierName">Supplier Name</label>
+                      <input class="form-control input-md" #supplierName="ngModel" id="supplierName" name="supplierName" type="text" placeholder="" [(ngModel)]="work.supplierName">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="cwWorkCity">CW Work City</label>
+                      <input class="form-control input-md" #cwWorkCity="ngModel" id="cwWorkCity" name="cwWorkCity" type="text" placeholder="" [(ngModel)]="work.cwWorkCity">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="cwWorkLocation">CW Work Location</label>
+                      <input class="form-control input-md" #cwWorkLocation="ngModel" id="cwWorkLocation" name="cwWorkLocation" type="text" placeholder="" [(ngModel)]="work.cwWorkLocation">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="cwWorkMailDrop">CW Work Mail Drop</label>
+                      <input class="form-control input-md" #cwWorkMailDrop="ngModel" id="cwWorkMailDrop" name="cwWorkMailDrop" type="text" placeholder="" [(ngModel)]="work.cwWorkMailDrop">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="homeZip">Home Zip</label>
+                      <input class="form-control input-md" #homeZip="ngModel" id="homeZip" name="homeZip" type="text" placeholder="" [(ngModel)]="work.homeZip">
+                    </div>
+                  </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="usArmedForces">US Armed Force</label>
+                    <input class="form-control input-md" #usArmedForces="ngModel" id="usArmedForces" name="usArmedForces" type="text" placeholder="" [(ngModel)]="work.usArmedForces">
+                  </div>
+                </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="registeredNotaryPublic">Registered Notary Public</label>
+                    <input class="form-control input-md" #registeredNotaryPublic="ngModel" id="registeredNotaryPublic" name="registeredNotaryPublic" type="text" placeholder="" [(ngModel)]="work.registeredNotaryPublic">
+                  </div>
                 </div>
+                  <div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="csiInfoAccess">CSI Info Access</label>
+                    <input class="form-control input-md" #csiInfoAccess="ngModel" id="csiInfoAccess" name="csiInfoAccess" type="text" placeholder="" [(ngModel)]="work.csiInfoAccess">
+                  </div>
+                </div>
+                  <div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="candidateReferredToYou">Candidate Reffered by JPMC Employee</label>
+                    <input class="form-control input-md" #candidateReferredToYou="ngModel" id="candidateReferredToYou" name="candidateReferredToYou" type="text" placeholder="" [(ngModel)]="work.candidateReferredToYou">
+                  </div>
+                </div>
+
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="referralOriginate">Referral originate</label>
+                      <input class="form-control input-md" #referralOriginate="ngModel" id="referralOriginate" name="referralOriginate" type="text" placeholder="" [(ngModel)]="work.referralOriginate">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="candiateSeletedWithinGuidelines">Candidate selected within JPMC guidelines</label>
+                      <input class="form-control input-md" #candiateSeletedWithinGuidelines="ngModel" id="candiateSeletedWithinGuidelines" name="candiateSeletedWithinGuidelines" type="text" placeholder="" [(ngModel)]="work.candiateSeletedWithinGuidelines">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="currentAddress">Current Address</label>
+                      <input class="form-control input-md" #currentAddress="ngModel" id="currentAddress" name="currentAddress" type="text" placeholder="" [(ngModel)]="work.currentAddress">
+                    </div>
+                  </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="serviceType">Service Type</label>
+                    <input class="form-control input-md" #serviceType="ngModel" id="serviceType" name="serviceType" type="text" placeholder="" [(ngModel)]="work.serviceType">
+                  </div>
+                </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="fullORPartTime">Full Time/Part Time</label>
+                      <input class="form-control input-md" #fullORPartTime="ngModel" id="fullORPartTime" name="fullORPartTime" type="text" placeholder="" [(ngModel)]="work.fullORPartTime">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="paymentType">Payment Type</label>
+                      <input class="form-control input-md" #paymentType="ngModel" id="paymentType" name="paymentType" type="text" placeholder="" [(ngModel)]="work.paymentType">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="costCenter">Cost Center</label>
+                      <input class="form-control input-md" #costCenter="ngModel" id="costCenter" name="costCenter" type="text" placeholder="" [(ngModel)]="work.costCenter">
+                    </div>
+                  </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="cwJobCode">CW Job Code</label>
+                    <input class="form-control input-md" #cwJobCode="ngModel" id="cwJobCode" name="cwJobCode" type="text" placeholder="" [(ngModel)]="work.cwJobCode">
+                  </div>
+                </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="lobName">LOB Name</label>
+                    <input class="form-control input-md" #lobName="ngModel" id="lobName" name="lobName" type="text" placeholder="" [(ngModel)]="work.lobName">
+                  </div>
+                </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="cwAssignmentStartDte">CW Assignment Start Date</label>
+                    <input class="form-control input-md" #cwAssignmentStartDte="ngModel" id="cwAssignmentStartDte" name="cwAssignmentStartDte" type="text" placeholder="" [(ngModel)]="work.cwAssignmentStartDte">
+                  </div>
+                </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="sponsorId">Sponsor ID</label>
+                    <input class="form-control input-md" #sponsorId="ngModel" id="sponsorId" name="sponsorId" type="text" placeholder="" [(ngModel)]="work.sponsorId">
+                  </div>
+                </div><div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="sponsorFirstName">Sponsor First Name</label>
+                    <input class="form-control input-md" #sponsorFirstName="ngModel" id="sponsorFirstName" name="sponsorFirstName" type="text" placeholder="" [(ngModel)]="work.sponsorFirstName">
+                  </div>
+                </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="sponsorLastName">Sponsor Last Name</label>
+                      <input class="form-control input-md" #sponsorLastName="ngModel" id="sponsorLastName" name="sponsorLastName" type="text" placeholder="" [(ngModel)]="work.sponsorLastName">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="emailRequired">Email Required</label>
+                      <input class="form-control input-md" #emailRequired="ngModel" id="emailRequired" name="emailRequired" type="text" placeholder="" [(ngModel)]="work.emailRequired">
+                    </div>
+                  </div>
+                  <div class='col-xs-12 col-sm-6'>
+                  <div class="form-group">
+                    <label class="control-label" for="spocEmail">Spoc Email</label>
+                    <input class="form-control input-md" #spocEmail="ngModel" id="spocEmail" name="spocEmail" type="text" placeholder="" [(ngModel)]="work.spocEmail">
+                  </div>
+                </div>
+                  <div class='col-xs-12 col-sm-6'>
+                    <div class="form-group">
+                      <label class="control-label" for="itornonIT">IT/NON IT</label>
+                      <input class="form-control input-md" #itornonIT="ngModel" id="itornonIT" name="itornonIT" type="text" placeholder="" [(ngModel)]="work.itornonIT">
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+              </div>
+
             </div>
             <div class="form-group text-center space-20">
-                <button  routerLink="/idrf/personal" class="btn btn-outline-rounded btn-default" (click)="save(workForm)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button>
-                <button routerLink="/idrf/address" class="btn btn-outline-rounded btn-info" [disabled]="!workForm.valid" (click)="save(workForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+              <a routerLink="/idrf/personal" ><button  class="btn btn-outline-rounded btn-default" (click)="save(workForm)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button></a>
+              <a routerLink="/idrf/address" ><button  class="btn btn-outline-rounded btn-info" [disabled]="!workForm.valid" (click)="save(workForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
             </div>
         </div>
     </div>

@@ -24,7 +24,6 @@ export class PersonalComponent implements OnInit {
     save(form: any) {
         if (!form.valid)
             return;
-
         this.formDataService.setPersonal(this.personal);
     }
 }

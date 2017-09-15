@@ -1,8 +1,8 @@
-import { Injectable }                        from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { FormData, Personal, Address, Work }       from './formData.model';
-import { WorkflowService }                   from '../workflow/workflow.service';
-import { STEPS }                             from '../workflow/workflow.model';
+import { FormData, Personal, Address, Work } from './formData.model';
+import { WorkflowService } from '../workflow/workflow.service';
+import { STEPS } from '../workflow/workflow.model';
 
 @Injectable()
 export class FormDataService {
@@ -35,7 +35,7 @@ export class FormDataService {
         this.workflowService.validateStep(STEPS.personal);
     }
 
-    getWork() : Work {
+    getWork(): Work {
         // Return the work type
       var work: Work = {
       appprovedContactNum : this.formData.appprovedContactNum,
@@ -65,11 +65,6 @@ export class FormDataService {
       cwJobCode : this.formData.cwJobCode,
       lobName : this.formData.lobName,
       cwAssignmentStartDte : this.formData.cwAssignmentStartDte,
-      sponsorId : this.formData.sponsorId,
-      sponsorLastName : this.formData.sponsorLastName,
-      sponsorFirstName : this.formData.sponsorFirstName,
-      emailRequired : this.formData.emailRequired,
-      spocEmail : this.formData.spocEmail,
       itornonIT : this.formData.itornonIT
       };
       return work;
@@ -105,23 +100,19 @@ export class FormDataService {
         this.formData.cwJobCode = data.cwJobCode;
         this.formData.lobName = data.lobName;
         this.formData.cwAssignmentStartDte = data.cwAssignmentStartDte;
-        this.formData.sponsorId = data.sponsorId;
-        this.formData.sponsorLastName = data.sponsorLastName;
-        this.formData.sponsorFirstName = data.sponsorFirstName;
-        this.formData.emailRequired = data.emailRequired;
-        this.formData.spocEmail = data.spocEmail;
         this.formData.itornonIT = data.itornonIT;
         // Validate Work Step in Workflow
         this.workflowService.validateStep(STEPS.work);
     }
 
-    getAddress() : Address {
+    getAddress(): Address {
         // Return the Address data
         var address: Address = {
-            street: this.formData.street,
-            city: this.formData.city,
-            state: this.formData.state,
-            zip: this.formData.zip
+          sponsorId : this.formData.sponsorId,
+          sponsorLastName : this.formData.sponsorLastName,
+          sponsorFirstName : this.formData.sponsorFirstName,
+          emailRequired : this.formData.emailRequired,
+          spocEmail : this.formData.spocEmail,
         };
         return address;
     }
@@ -129,10 +120,11 @@ export class FormDataService {
     setAddress(data: Address) {
         // Update the Address data only when the Address Form had been validated successfully
         this.isAddressFormValid = true;
-        this.formData.street = data.street;
-        this.formData.city = data.city;
-        this.formData.state = data.state;
-        this.formData.zip = data.zip;
+        this.formData.sponsorId = data.sponsorId;
+        this.formData.sponsorLastName = data.sponsorLastName;
+        this.formData.sponsorFirstName = data.sponsorFirstName;
+        this.formData.emailRequired = data.emailRequired;
+        this.formData.spocEmail = data.spocEmail;
         // Validate Address Step in Workflow
         this.workflowService.validateStep(STEPS.address);
     }

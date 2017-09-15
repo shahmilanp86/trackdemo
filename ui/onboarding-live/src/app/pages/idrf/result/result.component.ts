@@ -14,7 +14,7 @@ export class ResultComponent implements OnInit {
     @Input() formData: FormData;
     isFormValid: boolean = false;
 
-    constructor(private formDataService: FormDataService, private http : Http) {
+    constructor(private formDataService: FormDataService) {
     }
 
     ngOnInit() {
@@ -25,9 +25,9 @@ export class ResultComponent implements OnInit {
     }
 
     submit() {
-      this.http
+      /*this.http
         .post('/api/contract', this.formData)
-        .subscribe();
+        .subscribe();*/
         this.formData = this.formDataService.resetFormData();
         this.isFormValid = false;
     }

@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
     }
     collapseMenu()  {
       this.displayChildMenuFlg = false;
-    } 
+    }
   constructor() { }
 
   ngOnInit() {

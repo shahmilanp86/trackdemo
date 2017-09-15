@@ -4,7 +4,7 @@
 
         <!-- circular user icon -->
         <li>
-            <a routerLink="/idrf/personal" routerLinkActive="active" data-toggle="tab" title="personal">
+            <a routerLink="/idrf/personal/{{candidateId}}" routerLinkActive="active" data-toggle="tab" title="personal">
                 <span class="round-tabs one">
                     <i class="glyphicon glyphicon-user"></i>
                 </span>
@@ -13,7 +13,7 @@
 
         <!-- circular tasks icon -->
          <li>
-            <a routerLink="/idrf/work" routerLinkActive="active" data-toggle="tab" title="work">
+            <a routerLink="/idrf/work/{{candidateId}}" routerLinkActive="active" data-toggle="tab" title="work">
                 <span class="round-tabs two">
                     <i class="glyphicon glyphicon-tasks"></i>
                 </span>
@@ -22,16 +22,16 @@
 
         <!-- circular home icon -->
         <li>
-            <a routerLink="/idrf/address" routerLinkActive="active" data-toggle="tab" title="address">
+            <a routerLink="/idrf/address/{{candidateId}}" routerLinkActive="active" data-toggle="tab" title="address">
                 <span class="round-tabs three">
-                    <i class="glyphicon glyphicon-home"></i>
+                    <i class="glyphicon glyphicon-user"></i>
                 </span>
             </a>
         </li>
 
         <!-- circular ok icon -->
         <li>
-            <a routerLink="/idrf/result" routerLinkActive="active" data-toggle="tab" title="completed">
+            <a routerLink="/idrf/result/{{candidateId}}" routerLinkActive="active" data-toggle="tab" title="completed">
                 <span class="round-tabs four">
                     <i class="glyphicon glyphicon-ok"></i>
                 </span>

@@ -1,45 +1,43 @@
-<msw-navbar></msw-navbar>
-<form #addressForm="ngForm" class="editForm" novalidate>
-    <div class="tab-pane fade in active">
-        <h4 class="head text-center">{{title}}</h4>
-        <br/>
-        <div class='row'>
-            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10'>
-                <div class="form-group">
-                    <label class="control-label" for="street">Street Address</label>
-                    <input class="form-control input-md" #street="ngModel" required id="street" name="street" type="text" placeholder="Street Address" [(ngModel)]="address.street">
-                    <div class="alert alert-danger" [hidden]="street.valid">Street Address is required</div>
-                </div>
-                <div class="row">
-                    <div class='col-xs-12 col-sm-4'>
-                        <div class="form-group">
-                            <label class="control-label" for="city">City</label>
-                            <input class="form-control input-md" #city="ngModel" required id="city" name="city" type="text" placeholder="City" [(ngModel)]="address.city">
-                            <div class="alert alert-danger" [hidden]="city.valid">City is required</div>
-                        </div>
-                    </div>
-                    <div class='col-xs-4 col-sm-offset-1 col-sm-3'>
-                        <div class="form-group">
-                            <label class="control-label" for="state">State</label>
-                            <input class="form-control input-md" #state="ngModel" required id="state" name="state" type="text" placeholder="State" [(ngModel)]="address.state">
-                            <div class="alert alert-danger" [hidden]="state.valid">State is required</div>
-                        </div>
-                    </div>
-                    <div class='col-xs-offset-1 col-xs-7 col-sm-offset-1 col-sm-3'>
-                        <div class="form-group">
-                            <label class="control-label" for="zip">Zip</label>
-                            <input class="form-control input-md" #zip="ngModel" required id="zip" name="zip" type="text" placeholder="Zip" [(ngModel)]="address.zip">
-                            <div class="alert alert-danger" [hidden]="zip.valid">Zip is required</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="form-group text-center">
-              <a routerLink="/idrf/work"><button   class="btn btn-outline-rounded btn-default" (click)="save(addressForm)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button></a>
-              <a routerLink="/idrf/result"><button   class="btn btn-outline-rounded btn-info" [disabled]="!addressForm.valid" (click)="save(addressForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
-            </div>
-        </div>
 
+<msw-navbar></msw-navbar>
+<!--<template #popTemplate triggers=""><app-date-picker ></app-date-picker></template>-->
+<form #addressForm="ngForm" class="editForm form-horizontal" novalidate>
+  <h2 class="head  text-center">{{title}}</h2>
+  <div class="clearfix"></div>
+  <br/>
+
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="sponsorId">Sponsor SID</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #sponsorId="ngModel" id="sponsorId" name="sponsorId" type="text" placeholder="" [(ngModel)]="address.sponsorId">
     </div>
+    <label class="control-label col-sm-2" for="sponsorFirstName">Sponsor First Name</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #sponsorFirstName="ngModel" id="sponsorFirstName" name="sponsorFirstName" type="text" placeholder="" [(ngModel)]="address.sponsorFirstName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="sponsorLastName">Sponsor Last Name</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #sponsorLastName="ngModel" id="sponsorLastName" name="sponsorLastName" type="text" placeholder="" [(ngModel)]="address.sponsorLastName">
+    </div>
+    <label class="control-label col-sm-2">Email Required</label>
+    <div class="col-sm-3">
+      <!--<input class="form-control input-md" #emailRequired="ngModel" id="emailRequired" name="emailRequired" type="text" placeholder="" [(ngModel)]="work.emailRequired">-->
+      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="address.emailRequired" value="YES" > Yes</span>
+      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="address.emailRequired" value="NO" > No</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="spocEmail">Spoc Email</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #spocEmail="ngModel" id="spocEmail" name="spocEmail" type="text" placeholder="" [(ngModel)]="address.spocEmail">
+    </div>
+  </div>
+
 </form>
+<div class="form-group text-center space-20">
+  <a routerLink="/idrf/work/{{candidateId}}"><button   class="btn btn-outline-rounded btn-default" (click)="save(addressForm)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button></a>
+  <a routerLink="/idrf/result/{{candidateId}}"><button   class="btn btn-outline-rounded btn-info" [disabled]="!addressForm.valid" (click)="save(addressForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
+</div>
+

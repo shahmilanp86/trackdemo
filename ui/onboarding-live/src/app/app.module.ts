@@ -29,10 +29,11 @@ import { ResultComponent } from './pages/idrf/result/result.component';
 import { NavbarComponent } from './pages/idrf/navbar/navbar.component';
 import { FormDataService } from './pages/idrf/data/formData.service';
 import { WorkflowService } from './pages/idrf/workflow/workflow.service';
+import {DatepickerComponent} from './common/datePicker/datepicker.component';
 import { FormsModule } from '@angular/forms';
 import {IDRFFormFlow} from './services/idrf-flow-guard.service';
-
-
+import { DatepickerModule, PopoverModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,14 +54,18 @@ import {IDRFFormFlow} from './services/idrf-flow-guard.service';
     WorkComponent,
     AddressComponent,
     ResultComponent,
-    NavbarComponent
+    NavbarComponent,
+    DatepickerComponent
   ],
   imports: [
     AppRoutingModule,
     RouterModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DatepickerModule.forRoot(),
+    PopoverModule.forRoot(),
+    BsDatepickerModule.forRoot()
    ],
   providers: [ConfigService,Location,
     { provide: FormDataService, useClass: FormDataService },

@@ -30,35 +30,65 @@ const appRoutes: Routes = [
 		component: ErrorComponent,
 		data: { msg: 'Missing Mandatory info to display Candidate Details' }
 
-	}, {
-    path: 'idrf/personal',
+	},
+  /*Commenting below code - As it might be helpful in future for edit candidate info*/
+  {
+    path: 'idrf/personal/:id',
     component: PersonalComponent,
     data : {
       "name" : "personal"
-    },
-    canActivate: [IDRFFormFlow]
+    }
   }, {
-    path: 'idrf/work',
+    path: 'idrf/work/:id',
     component: WorkComponent,
     data : {
       "name" : "work"
-    },
-    canActivate: [IDRFFormFlow]
-  }, {
-    path: 'idrf/address',
+    }
+  }
+  , {
+    path: 'idrf/address/:id',
     component: AddressComponent,
     data : {
       "name" : "address"
-    },
-    canActivate: [IDRFFormFlow]
+    }
   }, {
-    path: 'idrf/result',
+    path: 'idrf/result/:id',
     component: ResultComponent,
     data : {
-      "name" : "result"
+      "name" : "result",
+      "id" : ':id'
     },
     canActivate: [IDRFFormFlow]
-  }, {
+  },
+  {
+    path: 'idrf/personal',
+    pathMatch: 'full',
+    component: ErrorComponent,
+    data: { msg: 'Missing Mandatory info to display Candidate Details' }
+
+  },
+  {
+    path: 'idrf/work',
+    pathMatch: 'full',
+    component: ErrorComponent,
+    data: { msg: 'Missing Mandatory info to display Candidate Details' }
+
+  },
+  {
+    path: 'idrf/address',
+    pathMatch: 'full',
+    component: ErrorComponent,
+    data: { msg: 'Missing Mandatory info to display Candidate Details' }
+
+  },
+  {
+    path: 'idrf/result',
+    pathMatch: 'full',
+    component: ErrorComponent,
+    data: { msg: 'Missing Mandatory info to display Candidate Details' }
+
+  },
+  {
 		path: 'settings',
 		component: SettingsComponent
 	}, {

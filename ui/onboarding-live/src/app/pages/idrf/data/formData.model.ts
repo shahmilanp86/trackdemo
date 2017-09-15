@@ -2,10 +2,6 @@ export class FormData {
     firstName: string = '';
     lastName : string = '';
     email: string = '';
-    street: string = '';
-    city: string = '';
-    state: string = '';
-    zip: string = '';
     appprovedContactNum: string = '';
     contractEndDte: string = '';
     cwAssignmentEndDte: string = '';
@@ -44,10 +40,6 @@ export class FormData {
         this.firstName = '';
         this.lastName = '';
         this.email = '';
-        this.street = '';
-        this.city = '';
-        this.state = '';
-        this.zip = '';
         this.appprovedContactNum = '';
         this.contractEndDte = '';
         this.cwAssignmentEndDte = '';
@@ -91,10 +83,11 @@ export class Personal {
 }
 
 export class Address {
-    street: string = '';
-    city: string = '';
-    state: string = '';
-    zip: string = '';
+  sponsorId: string = '';
+  sponsorLastName: string = '';
+  sponsorFirstName: string = '';
+  emailRequired: string = '';
+  spocEmail: string = '';
 }
 export class Work {
   appprovedContactNum: string = '';
@@ -124,11 +117,6 @@ export class Work {
   cwJobCode: string = '';
   lobName: string = '';
   cwAssignmentStartDte: string = '';
-  sponsorId: string = '';
-  sponsorLastName: string = '';
-  sponsorFirstName: string = '';
-  emailRequired: string = '';
-  spocEmail: string = '';
   itornonIT: string = '';
 
 

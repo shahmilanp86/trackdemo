@@ -28,8 +28,7 @@ export class IDRFFormFlow implements CanActivate {
     const firstState = this.workflowService.getFirstInvalidStep(route.data.name);
     if (firstState.length > 0) {
       console.log('Redirected to ' + firstState + 'state which it is the first invalid step.');
-      console.log("GUARAV---"+'/idrf/' + firstState + '/' + this.candidateId);
-       this.router.navigate(['/idrf/' + firstState + '/' + this.candidateId]);
+      this.router.navigate(['/idrf/' + firstState + '/' + this.candidateId]);
 
     }
 

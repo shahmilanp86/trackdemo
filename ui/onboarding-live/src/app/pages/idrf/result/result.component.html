@@ -1,0 +1,337 @@
+<msw-navbar></msw-navbar>
+<div class="tab-pane fade in active">
+    <h3 class="head text-center">{{title}}</h3>
+    <p class="narrow text-center">
+        Here is a copy of the information you have entered:
+    </p>
+    <div class='row'>
+        <div class='col-xs-offset-2 '>
+            <div class="row">
+                <div class='col-xs-3'>
+                    <div class="form-group">
+                        <label class="control-label" for="name">Name: </label>
+                    </div>
+                </div>
+                <div class='col-xs-3'>
+                    {{formData.firstName + ' ' + formData.lastName}}
+                </div>
+
+              <div class='col-xs-3'>
+                <div class="form-group">
+                  <label class="control-label" for="name">Email: </label>
+                </div>
+              </div>
+              <div class='col-xs-3'>
+                {{formData.email}}
+              </div>
+
+
+
+            </div>
+            <div class="row">
+              <div class='col-xs-3'>
+                <div class="form-group">
+                  <label class="control-label" for="name">Contract Number: </label>
+                </div>
+              </div>
+              <div class='col-xs-3'>
+                {{formData.appprovedContactNum}}
+              </div>
+                <div class='col-xs-3'>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Contract End Date: </label>
+                    </div>
+                </div>
+                <div class='col-xs-3'>
+                    {{formData.contractEndDte}}
+                </div>
+
+           </div>
+
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">CW Assignment End Date: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.cwAssignmentEndDte}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Candidate Role Type: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.candidateRoleTyp}}
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Return Status: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.returnStatus}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Former Worker: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.formaerWorker}}
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Prior SID: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.priorSid}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Prior Date: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.priorDates}}
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Supplier Name: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.supplierName}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">CW Work City: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.cwWorkCity}}
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">CW Work Location: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.cwWorkLocation}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Home Zip: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.homeZip}}
+            </div>
+          </div>
+            <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">US Armed Forces: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.usArmedForces}}
+            </div>
+              <div class='col-xs-3'>
+                <div class="form-group">
+                  <label class="control-label" for="email">Registered Notary Public: </label>
+                </div>
+              </div>
+              <div class='col-xs-3'>
+                {{formData.registeredNotaryPublic}}
+              </div>
+          </div>
+          <div class="row">
+
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">CSI Info Access: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.csiInfoAccess}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Candidate Reffered By JPMC Employee: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.candidateReferredToYou}}
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Relationship with employee: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.referralOriginate}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Candidate selected within jpmc guideline: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.candiateSeletedWithinGuidelines}}
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Current Address: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.currentAddress}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Service Type: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.serviceType}}
+            </div>
+
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Full Time / Part Time: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.fullORPartTime}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Payment Type: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.paymentType}}
+            </div>
+
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Cost Center: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.costCenter}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">CW Job Code: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.cwJobCode}}
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">LOB Name: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.lobName}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">CW Assignment Start Date: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.cwAssignmentStartDte}}
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Sponsor SID: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.sponsorId}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Sponsor Last Name: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.sponsorLastName}}
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Sponsor First Name: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.sponsorFirstName}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Email Required: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.emailRequired}}
+            </div>
+
+          </div>
+          <div class="row">
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">Spoc Email: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.spocEmail}}
+            </div>
+            <div class='col-xs-3'>
+              <div class="form-group">
+                <label class="control-label" for="email">IT / NON IT: </label>
+              </div>
+            </div>
+            <div class='col-xs-3'>
+              {{formData.itornonIT}}
+            </div>
+
+          </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-success btn-outline-rounded" [disabled]="!isFormValid" (click)="submit()"> Submit <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+    </div>
+</div>

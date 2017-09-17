@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Router } from '@angular/router';
+import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
 
-import { AppRoutingModule }        from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 import { AppComponent } from './app.component';
@@ -28,10 +29,11 @@ import { ResultComponent } from './pages/idrf/result/result.component';
 import { NavbarComponent } from './pages/idrf/navbar/navbar.component';
 import { FormDataService } from './pages/idrf/data/formData.service';
 import { WorkflowService } from './pages/idrf/workflow/workflow.service';
+import {DatepickerComponent} from './common/datePicker/datepicker.component';
 import { FormsModule } from '@angular/forms';
 import {IDRFFormFlow} from './services/idrf-flow-guard.service';
+import { DatepickerModule, PopoverModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
-import {DatepickerComponent} from './common/datePicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -61,11 +63,14 @@ import {DatepickerComponent} from './common/datePicker/datepicker.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    DatepickerModule.forRoot(),
+    PopoverModule.forRoot(),
     BsDatepickerModule.forRoot()
-  ],
-  providers: [ConfigService,
+   ],
+  providers: [ConfigService,Location,
     { provide: FormDataService, useClass: FormDataService },
     { provide: WorkflowService, useClass: WorkflowService },
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: IDRFFormFlow, useClass: IDRFFormFlow }],
   bootstrap: [AppComponent]
 })

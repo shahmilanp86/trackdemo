@@ -2,44 +2,46 @@
 </app-page-heading>
 
 
-    <!-- we will place our fields here -->
-
- <form>
+<form>
 
   <div class="container">
     <div class="row">
-        <label class="col-md-2" for="id">AID</label>
-        <input type="text" class="col-md-2" ngControl="candidateBasicInfo.aid" (ngModel)="candidateBasicInfo.aid" required>
+        <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.aid">AID</label>
+        <input type="text" class="col-xs-6 col-sm-3 col-md-2" ngControl="candidateBasicInfo.aid" (ngModel)="candidateBasicInfo.aid" id="candidateBasicInfo.aid" required>
     </div>
-    &nbsp;
+    <p class="white-space"></p>
     <div class="row">
-         <label class="col-md-2" for="firstName">First Name</label>
-         <input type="text" class="col-md-3" ngControl="candidateBasicInfo.firstName" (ngModel)="candidateBasicInfo.firstName" required>
+         <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.firstName">First Name</label>
+         <input type="text" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.firstName" (ngModel)="candidateBasicInfo.firstName" id="candidateBasicInfo.firstName" required>
     </div>
-    &nbsp;
+    <p class="white-space"></p>
     <div class="row">
-         <label class="col-md-2" for="lastName">Last Name</label>
-         <input type="text" class="col-md-3" ngControl="candidateBasicInfo.lastName" (ngModel)="candidateBasicInfo.lastName" required>
+         <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.middleName">Middle Initial</label>
+         <input type="text" class="col-xs-4 col-sm-2 col-md-1" ngControl="candidateBasicInfo.middleName" (ngModel)="candidateBasicInfo.middleName" id="candidateBasicInfo.middleName">
     </div>
-    &nbsp;
+    <p class="white-space"></p>
     <div class="row">
-         <label class="col-md-2" for="eMailAddr">Email ID</label>
-         <input type="email" class="col-md-3" ngControl="candidateBasicInfo.email" (ngModel)="candidateBasicInfo.email" required>
+         <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.lastName">Last Name</label>
+         <input type="text" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.lastName" (ngModel)="candidateBasicInfo.lastName" id="candidateBasicInfo.lastName" required>
     </div>
-    &nbsp;
+    <p class="white-space"></p>
     <div class="row">
-          <label class="col-md-2" for="mobileNum">Mobile</label>
-          <input type="tel" class="col-md-2" ngControl="candidateBasicInfo.contactNumber" (ngModel)="candidateBasicInfo.contactNumber" required>
+         <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.email">Email ID</label>
+         <input type="email" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.email" (ngModel)="candidateBasicInfo.email" id="candidateBasicInfo.email" required>
     </div>
-    &nbsp;
-    &nbsp;
+    <p class="white-space"></p>
     <div class="row">
-      <button type="submit" class="col-md-3" (click)="onSaveEmail()">Save & E-mail Candidate</button>
-      &nbsp;&nbsp;
-      <button type="submit" class="col-md-2" (click)="onCancel()">Cancel</button>
+         <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.contactNumber">Mobile</label>
+         <input type="tel" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.contactNumber" (ngModel)="candidateBasicInfo.contactNumber" id="candidateBasicInfo.contactNumber" required>
+    </div>
+    <p class="white-space"></p>
+    <p class="white-space"></p>
+    <div class="row">
+      <button type="submit" class="col-xs-8 col-sm-6 col-md-3" (click)="onSaveEmail()">Save & E-mail Candidate</button>
+      <button type="submit" class="col-xs-4 col-sm-3 col-md-2" (click)="onCancel()">Cancel</button>
     </div>
   </div>
 
- </form>
+</form>
 
 

@@ -14,12 +14,13 @@ import { ResultComponent } from './pages/idrf/result/result.component';
 import {IDRFFormFlow} from './services/idrf-flow-guard.service';
 
 const appRoutes: Routes = [
-	{
+  {
 		path: 'add-candidate',
 		component: AddCandidateComponent
 	}, {
 		path: 'dashboard',
-		component: DashboardComponent
+		component: DashboardComponent,
+    canActivate: [IDRFFormFlow]
 	}, {
 		path: 'candidate-details/:id',
 		component: CandidateDetailsComponent
@@ -28,8 +29,9 @@ const appRoutes: Routes = [
 		pathMatch: 'full',
 		component: ErrorComponent,
 		data: { msg: 'Missing Mandatory info to display Candidate Details' }
-
-	}, {
+	},
+  /*Commenting below code - As it might be helpful in future for edit candidate info*/
+  {
     path: 'idrf/personal/:id',
     component: PersonalComponent,
     data : {

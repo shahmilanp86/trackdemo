@@ -1,9 +1,9 @@
 export const APIURLs = {
     'getCandidateDetails': {
-        default: '/candidates',// default is used if env specific URL not specified
+        default: '/candidate',// default is used if env specific URL not specified
         dev: '/candidateDetails.json?',// This will overwrite default
-        qa: '/candidates',
-        prod: '/candidates',
+        qa: '/candidate',
+        prod: '/candidate',
         isExternal: false
     },
     'candidateList': {
@@ -17,15 +17,15 @@ export const APIURLs = {
     'updateCandidate': {
         default: '/candidates/update'
     },
-  'getContracts': {
-    default: '/contract',// default is used if env specific URL not specified
+   'getContracts': {
+        default: '/contract',// default is used if env specific URL not specified
         dev: '/contractsDetails.json?',// This will overwrite default
         qa: '/contract',
         prod: '/contract',
         isExternal: false
     },
     'addUpdateContracts': {
-    default: '/contract',// default is used if env specific URL not specified
+        default: '/contract',// default is used if env specific URL not specified
         dev: '/contract',// This will overwrite default
         qa: '/contract',
         prod: '/contract',

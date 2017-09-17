@@ -29,7 +29,6 @@ const appRoutes: Routes = [
 		pathMatch: 'full',
 		component: ErrorComponent,
 		data: { msg: 'Missing Mandatory info to display Candidate Details' }
-
 	},
   /*Commenting below code - As it might be helpful in future for edit candidate info*/
   {

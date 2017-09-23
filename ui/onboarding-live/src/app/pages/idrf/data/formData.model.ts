@@ -1,7 +1,11 @@
 export class FormData {
     firstName: string = '';
     lastName : string = '';
-    email: string = '';
+    middleName: string = '';
+    prefFirstName: string = '';
+    birthDates: string = '';
+    phoneNum: string = '';
+    emailID: string = '';
     appprovedContactNum: string = '';
     contractEndDte: string = '';
     cwAssignmentEndDte: string = '';
@@ -39,7 +43,11 @@ export class FormData {
     clear() {
         this.firstName = '';
         this.lastName = '';
-        this.email = '';
+        this.middleName = '';
+        this.prefFirstName = '';
+        this.birthDates = '';
+        this.phoneNum = '';
+        this.emailID = '';
         this.appprovedContactNum = '';
         this.contractEndDte = '';
         this.cwAssignmentEndDte = '';
@@ -79,7 +87,24 @@ export class FormData {
 export class Personal {
     firstName: string = '';
     lastName : string = '';
-    email: string = '';
+    middleName: string = '';
+    prefFirstName: string = '';
+    birthDates: string = '';
+    phoneNum: string = '';
+    emailID: string = '';
+    candidateRoleTyp: string = '';
+    returnStatus: string = '';
+    formaerWorker: string = '';
+    priorSid: string = '';
+    priorDates: string = '';
+    homeZip: string = '';
+    usArmedForces: string = '';
+    registeredNotaryPublic: string = '';
+    currentAddress: string = '';
+    serviceType: string = '';
+    fullORPartTime: string = '';
+    paymentType: string = '';
+    itornonIT: string = '';
 }
 
 export class Address {
@@ -93,31 +118,31 @@ export class Work {
   appprovedContactNum: string = '';
   contractEndDte: string = '';
   cwAssignmentEndDte: string = '';
-  candidateRoleTyp: string = '';
+  /*candidateRoleTyp: string = '';
   returnStatus: string = '';
   formaerWorker: string = '';
   priorSid: string = '';
-  priorDates: string = '';
+  priorDates: string = '';*/
   supplierName: string = '';
   cwWorkCity: string = '';
   cwWorkLocation: string = '';
   cwWorkMailDrop: string = '';
-  homeZip: string = '';
+  /*homeZip: string = '';
   usArmedForces: string = '';
-  registeredNotaryPublic: string = '';
+  registeredNotaryPublic: string = '';*/
   csiInfoAccess: string = '';
   candidateReferredToYou: string = '';
   referralOriginate: string = '';
   candiateSeletedWithinGuidelines: string = '';
-  currentAddress: string = '';
+ /* currentAddress: string = '';
   serviceType: string = '';
   fullORPartTime: string = '';
-  paymentType: string = '';
+  paymentType: string = '';*/
   costCenter: string = '';
   cwJobCode: string = '';
   lobName: string = '';
   cwAssignmentStartDte: string = '';
-  itornonIT: string = '';
-
+  /*itornonIT: string = '';
+*/
 
 }

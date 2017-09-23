@@ -1,40 +1,162 @@
-<section style="background:#efefe9;">
-    <div class="board">
-<msw-navbar></msw-navbar>
-<form #personalForm="ngForm" class="editForm" novalidate>
-    <div class="tab-pane fade in active">
-        <h4 class="head text-center">{{title}}</h4>
-        <br/>
-        <div class='row'>
-            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
-                <div class="row">
-                    <div class='col-xs-12 col-sm-6'>
-                        <div class="form-group">
-                            <label class="control-label" for="firstname">First Name</label>
-                            <input class="form-control input-md" #firstname="ngModel" required id="firstname" name="firstname" type="text" placeholder="First Name" [(ngModel)]="personal.firstName">
-                            <div class="alert alert-danger" [hidden]="firstname.valid">First Name is required</div>
-                        </div>
-                    </div>
-                    <div class='col-xs-12 col-sm-6'>
-                        <div class="form-group">
-                            <label class="control-label" for="lastname">Last Name</label>
-                            <input class="form-control input-md" #lastname="ngModel" required id="lastname" name="lastname" type="text" placeholder="Last Name" [(ngModel)]="personal.lastName">
-                            <div class="alert alert-danger" [hidden]="lastname.valid">Last Name is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="email">Email</label>
-                    <input class="form-control input-md" #email="ngModel" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" id="email" name="email" type="text" placeholder="Email" [(ngModel)]="personal.email">
-                    <div class="alert alert-danger" [hidden]="email.valid">Email is required and must be valid</div>
-                </div>
 
-                <div class="form-group text-center">
-                    <a routerLink="/idrf/work/{{candidateId}}"><button  class="btn btn-success btn-outline-rounded btn-info" [disabled]="!personalForm.valid" (click)="save(personalForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
-                </div>
-            </div>
+
+<msw-navbar></msw-navbar>
+<form #personalForm="ngForm" class="editForm form-horizontal" novalidate>
+  <h2 class="head  text-center">{{title}}</h2>
+  <div class="clearfix"></div>
+  <br/>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="firstName">First Name</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #firstName="ngModel" id="firstName" name="firstName" type="text" placeholder="First Name" [(ngModel)]="personal.firstName">
+    </div>
+    <label class="control-label col-sm-2" for="middleName">MI</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #middleName="ngModel" id="middleName" name="middleName" type="text" placeholder="Middle Name" [(ngModel)]="personal.middleName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="lastName">Last Name</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #lastName="ngModel" id="lastName" name="lastName" type="text" placeholder="Last Name" [(ngModel)]="personal.lastName">
+    </div>
+    <label class="control-label col-sm-2" for="prefFirstName">Pref First Name</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #prefFirstName="ngModel" id="prefFirstName" name="prefFirstName" type="text" placeholder="Preferred Name" [(ngModel)]="personal.prefFirstName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3">Return Status</label>
+    <div class="col-sm-3">
+      <span class="col-sm-3"><input type="radio" #returnStatus="ngModel" name="returnStatus" [(ngModel)]="personal.returnStatus" value="New" > New</span>
+      <span class="col-sm-5"><input type="radio" #returnStatus="ngModel" name="returnStatus" [(ngModel)]="personal.returnStatus" value="Returning" > Returning</span>
+    </div>
+    <label class="control-label col-sm-2" for="">Former Worker</label>
+    <div class="col-sm-3">
+      <select class="form-control input-md" #formaerWorker="ngModel" name="formaerWorker" [(ngModel)]="personal.formaerWorker" >
+        <option class="form-control input-md"  value="NA">NA</option>
+        <option class="form-control input-md"  value="EMP">EMP</option>
+        <option class="form-control input-md"  value="CW">CW</option>
+        <option class="form-control input-md"  value="BOTH">BOTH</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="priorSid">Prior SID</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #priorSid="ngModel" id="priorSid" name="priorSid" type="text" placeholder="Prior SID" [(ngModel)]="personal.priorSid">
+    </div>
+    <label class="control-label col-sm-2" for="priorDates">Prior Dates</label>
+    <div class="col-sm-3">
+      <div class='col-sm-12'>
+        <div class="form-group">
+          <div class='input-group date'>
+            <input type='text' class="form-control" #priorDates="ngModel" id="priorDates" (keypress)="_keyPress($event)" name="priorDates" placeholder="Prior dates" [(ngModel)]="personal.priorDates" bsDatepicker #dp1="bsDatepicker" [bsConfig]="bsConfig"/>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-time" (click)="dp1.show() " placement="bottom"></span>
+              <app-date-picker></app-date-picker>
+         </span>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="birthDates">Birth Date</label>
+    <div class="col-sm-3">
+      <div class='col-sm-12'>
+        <div class="form-group">
+          <div class='input-group date'>
+            <input type='text' class="form-control" #birthDates="ngModel" id="birthDates" (keypress)="_keyPress($event)" name="birthDates" placeholder="Birth date" [(ngModel)]="personal.birthDates" bsDatepicker #dp2="bsDatepicker" [bsConfig]="bsConfig"/>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-time" (click)="dp2.show() " placement="bottom"></span>
+              <app-date-picker></app-date-picker>
+         </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label class="control-label col-sm-2" for="phoneNum">Contact Phone</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #phoneNum="ngModel" id="phoneNum" name="phoneNum" type="text" placeholder="Contact Number" [(ngModel)]="personal.phoneNum">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="homeZip">Home Zip</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #homeZip="ngModel" id="homeZip" name="homeZip" type="text" placeholder="" [(ngModel)]="personal.homeZip">
+    </div>
+    <label class="control-label col-sm-2" for="emailID">Email</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #emailID="ngModel" id="emailID" name="emailID" type="text" placeholder="Email ID" [(ngModel)]="personal.emailID">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="">US Armed Force</label>
+    <div class="col-sm-3">
+      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="personal.usArmedForces" value="YES" > Yes</span>
+      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="personal.usArmedForces" value="NO" > No</span>
+    </div>
+    <label class="control-label col-sm-2" for="">Registered Notary Public</label>
+    <div class="col-sm-3">
+      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="personal.registeredNotaryPublic" value="YES" > Yes</span>
+      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="personal.registeredNotaryPublic" value="NO" > No</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="crrntAddress">Current Address</label>
+    <div class="col-sm-3">
+      <input class="form-control input-md" #crrntAddress="ngModel" id="crrntAddress" name="crrntAddress" type="text" placeholder="Current Address" [(ngModel)]="personal.crrntAddress">
+    </div>
+    <label class="control-label col-sm-2" for="">Service Type</label>
+    <div class="col-sm-3">
+      <select class="form-control input-md" #serviceType="ngModel" name="serviceType" [(ngModel)]="personal.serviceType">
+        <option class="form-control input-md"  value="Managed Service">Managed Service</option>
+        <option class="form-control input-md"  value="Permitted Access Individual">Permitted Access Individual</option>
+        <option class="form-control input-md"  value="Project/SOW">Project/SOW</option>
+        <option class="form-control input-md"  value="Temp/Individual Contractors">Temp/Individual Contractors</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+  <label class="control-label col-sm-3">IT/NON IT</label>
+  <div class="col-sm-3">
+    <span class="col-sm-3"><input type="radio" #itornonIT="ngModel" name="itornonIT" [(ngModel)]="personal.itornonIT" value="IT" > IT</span>
+    <span class="col-sm-5"><input type="radio" #itornonIT="ngModel" name="itornonIT" [(ngModel)]="personal.itornonIT" value="NON IT" > NON IT</span>
+  </div>
+    <label class="control-label col-sm-2" for="">Full Time/Part Time</label>
+    <div class="col-sm-3">
+      <span class="col-sm-5"><input type="radio" #fullORPartTime="ngModel" name="fullORPartTime" [(ngModel)]="personal.fullORPartTime" value="Full" > Full Time</span>
+      <span class="col-sm-5"><input type="radio" #fullORPartTime="ngModel" name="fullORPartTime" [(ngModel)]="personal.fullORPartTime" value="PART" > Part Time</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-3" for="">Payment Type</label>
+    <div class="col-sm-3">
+      <select class="form-control input-md" #paymentType="ngModel" name="paymentType" [(ngModel)]="personal.paymentType">
+        <option class="form-control input-md"  value="NA">NA</option>
+        <option class="form-control input-md"  value="Fixed Price">Fixed Price</option>
+        <option class="form-control input-md"  value="Time and Materials">Time and Materials</option>
+      </select>
+    </div>
+    <label class="control-label col-sm-2" for="">Candidate Role Type</label>
+    <div class="col-sm-3">
+      <!--<input class="form-control input-md" #candidateRoleTyp="ngModel" id="candidateRoleTyp" name="candidateRoleTyp" type="text" placeholder="" [(ngModel)]="personal.candidateRoleTyp">-->
+      <select class="form-control input-md" #candidateRoleTyp="ngModel" name="candidateRoleTyp" [(ngModel)]="personal.candidateRoleTyp" >
+        <option class="form-control input-md" value="Contingent Worker">Contingent Worker</option>
+        <option class="form-control input-md" value="Non-Hiring Intern">Non-Hiring Intern</option>
+        <option class="form-control input-md" value="Secondee - Client Traning">Secondee - Client Traning</option>
+        <option class="form-control input-md" value="Secondee - Law Firm">Secondee - Law Firm</option>
+        <option class="form-control input-md" value="Secondee - Regulatory Training">Secondee - Regulatory Training</option>
+      </select>
+    </div>
+
+  </div>
+
 </form>
-    </div>
-</section>
+<div class="form-group text-center">
+  <a routerLink="/idrf/work/{{candidateId}}"><button  class="btn btn-success btn-outline-rounded btn-info" [disabled]="!personalForm.valid" (click)="save(personalForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
+</div>
+
+

@@ -15,7 +15,7 @@ export class WorkComponent implements OnInit {
     form: any;
     candidateId: string;
     constructor(private formDataService: FormDataService, route: ActivatedRoute
-                , private http: HttpClient, private configService : ConfigService) {
+                , private http: HttpClient, private configService: ConfigService) {
       this.candidateId = route.snapshot.params['id'];
     }
 
@@ -38,36 +38,36 @@ export class WorkComponent implements OnInit {
         appprovedContactNum : serviceResp['appprovedContactNum'],
         contractEndDte : serviceResp['contractEndDte'],
         cwAssignmentEndDte : serviceResp['cwAssignmentEndDte'],
-        candidateRoleTyp : serviceResp['candidateRoleTyp'],
+        /*candidateRoleTyp : serviceResp['candidateRoleTyp'],
         returnStatus : serviceResp['returnStatus'],
         formaerWorker : serviceResp['formaerWorker'],
         priorSid : serviceResp['priorSid'],
-        priorDates : serviceResp['priorDates'],
+        priorDates : serviceResp['priorDates'],*/
         supplierName : serviceResp['supplierName'],
         cwWorkCity : serviceResp['cwWorkCity'],
         cwWorkLocation : serviceResp['cwWorkLocation'],
         cwWorkMailDrop : serviceResp['cwWorkMailDrop'],
-        homeZip : serviceResp['homeZip'],
+        /*homeZip : serviceResp['homeZip'],
         usArmedForces : serviceResp['usArmedForces'],
-        registeredNotaryPublic : serviceResp['registeredNotaryPublic'],
+        registeredNotaryPublic : serviceResp['registeredNotaryPublic'],*/
         csiInfoAccess : serviceResp['csiInfoAccess'],
         candidateReferredToYou : serviceResp['candidateReferredToYou'],
         referralOriginate : serviceResp['referralOriginate'],
         candiateSeletedWithinGuidelines : serviceResp['candiateSeletedWithinGuidelines'],
-        currentAddress : serviceResp['currentAddress'],
+        /*currentAddress : serviceResp['currentAddress'],
         serviceType : serviceResp['serviceType'],
         fullORPartTime : serviceResp['fullORPartTime'],
-        paymentType : serviceResp['paymentType'],
+        paymentType : serviceResp['paymentType'],*/
         costCenter : serviceResp['costCenter'],
         cwJobCode : serviceResp['cwJobCode'],
         lobName : serviceResp['lobName'],
-        cwAssignmentStartDte : serviceResp['cwAssignmentStartDte'],
+        cwAssignmentStartDte : serviceResp['cwAssignmentStartDte']
        /* sponsorId : serviceResp['sponsorId'],
         sponsorLastName : serviceResp['sponsorLastName'],
         sponsorFirstName : serviceResp['sponsorFirstName'],
         emailRequired : serviceResp['emailRequired'],
         spocEmail : serviceResp['spocEmail'],*/
-        itornonIT : serviceResp['itornonIT']
+        /*itornonIT : serviceResp['itornonIT']*/
       };
       this.formDataService.setWork(work);
       this.work = this.formDataService.getWork();
@@ -75,9 +75,9 @@ export class WorkComponent implements OnInit {
     }
 
     save(form: any) {
-        if (!form.valid)
-            return;
-
+        if (!form.valid){
+          return;
+        }
         this.formDataService.setWork(this.work);
     }
 

@@ -15,7 +15,7 @@
       <div class='col-sm-12'>
       <div class="form-group">
         <div class='input-group date'>
-          <input type='text' class="form-control" #contractEndDte="ngModel"  (keypress)="_keyPress($event)"  id="contractEndDte" name="contractEndDte" placeholder="Contract end date" ng-disabled='true' [(ngModel)]="work.contractEndDte" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig"/>
+          <input type='text' class="form-control" #contractEndDte="ngModel"  (keypress)="_keyPress($event)"  id="contractEndDte" name="contractEndDte" placeholder="Contract end date" ng-disabled='true' [(ngModel)]="work.contractEndDte" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" value="{{work.contractEndDte | date:'shortDate'}}"/>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-time" (click)="dp.show() " placement="bottom"></span>
               <app-date-picker></app-date-picker>
@@ -27,9 +27,6 @@
   </div>
   <div class="form-group">
     <label class="control-label col-sm-3" for="cwAssignmentEndDte" >CW Assignment End Date</label>
-    <!--<div class="col-sm-3">
-      <input class="form-control input-md" #cwAssignmentEndDte="ngModel" id="cwAssignmentEndDte" name="cwAssignmentEndDte" type="text" placeholder="" [(ngModel)]="work.cwAssignmentEndDte">
-    </div>-->
     <div class="col-sm-3">
       <div class='col-sm-12'>
         <div class="form-group">
@@ -43,60 +40,12 @@
         </div>
       </div>
     </div>
-    <label class="control-label col-sm-2" for="candidateRoleTyp">Candidate Role Type</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #candidateRoleTyp="ngModel" id="candidateRoleTyp" name="candidateRoleTyp" type="text" placeholder="" [(ngModel)]="work.candidateRoleTyp">
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="control-label col-sm-3">IT/NON IT</label>
-    <div class="col-sm-3">
-      <!-- <input class="form-control input-md" #itornonIT="ngModel" id="itornonIT" name="itornonIT" type="text" placeholder="" [(ngModel)]="work.itornonIT">-->
-      <span class="col-sm-3"><input type="radio" #itornonIT="ngModel" name="itornonIT" [(ngModel)]="work.itornonIT" value="IT" > IT</span>
-      <span class="col-sm-5"><input type="radio" #itornonIT="ngModel" name="itornonIT" [(ngModel)]="work.itornonIT" value="NON IT" > NON IT</span>
-    </div>
-    <label class="control-label col-sm-2" for="returnStatus">Return Status</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #returnStatus="ngModel" id="returnStatus" name="returnStatus" type="text" placeholder="" [(ngModel)]="work.returnStatus">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="formaerWorker">Former Worker</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #formaerWorker="ngModel" id="formaerWorker" name="formaerWorker" type="text" placeholder="" [(ngModel)]="work.formaerWorker">
-    </div>
-    <label class="control-label col-sm-2" for="priorSid">Prior SID</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #priorSid="ngModel" id="priorSid" name="priorSid" type="text" placeholder="" [(ngModel)]="work.priorSid">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="priorDates">Prior Dates</label>
-    <!--<div class="col-sm-3">
-      <input class="form-control input-md" #priorDates="ngModel" id="priorDates" name="priorDates" type="text" placeholder="" [(ngModel)]="work.priorDates">
-    </div>-->
-    <div class="col-sm-3">
-      <div class='col-sm-12'>
-        <div class="form-group">
-          <div class='input-group date'>
-            <input type='text' class="form-control" #priorDates="ngModel" id="priorDates" (keypress)="_keyPress($event)" name="priorDates" placeholder="prior dates" [(ngModel)]="work.priorDates" bsDatepicker #dp3="bsDatepicker" [bsConfig]="bsConfig"/>
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-time" (click)="dp3.show() " placement="bottom"></span>
-              <app-date-picker></app-date-picker>
-         </span>
-          </div>
-        </div>
-      </div>
-    </div>
     <label class="control-label col-sm-2" for="supplierName">Supplier Name</label>
     <div class="col-sm-3">
       <input class="form-control input-md" #supplierName="ngModel" id="supplierName" name="supplierName" type="text" placeholder="" [(ngModel)]="work.supplierName">
     </div>
   </div>
-
   <div class="form-group">
     <label class="control-label col-sm-3" for="cwWorkCity">CW Work City</label>
     <div class="col-sm-3">
@@ -113,27 +62,9 @@
     <div class="col-sm-3">
       <input class="form-control input-md" #cwWorkMailDrop="ngModel" id="cwWorkMailDrop" name="cwWorkMailDrop" type="text" placeholder="" [(ngModel)]="work.cwWorkMailDrop">
     </div>
-    <label class="control-label col-sm-2" for="homeZip">Home Zip</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #homeZip="ngModel" id="homeZip" name="homeZip" type="text" placeholder="" [(ngModel)]="work.homeZip">
-    </div>
-  </div>
 
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="">US Armed Force</label>
-    <div class="col-sm-3">
-      <!--<input class="form-control input-md" #usArmedForces="ngModel" id="usArmedForces" name="usArmedForces" type="text" placeholder="" [(ngModel)]="work.usArmedForces">-->
-      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="work.usArmedForces" value="YES" > Yes</span>
-      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="work.usArmedForces" value="NO" > No</span>
-    </div>
-    <label class="control-label col-sm-2" for="">Registered Notary Public</label>
-    <div class="col-sm-3">
-      <!--<input class="form-control input-md" #registeredNotaryPublic="ngModel" id="registeredNotaryPublic" name="registeredNotaryPublic" type="text" placeholder="" [(ngModel)]="work.registeredNotaryPublic">-->
-      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="work.registeredNotaryPublic" value="YES" > Yes</span>
-      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="work.registeredNotaryPublic" value="NO" > No</span>
-    </div>
-  </div>
 
+  </div>
   <div class="form-group">
     <label class="control-label col-sm-3" for="">CSI Info Access</label>
     <div class="col-sm-3">
@@ -159,29 +90,6 @@
      <!-- <input class="form-control input-md " #candiateSeletedWithinGuidelines="ngModel" id="candiateSeletedWithinGuidelines" name="candiateSeletedWithinGuidelines" type="text" placeholder="" [(ngModel)]="work.candiateSeletedWithinGuidelines">-->
       <span class="col-sm-3"><input type="radio" #candiateSeletedWithinGuidelines="ngModel" name="candiateSeletedWithinGuidelines" [(ngModel)]="work.candiateSeletedWithinGuidelines" value="YES" > Yes</span>
       <span class="col-sm-3"><input type="radio" #candiateSeletedWithinGuidelines="ngModel" name="candiateSeletedWithinGuidelines" [(ngModel)]="work.candiateSeletedWithinGuidelines" value="NO" > No</span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="currentAddress">Current Address</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #currentAddress="ngModel" id="currentAddress" name="currentAddress" type="text" placeholder="" [(ngModel)]="work.currentAddress">
-    </div>
-    <label class="control-label col-sm-2" for="serviceType">Service Type</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #serviceType="ngModel" id="serviceType" name="serviceType" type="text" placeholder="" [(ngModel)]="work.serviceType">
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="">Full Time/Part Time</label>
-    <div class="col-sm-3">
-      <!--<input class="form-control input-md" #fullORPartTime="ngModel" id="fullORPartTime" name="fullORPartTime" type="text" placeholder="" [(ngModel)]="work.fullORPartTime">-->
-      <span class="col-sm-5"><input type="radio" #fullORPartTime="ngModel" name="fullORPartTime" [(ngModel)]="work.fullORPartTime" value="Full" > Full Time</span>
-      <span class="col-sm-5"><input type="radio" #fullORPartTime="ngModel" name="fullORPartTime" [(ngModel)]="work.fullORPartTime" value="PART" > Part Time</span>
-    </div>
-    <label class="control-label col-sm-2" for="paymentType">Payment Type</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #paymentType="ngModel" id="paymentType" name="paymentType" type="text" placeholder="" [(ngModel)]="work.paymentType">
     </div>
   </div>
   <div class="form-group">
@@ -216,40 +124,7 @@
     </div>
 
   </div>
-  <!--<div class="form-group">
-    <label class="control-label col-sm-3" for="sponsorId">Sponsor ID</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #sponsorId="ngModel" id="sponsorId" name="sponsorId" type="text" placeholder="" [(ngModel)]="work.sponsorId">
-    </div>
-    <label class="control-label col-sm-2" for="sponsorFirstName">Sponsor First Name</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #sponsorFirstName="ngModel" id="sponsorFirstName" name="sponsorFirstName" type="text" placeholder="" [(ngModel)]="work.sponsorFirstName">
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-3" for="sponsorLastName">Sponsor Last Name</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #sponsorLastName="ngModel" id="sponsorLastName" name="sponsorLastName" type="text" placeholder="" [(ngModel)]="work.sponsorLastName">
-    </div>
-    <label class="control-label col-sm-2">Email Required</label>
-    <div class="col-sm-3">
-      &lt;!&ndash;<input class="form-control input-md" #emailRequired="ngModel" id="emailRequired" name="emailRequired" type="text" placeholder="" [(ngModel)]="work.emailRequired">&ndash;&gt;
-      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="work.emailRequired" value="YES" > Yes</span>
-      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="work.emailRequired" value="NO" > No</span>
-    </div>
-  </div>-->
-  <div class="form-group">
-    <!--<label class="control-label col-sm-3" for="spocEmail">Spoc Email</label>
-    <div class="col-sm-3">
-      <input class="form-control input-md" #spocEmail="ngModel" id="spocEmail" name="spocEmail" type="text" placeholder="" [(ngModel)]="work.spocEmail">
-    </div>-->
-   <!-- <label class="control-label col-sm-2">IT/NON IT</label>
-    <div class="col-sm-3">
-     &lt;!&ndash; <input class="form-control input-md" #itornonIT="ngModel" id="itornonIT" name="itornonIT" type="text" placeholder="" [(ngModel)]="work.itornonIT">&ndash;&gt;
-      <span class="col-sm-3"><input type="radio" #itornonIT="ngModel" name="itornonIT" [(ngModel)]="work.itornonIT" value="IT" > IT</span>
-      <span class="col-sm-5"><input type="radio" #itornonIT="ngModel" name="itornonIT" [(ngModel)]="work.itornonIT" value="NON IT" > NON IT</span>
-    </div>-->
-  </div>
+
 
 </form>
 <div class="form-group text-center space-20">

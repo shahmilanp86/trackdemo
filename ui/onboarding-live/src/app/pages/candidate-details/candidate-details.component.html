@@ -1,8 +1,8 @@
 <app-page-heading heading="Candidate Details">
 </app-page-heading>
- 
 
-     Candidate Basic Info Displayed here    Candidate ID = {{candidateId}}  
+
+     Candidate Basic Info Displayed here    Candidate ID = {{candidateId}}
     <app-accordian tittle="Candidate Basic Info" isOpen="true">
      <div class="row">
       <div class="">
@@ -13,7 +13,7 @@
         <dl class="col-xs-12 col-sm-6  dl-horizontal">
           <dt  class="text-left">Aid </dt>
           <dd> {{candidateBasicInfo.aid}}  </dd>
-    
+
         </dl>
         <dl class="col-xs-12 col-sm-6  dl-horizontal">
           <dt  class="text-left">Contact # </dt>
@@ -25,18 +25,18 @@
         </dl>
 
       </div>
-    </div> 
+    </div>
     </app-accordian>
 
-    <app-accordian tittle="Current Status" isOpen="true">
-     <app-candidate-progress status={{currentStaus}}></app-candidate-progress>     
-      
+    <app-accordian tittle="Current Status" isOpen="false">
+     <app-candidate-progress status={{currentStaus}}></app-candidate-progress>
+
     </app-accordian>
 
     <app-accordian tittle="IDRF" isOpen="true">
-     Candidate FOrm here    
+     <app-candidate-idrf></app-candidate-idrf>
    </app-accordian>
 
     <app-accordian tittle="Audit History" isOpen="true">
-      Audit History       
+      Audit History
     </app-accordian>

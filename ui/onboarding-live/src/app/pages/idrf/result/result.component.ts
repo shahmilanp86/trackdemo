@@ -61,7 +61,7 @@ export class ResultComponent implements OnInit {
     private populateFinalIDRFRequest() {
       this.idrfObject['firstName'] = this.formData.firstName;
       this.idrfObject['lastName'] = this.formData.lastName;
-      this.idrfObject['email'] = this.formData.email;
+      this.idrfObject['email'] = this.formData.emailID;
       this.idrfObject['appprovedContactNum'] = this.formData.appprovedContactNum;
       this.idrfObject['contractEndDte'] = this.formData.contractEndDte;
       this.idrfObject['cwAssignmentEndDte'] = this.formData.cwAssignmentEndDte;

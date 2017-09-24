@@ -20,7 +20,24 @@ export class FormDataService {
         var personal: Personal = {
             firstName: this.formData.firstName,
             lastName: this.formData.lastName,
-            email: this.formData.email
+            middleName: this.formData.middleName,
+            prefFirstName: this.formData.prefFirstName,
+            birthDates: this.formData.birthDates,
+            phoneNum: this.formData.phoneNum,
+            emailID: this.formData.emailID,
+            candidateRoleTyp : this.formData.candidateRoleTyp,
+            returnStatus : this.formData.returnStatus,
+            formaerWorker : this.formData.formaerWorker,
+            priorSid : this.formData.priorSid,
+            priorDates : this.formData.priorDates,
+            homeZip : this.formData.homeZip,
+            usArmedForces : this.formData.usArmedForces,
+            registeredNotaryPublic : this.formData.registeredNotaryPublic,
+            currentAddress : this.formData.currentAddress,
+            serviceType : this.formData.serviceType,
+            fullORPartTime : this.formData.fullORPartTime,
+            paymentType : this.formData.paymentType,
+            itornonIT : this.formData.itornonIT
         };
         return personal;
     }
@@ -30,7 +47,24 @@ export class FormDataService {
         this.isPersonalFormValid = true;
         this.formData.firstName = data.firstName;
         this.formData.lastName = data.lastName;
-        this.formData.email = data.email;
+        this.formData.middleName = data.middleName,
+        this.formData.prefFirstName = data.prefFirstName,
+        this.formData.birthDates = data.birthDates,
+        this.formData.phoneNum = data.phoneNum,
+        this.formData.emailID = data.emailID,
+        this.formData.candidateRoleTyp = data.candidateRoleTyp;
+        this.formData.returnStatus = data.returnStatus;
+        this.formData.formaerWorker = data.formaerWorker;
+        this.formData.priorSid = data.priorSid;
+        this.formData.priorDates = data.priorDates;
+        this.formData.homeZip = data.homeZip;
+        this.formData.usArmedForces = data.usArmedForces;
+        this.formData.registeredNotaryPublic = data.registeredNotaryPublic;
+        this.formData.currentAddress = data.currentAddress;
+        this.formData.serviceType = data.serviceType;
+        this.formData.fullORPartTime = data.fullORPartTime;
+        this.formData.paymentType = data.paymentType;
+        this.formData.itornonIT = data.itornonIT;
         // Validate Personal Step in Workflow
         this.workflowService.validateStep(STEPS.personal);
     }
@@ -41,31 +75,31 @@ export class FormDataService {
       appprovedContactNum : this.formData.appprovedContactNum,
       contractEndDte : this.formData.contractEndDte,
       cwAssignmentEndDte : this.formData.cwAssignmentEndDte,
-      candidateRoleTyp : this.formData.candidateRoleTyp,
+      /*candidateRoleTyp : this.formData.candidateRoleTyp,
       returnStatus : this.formData.returnStatus,
       formaerWorker : this.formData.formaerWorker,
       priorSid : this.formData.priorSid,
-      priorDates : this.formData.priorDates,
+      priorDates : this.formData.priorDates,*/
       supplierName : this.formData.supplierName,
       cwWorkCity : this.formData.cwWorkCity,
       cwWorkLocation : this.formData.cwWorkLocation,
       cwWorkMailDrop : this.formData.cwWorkMailDrop,
-      homeZip : this.formData.homeZip,
+      /*homeZip : this.formData.homeZip,
       usArmedForces : this.formData.usArmedForces,
-      registeredNotaryPublic : this.formData.registeredNotaryPublic,
+      registeredNotaryPublic : this.formData.registeredNotaryPublic,*/
       csiInfoAccess : this.formData.csiInfoAccess,
       candidateReferredToYou : this.formData.candidateReferredToYou,
       referralOriginate : this.formData.referralOriginate,
       candiateSeletedWithinGuidelines : this.formData.candiateSeletedWithinGuidelines,
-      currentAddress : this.formData.currentAddress,
+      /*currentAddress : this.formData.currentAddress,
       serviceType : this.formData.serviceType,
       fullORPartTime : this.formData.fullORPartTime,
-      paymentType : this.formData.paymentType,
+      paymentType : this.formData.paymentType,*/
       costCenter : this.formData.costCenter,
       cwJobCode : this.formData.cwJobCode,
       lobName : this.formData.lobName,
-      cwAssignmentStartDte : this.formData.cwAssignmentStartDte,
-      itornonIT : this.formData.itornonIT
+      cwAssignmentStartDte : this.formData.cwAssignmentStartDte/*,
+      itornonIT : this.formData.itornonIT*/
       };
       return work;
     }
@@ -76,31 +110,31 @@ export class FormDataService {
         this.formData.appprovedContactNum = data.appprovedContactNum;
         this.formData.contractEndDte = data.contractEndDte;
         this.formData.cwAssignmentEndDte = data.cwAssignmentEndDte;
-        this.formData.candidateRoleTyp = data.candidateRoleTyp;
+        /*this.formData.candidateRoleTyp = data.candidateRoleTyp;
         this.formData.returnStatus = data.returnStatus;
         this.formData.formaerWorker = data.formaerWorker;
         this.formData.priorSid = data.priorSid;
-        this.formData.priorDates = data.priorDates;
+        this.formData.priorDates = data.priorDates;*/
         this.formData.supplierName = data.supplierName;
         this.formData.cwWorkCity = data.cwWorkCity;
         this.formData.cwWorkLocation = data.cwWorkLocation;
         this.formData.cwWorkMailDrop = data.cwWorkMailDrop;
-        this.formData.homeZip = data.homeZip;
+        /*this.formData.homeZip = data.homeZip;
         this.formData.usArmedForces = data.usArmedForces;
-        this.formData.registeredNotaryPublic = data.registeredNotaryPublic;
+        this.formData.registeredNotaryPublic = data.registeredNotaryPublic;*/
         this.formData.csiInfoAccess = data.csiInfoAccess;
         this.formData.candidateReferredToYou = data.candidateReferredToYou;
         this.formData.referralOriginate = data.referralOriginate;
         this.formData.candiateSeletedWithinGuidelines = data.candiateSeletedWithinGuidelines;
-        this.formData.currentAddress = data.currentAddress;
+        /*this.formData.currentAddress = data.currentAddress;
         this.formData.serviceType = data.serviceType;
         this.formData.fullORPartTime = data.fullORPartTime;
-        this.formData.paymentType = data.paymentType;
+        this.formData.paymentType = data.paymentType;*/
         this.formData.costCenter = data.costCenter;
         this.formData.cwJobCode = data.cwJobCode;
         this.formData.lobName = data.lobName;
         this.formData.cwAssignmentStartDte = data.cwAssignmentStartDte;
-        this.formData.itornonIT = data.itornonIT;
+        /*this.formData.itornonIT = data.itornonIT;*/
         // Validate Work Step in Workflow
         this.workflowService.validateStep(STEPS.work);
     }

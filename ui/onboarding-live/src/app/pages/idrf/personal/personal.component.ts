@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class PersonalComponent implements OnInit, PipeTransform {
-    title = 'Please tell us about yourself.';
+    title = 'Candidate Details';
     personal: Personal;
     form: any;
     candidateId: string;
@@ -39,7 +39,24 @@ export class PersonalComponent implements OnInit, PipeTransform {
       const personal: Personal = {
         firstName: serviceResp['firstName'],
         lastName: serviceResp['lastName'],
-        email: serviceResp['email']
+        middleName: serviceResp['middleName'],
+        prefFirstName: serviceResp['prefFirstName'],
+        birthDates: serviceResp['birthDates'],
+        phoneNum: serviceResp['phoneNum'],
+        emailID: serviceResp['emailID'],
+        candidateRoleTyp : serviceResp['candidateRoleTyp'],
+        returnStatus : serviceResp['returnStatus'],
+        formaerWorker : serviceResp['formaerWorker'],
+        priorSid : serviceResp['priorSid'],
+        priorDates : serviceResp['priorDates'],
+        homeZip : serviceResp['homeZip'],
+        usArmedForces : serviceResp['usArmedForces'],
+        registeredNotaryPublic : serviceResp['registeredNotaryPublic'],
+        currentAddress : serviceResp['currentAddress'],
+        serviceType : serviceResp['serviceType'],
+        fullORPartTime : serviceResp['fullORPartTime'],
+        paymentType : serviceResp['paymentType'],
+        itornonIT : serviceResp['itornonIT']
       };
       this.formDataService.setPersonal(personal);
       this.personal = this.formDataService.getPersonal();
@@ -68,5 +85,14 @@ export class PersonalComponent implements OnInit, PipeTransform {
 
     // return the resulting array
     return dataArr;
+  }
+  _keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    const inputChar = String.fromCharCode(event.charCode);
+
+    if (!pattern.test(inputChar)) {
+      // invalid character, prevent input
+      event.preventDefault();
+    }
   }
 }

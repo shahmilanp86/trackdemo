@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms';
 import {IDRFFormFlow} from './services/idrf-flow-guard.service';
 import { DatepickerModule, PopoverModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import {CandidateIdrfComponent} from './pages/candidate-idrf/candidate-idrf.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     AddressComponent,
     ResultComponent,
     NavbarComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    CandidateIdrfComponent
   ],
   imports: [
     AppRoutingModule,

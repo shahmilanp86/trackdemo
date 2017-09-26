@@ -7,7 +7,9 @@ POST
     "firstName": "FN-1100",
     "midInitial": "M",
     "email": "ln-1100@gmail.com",
-    "contactPhone": "4448883456"
+    "contactPhone": "4448883456",
+    "currentAddress": "1234, abc dr, NJ 123435",
+    "homeZip":"223344"
 }
 
 localhost:8080/api/candidate/update
@@ -41,7 +43,9 @@ GET
         "midInitial": "M",
         "prefFirstName": "ln1-1100",
         "email": "ln-1100@gmail.com",
-        "contactPhone": "4448883456"
+        "contactPhone": "4448883456",
+        "currentAddress": "1234, abc dr, NJ 123435",
+         "homeZip":"223344"
     },
     {
         "aid": 1111,
@@ -50,7 +54,9 @@ GET
         "midInitial": null,
         "prefFirstName": "MURTHY",
         "email": "MURTHY@MTY.COM",
-        "contactPhone": "+011234567890"
+        "contactPhone": "+011234567890",
+       "currentAddress": "1234, abc dr, NJ 123435",
+        "homeZip":"223344"
     },
     {
         "aid": 2222,
@@ -73,47 +79,58 @@ GET
 ]
 
 ----------------------------------------
-
-localhost:8080/api/contracts/1111
-GET
-
+localhost:8080/api/contract/1111
 {
     "aid": 1111,
-    "appprovedContactNum": 2121,
-    "contractEndDte": "07-17-2017",
-    "cwAssignmentEndDte": "07-18-2017",
-    "candidateRoleTyp": "Contingent Worker",
-    "returnStatus": "New",
-    "formaerWorker": "CW",
-    "priorSid": null,
-    "priorDates": null,
-    "supplierName": "Supplier",
-    "cwWorkCity": "New york",
-    "cwWorkLocation": "Columbus",
-    "cwWorkMailDrop": "Mail Drp",
-    "homeZip": "10000",
-    "usArmedForces": "NO",
-    "registeredNotaryPublic": "YES",
-    "csiInfoAccess": "NO",
-    "candidateReferredToYou": "NO",
-    "referralOriginate": "2017-07-20",
-    "candiateSeletedWithinGuidelines": "NO",
-    "currentAddress": "4000, New york",
-    "serviceType": "Service Type",
-    "fullORPartTime": "Full",
-    "paymentType": "Fixed price",
-    "costCenter": "cosr cen",
-    "cwJobCode": "JOB 20202",
-    "lobName": "Digital",
-    "cwAssignmentStartDte": "07-20-2017",
-    "sponsorId": "SPONSORID-1",
-    "sponsorLastName": "SP LNAME",
-    "sponsorFirstName": "SP FNAME",
-    "emailRequired": "NO",
-    "spocEmail": "abc@abc.com",
-    "itornonIT": "IT"
+    "personalInfo": {
+        "aid": 1111,
+        "lastName": "GARIMELLA",
+        "firstName": "SURYA",
+        "midInitial": null,
+        "prefFirstName": "MURTHY",
+        "email": "MURTHY@MTY.COM",
+        "contactPhone": "+011234567890",
+        "currentAddress": null,
+        "homeZip": null
+    },
+    "contractInfo": {
+        "aid": 1111,
+        "appprovedContactNum": 2121,
+        "contractEndDte": "07-27-2027",
+        "cwAssignmentEndDte": "07-18-2017",
+        "candidateRoleTyp": "Contingent Worker",
+        "returnStatus": "New",
+        "formaerWorker": "CW",
+        "priorSid": null,
+        "priorDates": null,
+        "supplierName": "Supplier",
+        "cwWorkCity": "New york",
+        "cwWorkLocation": "Columbus",
+        "cwWorkMailDrop": "Mail Drp",
+        "usArmedForces": "NO",
+        "registeredNotaryPublic": "YES",
+        "csiInfoAccess": "NO",
+        "candidateReferredToYou": "NO",
+        "referralOriginate": "2017-07-20",
+        "candiateSeletedWithinGuidelines": "NO",
+        "serviceType": "Service Type",
+        "fullORPartTime": "Full",
+        "paymentType": "Fixed price",
+        "costCenter": "cosr cen",
+        "cwJobCode": "JOB 20202",
+        "lobName": "Digital",
+        "cwAssignmentStartDte": "07-20-2017",
+        "sponsorId": "SPONSORID-1",
+        "sponsorLastName": "SP LNAME",
+        "sponsorFirstName": "SP FNAME",
+        "emailRequired": "NO",
+        "spocEmail": "abc@abc.com",
+        "itornonIT": "IT"
+    }
 }
 
+
+// NO POST
 localhost:8080/api/contract/
 POST
 {
@@ -157,39 +174,51 @@ localhost:8080/api/contract/update/
 PUT
 {
     "aid": 1111,
-    "appprovedContactNum": 2121,
-    "contractEndDte": "07-27-2027",
-    "cwAssignmentEndDte": "07-18-2017",
-    "candidateRoleTyp": "Contingent Worker",
-    "returnStatus": "New",
-    "formaerWorker": "CW",
-    "priorSid": null,
-    "priorDates": null,
-    "supplierName": "Supplier",
-    "cwWorkCity": "New york",
-    "cwWorkLocation": "Columbus",
-    "cwWorkMailDrop": "Mail Drp",
-    "homeZip": "10000",
-    "usArmedForces": "NO",
-    "registeredNotaryPublic": "YES",
-    "csiInfoAccess": "NO",
-    "candidateReferredToYou": "NO",
-    "referralOriginate": "2017-07-20",
-    "candiateSeletedWithinGuidelines": "NO",
-    "currentAddress": "4000, New york",
-    "serviceType": "Service Type",
-    "fullORPartTime": "Full",
-    "paymentType": "Fixed price",
-    "costCenter": "cosr cen",
-    "cwJobCode": "JOB 20202",
-    "lobName": "Digital",
-    "cwAssignmentStartDte": "07-20-2017",
-    "sponsorId": "SPONSORID-1",
-    "sponsorLastName": "SP LNAME",
-    "sponsorFirstName": "SP FNAME",
-    "emailRequired": "NO",
-    "spocEmail": "abc@abc.com",
-    "itornonIT": "IT"
+    "personalInfo": {
+        "aid": 1111,
+        "lastName": "GARIMELLA",
+        "firstName": "SURYA",
+        "midInitial": null,
+        "prefFirstName": "MURTHY",
+        "email": "MURTHY@MTY.COM",
+        "contactPhone": "+011234567890",
+        "currentAddress": null,
+        "homeZip": null
+    },
+    "contractInfo": {
+        "aid": 1111,
+        "appprovedContactNum": 2121,
+        "contractEndDte": "07-27-2027",
+        "cwAssignmentEndDte": "07-18-2017",
+        "candidateRoleTyp": "Contingent Worker",
+        "returnStatus": "New",
+        "formaerWorker": "CW",
+        "priorSid": null,
+        "priorDates": null,
+        "supplierName": "Supplier",
+        "cwWorkCity": "New york",
+        "cwWorkLocation": "Columbus",
+        "cwWorkMailDrop": "Mail Drp",
+        "usArmedForces": "NO",
+        "registeredNotaryPublic": "YES",
+        "csiInfoAccess": "NO",
+        "candidateReferredToYou": "NO",
+        "referralOriginate": "2017-07-20",
+        "candiateSeletedWithinGuidelines": "NO",
+        "serviceType": "Service Type",
+        "fullORPartTime": "Full",
+        "paymentType": "Fixed price",
+        "costCenter": "cosr cen",
+        "cwJobCode": "JOB 20202",
+        "lobName": "Digital",
+        "cwAssignmentStartDte": "07-20-2017",
+        "sponsorId": "SPONSORID-1",
+        "sponsorLastName": "SP LNAME",
+        "sponsorFirstName": "SP FNAME",
+        "emailRequired": "NO",
+        "spocEmail": "abc@abc.com",
+        "itornonIT": "IT"
+    }
 }
 localhost:8080/api/onboard/list
 GET

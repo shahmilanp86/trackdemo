@@ -24,6 +24,11 @@ public class CandidateInfo {
     private String email;
     private String contactPhone;
 
+    //New
+    private String currentAddress;
+    private String homeZip;
+
+
 /*    @OneToOne
     @JoinColumn(name="AID", nullable=true)
     private OnboardingStatus onboardingStatus;*/

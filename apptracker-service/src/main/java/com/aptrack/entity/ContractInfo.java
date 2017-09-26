@@ -36,14 +36,14 @@ public class ContractInfo {
     private String cwWorkCity;
     private String cwWorkLocation;
     private String cwWorkMailDrop;
-    private String homeZip;
+    //private String homeZip;
     private YesORNo usArmedForces;
     private YesORNo registeredNotaryPublic;
     private YesORNo csiInfoAccess;
     private YesORNo candidateReferredToYou;
     private String referralOriginate;
     private YesORNo candiateSeletedWithinGuidelines;
-    private String currentAddress;
+   // private String currentAddress;
     private String serviceType;
     private String ITORNonIT;
     private String fullORPartTime;
@@ -59,5 +59,6 @@ public class ContractInfo {
     private String sponsorFirstName;
     private YesORNo emailRequired;
     private String spocEmail;
+
 
 }

@@ -51,14 +51,14 @@ public class ApptrackerUtils {
 
     }
 
-    public static void main (String[] d){
+   /* public static void main (String[] d){
        //System.out.println(dateTimeDiffDays( "07-30-2017 21:20:34", "07-29-2017 21:20:34"));
 
         System.out.println(dateTotring(LocalDate.now()));
 
         System.out.println(dateTimeDiffDays(  "07-29-2017 21:20:34","07-30-2017 21:20:34"));
 
-        /*  System.out.println(dateTimeTotring(LocalDateTime.now()));*/
+        *//*  System.out.println(dateTimeTotring(LocalDateTime.now()));*//*
 
       Integer[] d1 = {2,1,4,3,7,8,10};
         List<Integer> gg = Arrays.stream(d1)
@@ -67,7 +67,7 @@ public class ApptrackerUtils {
         System.out.println(gg);
 
         System.out.println(daysTillDate( "07-30-2017 21:20:34"));
-    }
+    }*/
 
 
     public static Date stringToDbDate(String dateStr){

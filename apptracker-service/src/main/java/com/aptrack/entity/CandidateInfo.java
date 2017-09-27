@@ -1,5 +1,6 @@
 package com.aptrack.entity;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.OneToOne;
 
 @Data
 @Entity
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+
 public class CandidateInfo {
 
     @Id

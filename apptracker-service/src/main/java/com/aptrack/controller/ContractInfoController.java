@@ -4,6 +4,7 @@ import com.aptrack.entity.ContingentWorkerDetails;
 import com.aptrack.entity.ContractInfo;
 import com.aptrack.service.ContingentWorkerDetailsService;
 import com.aptrack.service.ContractService;
+import com.aptrack.utils.ExcelUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -89,7 +90,12 @@ public class ContractInfoController {
     public ResponseEntity<ContingentWorkerDetails> updateContract(
             @RequestBody ContingentWorkerDetails contract) {
 
+        //TODO Test
+
+        ExcelUtils.generate(contract);
         ContingentWorkerDetails updatedContract = contingentWorkerDetailsService.update(contract);
+
+
 
         if (updatedContract == null) {
             return new ResponseEntity<ContingentWorkerDetails>(

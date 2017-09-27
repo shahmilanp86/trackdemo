@@ -4,6 +4,7 @@ import com.aptrack.common.FormerWorker;
 import com.aptrack.common.YesORNo;
 import com.aptrack.entity.converter.LocalDateConverter;
 import com.aptrack.entity.converter.LocalDateTimeConverter;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Data;
 
 import javax.persistence.Convert;
@@ -16,6 +17,8 @@ import java.sql.Date;
  */
 @Data
 @Entity
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+
 public class ContractInfo {
 
     @Id

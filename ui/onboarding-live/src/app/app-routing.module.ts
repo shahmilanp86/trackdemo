@@ -19,8 +19,7 @@ const appRoutes: Routes = [
 		component: AddCandidateComponent
 	}, {
 		path: 'dashboard',
-		component: DashboardComponent,
-    canActivate: [IDRFFormFlow]
+		component: DashboardComponent
 	}, {
 		path: 'candidate-details/:id',
 		component: CandidateDetailsComponent

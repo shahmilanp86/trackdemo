@@ -3,7 +3,7 @@
 
 
      Candidate Basic Info Displayed here    Candidate ID = {{candidateId}}
-    <app-accordian tittle="Candidate Basic Info" isOpen="true">
+    <app-accordian tittle="Candidate Basic Info" [isOpen]="true">
      <div class="row">
       <div class="">
         <dl class="col-xs-12 col-sm-6 dl-horizontal">
@@ -28,15 +28,15 @@
     </div>
     </app-accordian>
 
-    <app-accordian tittle="Current Status" isOpen="false">
+    <app-accordian tittle="Current Status" [isOpen]="true">
      <app-candidate-progress status={{currentStaus}}></app-candidate-progress>
 
     </app-accordian>
 
-    <app-accordian tittle="IDRF" isOpen="true">
+    <app-accordian tittle="IDRF" [isOpen]="true">
      <app-candidate-idrf></app-candidate-idrf>
    </app-accordian>
 
-    <app-accordian tittle="Audit History" isOpen="true">
+    <app-accordian tittle="Audit History" [isOpen]="true">
       Audit History
     </app-accordian>

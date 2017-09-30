@@ -15,7 +15,7 @@
       <div class='col-sm-12'>
       <div class="form-group">
         <div class='input-group date'>
-          <input type='text' class="form-control" #contractEndDte="ngModel"  (keypress)="_keyPress($event)"  id="contractEndDte" name="contractEndDte" placeholder="Contract end date" ng-disabled='true' [(ngModel)]="work.contractEndDte" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" value="{{work.contractEndDte | date:'shortDate'}}"/>
+          <input type='text' class="form-control" #contractEndDte="ngModel"  (keypress)="_keyPress($event)"  id="contractEndDte" name="contractEndDte" placeholder="Contract end date" ng-disabled='true' [(ngModel)]="work.contractEndDte" bsDatepicker #dp="bsDatepicker"  value="{{work.contractEndDte | date:'shortDate'}}"/>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-time" (click)="dp.show() " placement="bottom"></span>
               <app-date-picker></app-date-picker>
@@ -31,7 +31,7 @@
       <div class='col-sm-12'>
         <div class="form-group">
           <div class='input-group date'>
-            <input type='text' class="form-control" #cwAssignmentEndDte="ngModel" id="cwAssignmentEndDte" name="cwAssignmentEndDte" (keypress)="_keyPress($event)" placeholder="Assignment end date" [(ngModel)]="work.cwAssignmentEndDte" bsDatepicker #dp1="bsDatepicker" [bsConfig]="bsConfig" value="{{work.cwAssignmentEndDte | date:'MM/dd/yy'}}"/>
+            <input type='text' class="form-control" #cwAssignmentEndDte="ngModel" id="cwAssignmentEndDte" name="cwAssignmentEndDte" (keypress)="_keyPress($event)" placeholder="Assignment end date" [(ngModel)]="work.cwAssignmentEndDte" bsDatepicker #dp1="bsDatepicker"  value="{{work.cwAssignmentEndDte | date:'MM/dd/yy'}}"/>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-time" (click)="dp1.show() " placement="bottom"></span>
               <app-date-picker></app-date-picker>
@@ -113,7 +113,7 @@
       <div class='col-sm-12'>
         <div class="form-group">
           <div class='input-group date'>
-            <input type='text' class="form-control" #cwAssignmentStartDte="ngModel" id="cwAssignmentStartDte" (keypress)="_keyPress($event)" name="cwAssignmentStartDte" placeholder="Assignment start date" [(ngModel)]="work.cwAssignmentStartDte" bsDatepicker #dp2="bsDatepicker" [bsConfig]="bsConfig"/>
+            <input type='text' class="form-control" #cwAssignmentStartDte="ngModel" id="cwAssignmentStartDte" (keypress)="_keyPress($event)" name="cwAssignmentStartDte" placeholder="Assignment start date" [(ngModel)]="work.cwAssignmentStartDte" bsDatepicker #dp2="bsDatepicker" />
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-time" (click)="dp2.show() " placement="bottom"></span>
               <app-date-picker></app-date-picker>

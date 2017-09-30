@@ -1,6 +1,8 @@
 <div class="panel panel-default">
-  <div class="panel-heading">{{tittle}}</div>
-  <div class="panel-body">
+  <div class="panel-heading pointer" (click)="isOpen=!isOpen">
+    <span class="glyphicon" [ngClass]="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-up': !isOpen}"></span> {{tittle}}
+  </div>
+  <div class="panel-body" *ngIf="isOpen">
     <ng-content></ng-content>
   </div>
 </div>

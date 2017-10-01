@@ -21,14 +21,14 @@
 						<tbody>
 							<tr *ngFor='let onBoardingDetail of onBoardingDetails'>
  
-								<td><a routerLink="/candidate-details/{{ onBoardingDetail.Aid }}" routerLinkActive="active">{{ onBoardingDetail.Aid }}</a></td>
-								<td>{{ onBoardingDetail.Name }}</td>
-								<td>{{ onBoardingDetail.Status }}</td>
-								<td>{{ onBoardingDetail.BG }}</td>
-								<td>{{ onBoardingDetail.Demographics }}</td>
-                <td>{{ onBoardingDetail.SLA }}</td>
-								<td>{{ onBoardingDetail.Contact }}</td>
-								<td>{{ onBoardingDetail.Notes }}</td>
+								<td><a routerLink="/candidate-details/{{ onBoardingDetail.aid }}" routerLinkActive="active">{{ onBoardingDetail.aid }}</a></td>
+								<td>{{ onBoardingDetail.fullName }}</td>
+								<td>{{ onBoardingDetail.status }}</td>
+								<td>{{ onBoardingDetail.bg }}</td>
+								<td>{{ onBoardingDetail.demograph }}</td>
+								<td>{{ onBoardingDetail.sla }}</td>
+								<td>{{ onBoardingDetail.contactPhone }}</td>
+								<td>{{ onBoardingDetail.comments }}</td>
 							</tr>							
 						</tbody>
 					</table>

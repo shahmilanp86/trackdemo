@@ -1,52 +1,68 @@
 <app-page-heading heading="Add Candidate">
-  </app-page-heading>
-  
-  
-  <form>
-    <div class="container">
-      <div class="row">
-          <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.aid">AID</label>
-            <input type="text" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.aid" [(ngModel)]="candidateBasicInfo.aid" name="candidateBasicInfo.aid" id="candidateBasicInfo.aid" required>
-      </div>
-      <p class="white-space"></p>
-      <div class="row">
-           <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.firstName">First Name</label>
-           <input type="text" class="col-xs-8 col-sm-6 col-md-3" [(ngModel)]="candidateBasicInfo.firstName" id="candidateBasicInfo.firstName" name="candidateBasicInfo.firstName" required>
-           
-      </div>
-      <p class="white-space"></p>
-      <div class="row">
-           <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.middleName">Middle Initial</label>
-           <input type="text" class="col-xs-4 col-sm-2 col-md-1" ngControl="candidateBasicInfo.middleName" [(ngModel)]="candidateBasicInfo.middleName" name="candidateBasicInfo.middleName" id="candidateBasicInfo.middleName">
-      </div>
-      <p class="white-space"></p>
-      <div class="row">
-           <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.lastName">Last Name</label>
-           <input type="text" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.lastName" [(ngModel)]="candidateBasicInfo.lastName" name="candidateBasicInfo.lastName" id="candidateBasicInfo.lastName" required>
-      </div>
-      <p class="white-space"></p>
-      <div class="row">
-           <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.email">Email ID</label>
-           <input type="email" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.email" [(ngModel)]="candidateBasicInfo.email" name="candidateBasicInfo.email" id="candidateBasicInfo.email" required>
-      </div>
-      <p class="white-space"></p>
-      <div class="row">
-           <label class="col-xs-4 col-sm-3 col-md-2" for="candidateBasicInfo.contactNumber">Mobile</label>
-           <input type="tel" class="col-xs-8 col-sm-6 col-md-3" ngControl="candidateBasicInfo.contactNumber" [(ngModel)]="candidateBasicInfo.contactNumber" name="candidateBasicInfo.contactNumber" id="candidateBasicInfo.contactNumber" required>
-      </div>
-      <p class="white-space"></p>
-      <p class="white-space"></p>
- 
-      <div class="row bottom-action-CTA">
-          <div class="col-xs-12 text-center">
-              <button class="btn btn-success btn-outline-rounded" (click)="onSaveEmail()">Save & E-mail Candidate <span class="glyphicon glyphicon-arrow-right" style="margin-left:10px;"></span></button>
-          </div>      
-<!--     
-        <button type="button" class="col-xs-8 col-sm-6 col-md-3" (click)="onSaveEmail()">Save & E-mail Candidate</button>
-        <button type="button" class="col-xs-4 col-sm-3 col-md-2" (click)="onCancel()">Cancel</button> -->
+</app-page-heading>
+
+
+
+<div class="container form-container">
+  <form #addressForm="ngForm" class="editForm form-horizontal" novalidate>
+
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="candidateBasicInfo.aid">AID</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control input-md" ngControl="candidateBasicInfo.aid" [(ngModel)]="candidateBasicInfo.aid"
+          name="candidateBasicInfo.aid" id="candidateBasicInfo.aid" required>
       </div>
     </div>
-  
+
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="candidateBasicInfo.firstName">First Name</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control input-md" [(ngModel)]="candidateBasicInfo.firstName" id="candidateBasicInfo.firstName"
+          name="candidateBasicInfo.firstName" required>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="candidateBasicInfo.middleName">Middle Initial</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control input-md" ngControl="candidateBasicInfo.middleName" [(ngModel)]="candidateBasicInfo.middleName"
+          name="candidateBasicInfo.middleName" id="candidateBasicInfo.middleName">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="candidateBasicInfo.lastName">Last Name</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control input-md" ngControl="candidateBasicInfo.lastName" [(ngModel)]="candidateBasicInfo.lastName"
+          name="candidateBasicInfo.lastName" id="candidateBasicInfo.lastName" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="candidateBasicInfo.email">Email ID</label>
+      <div class="col-sm-5">
+        <input type="email" class="form-control input-md" ngControl="candidateBasicInfo.email" [(ngModel)]="candidateBasicInfo.email"
+          name="candidateBasicInfo.email" id="candidateBasicInfo.email" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="candidateBasicInfo.contactNumber">Mobile</label>
+      <div class="col-sm-5">
+        <input type="tel" class="form-control input-md" ngControl="candidateBasicInfo.contactNumber" [(ngModel)]="candidateBasicInfo.contactNumber"
+          name="candidateBasicInfo.contactNumber" id="candidateBasicInfo.contactNumber" required>
+      </div>
+    </div>
+
+    <div class="row bottom-action-CTA">
+      <div class="col-xs-12 text-center">
+        <button class="btn btn-success btn-outline-rounded" (click)="onSaveEmail()">Save & E-mail Candidate <span class="glyphicon glyphicon-arrow-right" style="margin-left:10px;"></span></button>
+      </div>
+      <!--     
+         <button type="button" class="col-xs-4 col-sm-3 col-md-2" (click)="onCancel()">Cancel</button> -->
+    </div>
+
   </form>
-  
-  
+
+</div>

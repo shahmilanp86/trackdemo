@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(this.configService.getAPIURL('candidateList') + '/').subscribe(serviceResp => {
+    this.http.get(this.configService.getAPIURL('candidateList')).subscribe(serviceResp => {
         this.populateBasicInfo(serviceResp);
         // console.warn(serviceResp)
     });

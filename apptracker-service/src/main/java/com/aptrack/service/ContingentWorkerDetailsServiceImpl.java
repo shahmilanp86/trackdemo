@@ -73,6 +73,7 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
         /*candidateService.update(details.getPersonalInfo());
         contractService.create(details.getContractInfo());
 */
+
         return new ContingentWorkerDetails(details.getAid(),candidateService.update(details.getPersonalInfo()),
                 contractService.update(details.getContractInfo()));
 

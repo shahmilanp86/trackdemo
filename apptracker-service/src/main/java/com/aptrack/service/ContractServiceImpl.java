@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import  static com.aptrack.utils.ApptrackerUtils.getNullPropertyNames;
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Created by Murthy on 7/18/2017.
@@ -35,8 +36,15 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public ContractInfo update(ContractInfo updated) {
 
-        ContractInfo existing = contractInfoRepository.findOne(updated.getAid());
-        copyProperties(updated,existing, getNullPropertyNames(updated));
-        return contractInfoRepository.save(existing);
+        ContractInfo  existing = contractInfoRepository.findOne(updated.getAid());
+        ContractInfo data =  Optional.ofNullable(existing).map(ext -> {copyProperties(updated,existing,
+                getNullPropertyNames(updated));
+        return updated;})
+                .orElse(updated);
+       // copyProperties(updated,existing, getNullPropertyNames(updated));
+
+
+        //return contractInfoRepository.save(existing);
+        return contractInfoRepository.save(data);
     }
 }

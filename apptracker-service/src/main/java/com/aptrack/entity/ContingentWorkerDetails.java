@@ -9,8 +9,9 @@ import lombok.*;
  */
 //@Builder
 //@Data
-@Getter
-@Setter
+//@Getter
+//@Setter
+@Data
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, isGetterVisibility = JsonAutoDetect.Visibility.NONE)
 
 //@AllArgsConstructor(onConstructor=@__(@JsonCreator))

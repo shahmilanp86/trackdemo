@@ -31,12 +31,12 @@ public class ApptrackerUtils {
     }
 
     public static String dbTimestampToString(Timestamp tm) {
-        return tm.toLocalDateTime().format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss"));
+        return tm.toLocalDateTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"));
     }
 
     public static Timestamp stringToDbTimestamp(String dateStr){
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
 
         LocalDateTime localDate = LocalDateTime.parse(dateStr, formatter);
         return  Timestamp.valueOf(localDate);
@@ -44,21 +44,21 @@ public class ApptrackerUtils {
     }
 
     public static long dateTimeDiffDays(String fromDateTime,String toDateTime){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
         LocalDateTime to = LocalDateTime.parse(toDateTime, formatter);
         LocalDateTime from = LocalDateTime.parse(fromDateTime, formatter);
         return ChronoUnit.DAYS.between(from,to);
 
     }
 
-   /* public static void main (String[] d){
+  /* public static void main (String[] d){
        //System.out.println(dateTimeDiffDays( "07-30-2017 21:20:34", "07-29-2017 21:20:34"));
 
         System.out.println(dateTotring(LocalDate.now()));
 
-        System.out.println(dateTimeDiffDays(  "07-29-2017 21:20:34","07-30-2017 21:20:34"));
+        System.out.println(dateTimeDiffDays(  "07/29/2017 21:20:34","07/30/2017 21:20:34"));
 
-        *//*  System.out.println(dateTimeTotring(LocalDateTime.now()));*//*
+         System.out.println(dateTimeTotring(LocalDateTime.now()));
 
       Integer[] d1 = {2,1,4,3,7,8,10};
         List<Integer> gg = Arrays.stream(d1)
@@ -66,13 +66,13 @@ public class ApptrackerUtils {
                 .collect(Collectors.toList());
         System.out.println(gg);
 
-        System.out.println(daysTillDate( "07-30-2017 21:20:34"));
-    }*/
-
+        System.out.println(daysTillDate( "07/30/2017 21:20:34"));
+    }
+*/
 
     public static Date stringToDbDate(String dateStr){
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
         LocalDate localDate = LocalDate.parse(dateStr, formatter);
         return  Date.valueOf(localDate);
@@ -81,16 +81,16 @@ public class ApptrackerUtils {
 
 
     public static String dbDateToString(Date dt) {
-        return dt.toLocalDate().format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+        return dt.toLocalDate().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
     }
 
     public static String dateTimeTotring(LocalDateTime dtm){
-        return dtm.format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss"));
+        return dtm.format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"));
 
     }
 
     public static String dateTotring(LocalDate dt){
-        return dt.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+        return dt.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 
     }
 

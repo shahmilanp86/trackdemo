@@ -91,9 +91,9 @@ public class ContractInfoController {
             @RequestBody ContingentWorkerDetails contract) {
 
         //TODO Test
-
-        ExcelUtils.generate(contract);
         ContingentWorkerDetails updatedContract = contingentWorkerDetailsService.update(contract);
+
+      //  ExcelUtils.generate(contract);
 
 
 

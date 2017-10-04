@@ -51,7 +51,7 @@
       <div class='col-sm-12'>
         <div class="form-group">
           <div class='input-group date'>
-            <input type='text' class="form-control" #priorDates="ngModel" id="priorDates" (keypress)="_keyPress($event)" name="priorDates" placeholder="Prior dates" [(ngModel)]="personal.priorDates" bsDatepicker #dp1="bsDatepicker" />
+            <input type='text' class="form-control" #priorDates="ngModel" id="priorDates" (keypress)="_keyPress($event)" name="priorDates" placeholder="Prior dates" [(ngModel)]="personal.priorDates"  bsDaterangepicker #dp1="bsDaterangepicker" />
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-time" (click)="dp1.show() " placement="bottom"></span>
               <app-date-picker></app-date-picker>
@@ -62,21 +62,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-sm-3" for="birthDates">Birth Date</label>
-    <div class="col-sm-3">
-      <div class='col-sm-12'>
-        <div class="form-group">
-          <div class='input-group date'>
-            <input type='text' class="form-control" #birthDates="ngModel" id="birthDates" (keypress)="_keyPress($event)" name="birthDates" placeholder="Birth date" [(ngModel)]="personal.birthDates" bsDatepicker #dp2="bsDatepicker" />
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-time" (click)="dp2.show() " placement="bottom"></span>
-              <app-date-picker></app-date-picker>
-         </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <label class="control-label col-sm-2" for="phoneNum">Contact Phone</label>
+    <label class="control-label col-sm-3" for="phoneNum">Contact Phone</label>
     <div class="col-sm-3">
       <input class="form-control input-md" #phoneNum="ngModel" id="phoneNum" name="phoneNum" type="text" placeholder="Contact Number" [(ngModel)]="personal.phoneNum">
     </div>

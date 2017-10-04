@@ -25,10 +25,10 @@ export const APIURLs = {
         isExternal: false
     },
     'addUpdateContracts': {
-        default: '/contract',// default is used if env specific URL not specified
-        dev: '/contract',// This will overwrite default
-        qa: '/contract',
-        prod: '/contract',
+        default: '/contract/update',// default is used if env specific URL not specified
+        dev: '/contract/update',// This will overwrite default
+        qa: '/contract/update',
+        prod: '/contract/update',
         isExternal: false
     }
 

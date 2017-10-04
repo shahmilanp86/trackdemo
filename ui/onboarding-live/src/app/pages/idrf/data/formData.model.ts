@@ -3,7 +3,6 @@ export class FormData {
     lastName : string = '';
     middleName: string = '';
     prefFirstName: string = '';
-    birthDates: string = '';
     phoneNum: string = '';
     emailID: string = '';
     appprovedContactNum: string = '';
@@ -45,7 +44,6 @@ export class FormData {
         this.lastName = '';
         this.middleName = '';
         this.prefFirstName = '';
-        this.birthDates = '';
         this.phoneNum = '';
         this.emailID = '';
         this.appprovedContactNum = '';
@@ -89,7 +87,6 @@ export class Personal {
     lastName : string = '';
     middleName: string = '';
     prefFirstName: string = '';
-    birthDates: string = '';
     phoneNum: string = '';
     emailID: string = '';
     candidateRoleTyp: string = '';

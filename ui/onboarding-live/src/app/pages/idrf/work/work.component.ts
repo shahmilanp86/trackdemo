@@ -35,33 +35,33 @@ export class WorkComponent implements OnInit {
 
     populateWorkInfo(serviceResp) {
       const work: Work = {
-        appprovedContactNum : serviceResp['appprovedContactNum'],
-        contractEndDte : serviceResp['contractEndDte'],
-        cwAssignmentEndDte : serviceResp['cwAssignmentEndDte'],
+        appprovedContactNum : serviceResp.contractInfo['appprovedContactNum'],
+        contractEndDte : serviceResp.contractInfo['contractEndDte'],
+        cwAssignmentEndDte : serviceResp.contractInfo['cwAssignmentEndDte'],
         /*candidateRoleTyp : serviceResp['candidateRoleTyp'],
         returnStatus : serviceResp['returnStatus'],
         formaerWorker : serviceResp['formaerWorker'],
         priorSid : serviceResp['priorSid'],
         priorDates : serviceResp['priorDates'],*/
-        supplierName : serviceResp['supplierName'],
-        cwWorkCity : serviceResp['cwWorkCity'],
-        cwWorkLocation : serviceResp['cwWorkLocation'],
-        cwWorkMailDrop : serviceResp['cwWorkMailDrop'],
+        supplierName : serviceResp.contractInfo['supplierName'],
+        cwWorkCity : serviceResp.contractInfo['cwWorkCity'],
+        cwWorkLocation : serviceResp.contractInfo['cwWorkLocation'],
+        cwWorkMailDrop : serviceResp.contractInfo['cwWorkMailDrop'],
         /*homeZip : serviceResp['homeZip'],
         usArmedForces : serviceResp['usArmedForces'],
         registeredNotaryPublic : serviceResp['registeredNotaryPublic'],*/
-        csiInfoAccess : serviceResp['csiInfoAccess'],
-        candidateReferredToYou : serviceResp['candidateReferredToYou'],
-        referralOriginate : serviceResp['referralOriginate'],
-        candiateSeletedWithinGuidelines : serviceResp['candiateSeletedWithinGuidelines'],
+        csiInfoAccess : serviceResp.contractInfo['csiInfoAccess'],
+        candidateReferredToYou : serviceResp.contractInfo['candidateReferredToYou'],
+        referralOriginate : serviceResp.contractInfo['referralOriginate'],
+        candiateSeletedWithinGuidelines : serviceResp.contractInfo['candiateSeletedWithinGuidelines'],
         /*currentAddress : serviceResp['currentAddress'],
         serviceType : serviceResp['serviceType'],
         fullORPartTime : serviceResp['fullORPartTime'],
         paymentType : serviceResp['paymentType'],*/
-        costCenter : serviceResp['costCenter'],
-        cwJobCode : serviceResp['cwJobCode'],
-        lobName : serviceResp['lobName'],
-        cwAssignmentStartDte : serviceResp['cwAssignmentStartDte']
+        costCenter : serviceResp.contractInfo['costCenter'],
+        cwJobCode : serviceResp.contractInfo['cwJobCode'],
+        lobName : serviceResp.contractInfo['lobName'],
+        cwAssignmentStartDte : serviceResp.contractInfo['cwAssignmentStartDte']
        /* sponsorId : serviceResp['sponsorId'],
         sponsorLastName : serviceResp['sponsorLastName'],
         sponsorFirstName : serviceResp['sponsorFirstName'],

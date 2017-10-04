@@ -4,19 +4,23 @@ import { FormData } from '../data/formData.model';
 import { FormDataService } from '../data/formData.service';
 import {ActivatedRoute} from '@angular/router';
 import { ConfigService } from '../../../services/config.service';
+import { DatePipe } from '@angular/common';
 @Component ({
     selector:     'mt-wizard-result',
     templateUrl: './result.component.html'
 })
 
 export class ResultComponent implements OnInit {
-    title = 'Thanks!';
+    title = 'Confirmation!';
     @Input() formData: FormData;
     isFormValid: boolean = false;
     candidateId: string;
     idrfObject: object = {};
+    personalInfo: object = {};
+    contractInfo: object = {};
     constructor(private formDataService: FormDataService
-    , private http: HttpClient, route: ActivatedRoute, private configService: ConfigService) {
+    , private http: HttpClient, route: ActivatedRoute, private configService: ConfigService,
+                public datepipe: DatePipe) {
     this.candidateId = route.snapshot.params['id'];
     }
 
@@ -32,88 +36,74 @@ export class ResultComponent implements OnInit {
     }
 
     submit() {
-      this.http.post(this.configService.getAPIURL('addUpdateContracts'), this.formData).subscribe(serviceResp => {
+      this.http.put(this.configService.getAPIURL('addUpdateContracts'), this.idrfObject).subscribe(serviceResp => {
       });
-      /*this.http
-        .post('/api/contract', this.formData)
-        .subscribe();*/
-      /*let headers = new Headers({ 'Content-Type': 'application/json' });
-      let options = new RequestOptions({ headers: headers });*/
-      /*return this.http.post(this.configService.getAPIURL('getContracts') + '/' + this.candidateId, this.formData).toPromise()
-        .then(this.extractData);*/
-
-       /* this.formData = this.formDataService.resetFormData();
-        this.isFormValid = false;*/
     }
-  /* private extractData(res: Response) {
-      let body = res.json();
-      return body.data || {};
-    }*/
-  /*private handleErrorObservable (error: Response | any) {
-   console.error(error.message || error);
-   return Observable.throw(error.message || error);
- }
- private handleErrorPromise (error: Response | any) {
-   console.error(error.message || error);
-   return Promise.reject(error.message || error);
- }*/
 
     private populateFinalIDRFRequest() {
-      this.idrfObject['firstName'] = this.formData.firstName;
-      this.idrfObject['lastName'] = this.formData.lastName;
-      this.idrfObject['email'] = this.formData.emailID;
-      this.idrfObject['appprovedContactNum'] = this.formData.appprovedContactNum;
-      this.idrfObject['contractEndDte'] = this.formData.contractEndDte;
-      this.idrfObject['cwAssignmentEndDte'] = this.formData.cwAssignmentEndDte;
-      this.idrfObject['candidateRoleTyp'] = this.formData.candidateRoleTyp;
-      this.idrfObject['returnStatus'] = this.formData.returnStatus;
-      this.idrfObject['formaerWorker'] = this.formData.formaerWorker;
-      this.idrfObject['priorSid'] = this.formData.priorSid;
-      this.idrfObject['priorDates'] = this.formData.priorDates;
-      this.idrfObject['supplierName'] = this.formData.supplierName;
-      this.idrfObject['cwWorkCity'] = this.formData.cwWorkCity;
-      this.idrfObject['cwWorkLocation'] = this.formData.cwWorkLocation;
-      this.idrfObject['cwWorkMailDrop'] = this.formData.cwWorkMailDrop;
-      this.idrfObject['homeZip'] = this.formData.homeZip;
-      this.idrfObject['usArmedForces'] = this.formData.usArmedForces;
-      this.idrfObject['registeredNotaryPublic'] = this.formData.registeredNotaryPublic;
-      this.idrfObject['csiInfoAccess'] = this.formData.csiInfoAccess;
-      this.idrfObject['candidateReferredToYou'] = this.formData.candidateReferredToYou;
-      this.idrfObject['referralOriginate'] = this.formData.referralOriginate;
-      this.idrfObject['candiateSeletedWithinGuidelines'] = this.formData.candiateSeletedWithinGuidelines;
-      this.idrfObject['currentAddress'] = this.formData.currentAddress;
-      this.idrfObject['serviceType'] = this.formData.serviceType;
-      this.idrfObject['fullORPartTime'] = this.formData.fullORPartTime;
-      this.idrfObject['paymentType'] = this.formData.paymentType;
-      this.idrfObject['costCenter'] = this.formData.costCenter;
-      this.idrfObject['cwJobCode'] = this.formData.cwJobCode;
-      this.idrfObject['lobName'] = this.formData.lobName;
-      this.idrfObject['cwAssignmentStartDte'] = this.formData.cwAssignmentStartDte;
-      this.idrfObject['sponsorId'] = this.formData.sponsorId;
-      this.idrfObject['sponsorLastName'] = this.formData.sponsorLastName;
-      this.idrfObject['sponsorFirstName'] = this.formData.sponsorFirstName;
-      this.idrfObject['emailRequired'] = this.formData.emailRequired;
-      this.idrfObject['spocEmail'] = this.formData.spocEmail;
-      this.idrfObject['itornonIT'] = this.formData.itornonIT;
+      this.idrfObject['aid'] = this.candidateId;
+      this.personalInfo['aid'] = this.candidateId;
+      this.personalInfo['firstName'] = this.formData.firstName;
+      this.personalInfo['lastName'] = this.formData.lastName;
+      this.personalInfo['midInitial'] = this.formData.middleName;
+      this.personalInfo['prefFirstName'] = this.formData.prefFirstName;
+      this.personalInfo['email'] = this.formData.emailID;
+      this.personalInfo['contactPhone'] = this.formData.phoneNum;
+      this.personalInfo['currentAddress'] = this.formData.currentAddress;
+      this.personalInfo['homeZip'] = this.formData.homeZip;
+      this.contractInfo['aid'] = this.candidateId;
+      this.contractInfo['appprovedContactNum'] = this.formData.appprovedContactNum;
+      this.contractInfo['contractEndDte'] = this.getFormattedDate(this.formData.contractEndDte);
+      this.contractInfo['cwAssignmentEndDte'] = this.getFormattedDate(this.formData.cwAssignmentEndDte);
+      this.contractInfo['candidateRoleTyp'] = this.formData.candidateRoleTyp;
+      this.contractInfo['returnStatus'] = this.formData.returnStatus;
+      this.contractInfo['formaerWorker'] = this.formData.formaerWorker;
+      this.contractInfo['priorSid'] = this.formData.priorSid;
+      this.contractInfo['priorDates'] = this.getFormattedDateRange(this.formData.priorDates);
+      this.contractInfo['supplierName'] = this.formData.supplierName;
+      this.contractInfo['cwWorkCity'] = this.formData.cwWorkCity;
+      this.contractInfo['cwWorkLocation'] = this.formData.cwWorkLocation;
+      this.contractInfo['cwWorkMailDrop'] = this.formData.cwWorkMailDrop;
+      this.contractInfo['usArmedForces'] = this.formData.usArmedForces;
+      this.contractInfo['registeredNotaryPublic'] = this.formData.registeredNotaryPublic;
+      this.contractInfo['csiInfoAccess'] = this.formData.csiInfoAccess;
+      this.contractInfo['candidateReferredToYou'] = this.formData.candidateReferredToYou;
+      this.contractInfo['referralOriginate'] = this.formData.referralOriginate;
+      this.contractInfo['candiateSeletedWithinGuidelines'] = this.formData.candiateSeletedWithinGuidelines;
+      this.contractInfo['serviceType'] = this.formData.serviceType;
+      this.contractInfo['fullORPartTime'] = this.formData.fullORPartTime;
+      this.contractInfo['paymentType'] = this.formData.paymentType;
+      this.contractInfo['costCenter'] = this.formData.costCenter;
+      this.contractInfo['cwJobCode'] = this.formData.cwJobCode;
+      this.contractInfo['lobName'] = this.formData.lobName;
+      this.contractInfo['cwAssignmentStartDte'] = this.getFormattedDate(this.formData.cwAssignmentStartDte);
+      this.contractInfo['sponsorId'] = this.formData.sponsorId;
+      this.contractInfo['sponsorLastName'] = this.formData.sponsorLastName;
+      this.contractInfo['sponsorFirstName'] = this.formData.sponsorFirstName;
+      this.contractInfo['emailRequired'] = this.formData.emailRequired;
+      this.contractInfo['spocEmail'] = this.formData.spocEmail;
+      this.contractInfo['itornonIT'] = this.formData.itornonIT;
+      this.idrfObject['personalInfo'] = this.personalInfo;
+      this.idrfObject['contractInfo'] = this.contractInfo;
 
     }
-  /* private submitData(){
-     let headers = new Headers({ 'Content-Type': 'application/json' });
-     let options = new RequestOptions({ headers: headers });
-     return this.http.post('/api/contract/', this.formData, options).toPromise()
-       .then(this.extractData)
-       .catch(this.handleErrorPromise);
-   }
-   private extractData(res: Response) {
-     let body = res.json();
-     return body.data || {};
-   }
-   private handleErrorObservable (error: Response | any) {
-     console.error(error.message || error);
-     return Observable.throw(error.message || error);
-   }
-   private handleErrorPromise (error: Response | any) {
-     console.error(error.message || error);
-     return Promise.reject(error.message || error);
-   }*/
+
+  private getFormattedDate(date) {
+    return this.datepipe.transform(date, 'MM/dd/yyyy');
+  }
+
+  private getFormattedDateRange(date) {
+      const dateRange = date.toString().split(',');
+      let finalDateRange = '';
+    if (undefined !== dateRange[1]) {
+      finalDateRange =  this.datepipe.transform(dateRange[0], 'MM/dd/yyyy');
+      finalDateRange = finalDateRange + ' - ' + this.datepipe.transform(dateRange[1], 'MM/dd/yyyy');
+      return finalDateRange;
+    } else {
+      return dateRange;
+    }
+
+  }
+
+
 }

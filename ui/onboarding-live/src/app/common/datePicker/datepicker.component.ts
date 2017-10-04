@@ -93,7 +93,8 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   templateUrl: './datePicker.component.html'
 })
 export class DatepickerComponent {
-  colorTheme = 'theme-blue';
+  minDate: Date;
+  maxDate: Date;
 
   bsConfig: Partial<BsDatepickerConfig>;
 
@@ -104,5 +105,11 @@ export class DatepickerComponent {
     setTimeout(() => {
       pop.show();
     });
+  }
+  constructor() {
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() - 1);
+    this.maxDate.setDate(this.maxDate.getDate() + 7);
   }
 }

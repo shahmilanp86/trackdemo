@@ -37,26 +37,25 @@ export class PersonalComponent implements OnInit, PipeTransform {
 
     populatePersonalInfo(serviceResp) {
       const personal: Personal = {
-        firstName: serviceResp['firstName'],
-        lastName: serviceResp['lastName'],
-        middleName: serviceResp['middleName'],
-        prefFirstName: serviceResp['prefFirstName'],
-        birthDates: serviceResp['birthDates'],
-        phoneNum: serviceResp['phoneNum'],
-        emailID: serviceResp['emailID'],
-        candidateRoleTyp : serviceResp['candidateRoleTyp'],
-        returnStatus : serviceResp['returnStatus'],
-        formaerWorker : serviceResp['formaerWorker'],
-        priorSid : serviceResp['priorSid'],
-        priorDates : serviceResp['priorDates'],
-        homeZip : serviceResp['homeZip'],
-        usArmedForces : serviceResp['usArmedForces'],
-        registeredNotaryPublic : serviceResp['registeredNotaryPublic'],
-        currentAddress : serviceResp['currentAddress'],
-        serviceType : serviceResp['serviceType'],
-        fullORPartTime : serviceResp['fullORPartTime'],
-        paymentType : serviceResp['paymentType'],
-        itornonIT : serviceResp['itornonIT']
+        firstName: serviceResp.personalInfo['firstName'],
+        lastName: serviceResp.personalInfo['lastName'],
+        middleName: serviceResp.personalInfo['midInitial'],
+        prefFirstName: serviceResp.personalInfo['prefFirstName'],
+        phoneNum: serviceResp.personalInfo['contactPhone'],
+        emailID: serviceResp.personalInfo['email'],
+        candidateRoleTyp : serviceResp.contractInfo['candidateRoleTyp'],
+        returnStatus : serviceResp.contractInfo['returnStatus'],
+        formaerWorker : serviceResp.contractInfo['formaerWorker'],
+        priorSid : serviceResp.contractInfo['priorSid'],
+        priorDates : serviceResp.contractInfo['priorDates'],
+        homeZip : serviceResp.personalInfo['homeZip'],
+        usArmedForces : serviceResp.contractInfo['usArmedForces'],
+        registeredNotaryPublic : serviceResp.contractInfo['registeredNotaryPublic'],
+        currentAddress : serviceResp.personalInfo['currentAddress'],
+        serviceType : serviceResp.contractInfo['serviceType'],
+        fullORPartTime : serviceResp.contractInfo['fullORPartTime'],
+        paymentType : serviceResp.contractInfo['paymentType'],
+        itornonIT : serviceResp.contractInfo['itornonIT']
       };
       this.formDataService.setPersonal(personal);
       this.personal = this.formDataService.getPersonal();

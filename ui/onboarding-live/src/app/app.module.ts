@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Router } from '@angular/router';
-import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
+import {HashLocationStrategy, Location, LocationStrategy, DatePipe} from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -69,7 +69,7 @@ import {CandidateIdrfComponent} from './pages/candidate-idrf/candidate-idrf.comp
     PopoverModule.forRoot(),
     BsDatepickerModule.forRoot()
    ],
-  providers: [ConfigService,Location,
+  providers: [ConfigService, Location, DatePipe,
     { provide: FormDataService, useClass: FormDataService },
     { provide: WorkflowService, useClass: WorkflowService },
     {provide: LocationStrategy, useClass: HashLocationStrategy},

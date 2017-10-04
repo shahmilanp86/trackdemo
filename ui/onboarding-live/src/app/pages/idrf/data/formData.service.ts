@@ -22,7 +22,6 @@ export class FormDataService {
             lastName: this.formData.lastName,
             middleName: this.formData.middleName,
             prefFirstName: this.formData.prefFirstName,
-            birthDates: this.formData.birthDates,
             phoneNum: this.formData.phoneNum,
             emailID: this.formData.emailID,
             candidateRoleTyp : this.formData.candidateRoleTyp,
@@ -49,7 +48,6 @@ export class FormDataService {
         this.formData.lastName = data.lastName;
         this.formData.middleName = data.middleName,
         this.formData.prefFirstName = data.prefFirstName,
-        this.formData.birthDates = data.birthDates,
         this.formData.phoneNum = data.phoneNum,
         this.formData.emailID = data.emailID,
         this.formData.candidateRoleTyp = data.candidateRoleTyp;

@@ -37,11 +37,11 @@ export class AddressComponent implements OnInit {
   populateAddressInfo(serviceResp) {
     const address: Address = {
 
-      sponsorId : serviceResp['sponsorId'],
-       sponsorLastName : serviceResp['sponsorLastName'],
-       sponsorFirstName : serviceResp['sponsorFirstName'],
-       emailRequired : serviceResp['emailRequired'],
-       spocEmail : serviceResp['spocEmail']
+      sponsorId : serviceResp.contractInfo['sponsorId'],
+       sponsorLastName : serviceResp.contractInfo['sponsorLastName'],
+       sponsorFirstName : serviceResp.contractInfo['sponsorFirstName'],
+       emailRequired : serviceResp.contractInfo['emailRequired'],
+       spocEmail : serviceResp.contractInfo['spocEmail']
     };
     this.formDataService.setAddress(address);
     this.address = this.formDataService.getAddress();

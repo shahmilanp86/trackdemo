@@ -4,6 +4,8 @@ import { Address } from '../data/formData.model';
 import { FormDataService } from '../data/formData.service';
 import { ConfigService } from '../../../services/config.service';
 import { HttpClient } from '@angular/common/http';
+import { WorkflowService } from '../workflow/workflow.service';
+import { STEPS } from '../workflow/workflow.model';
 
 @Component ({
     selector:     'mt-wizard-address',
@@ -17,7 +19,8 @@ export class AddressComponent implements OnInit {
     candidateId: string;
 
     constructor(private formDataService: FormDataService, route: ActivatedRoute
-      , private http: HttpClient, private configService : ConfigService) {
+      , private http: HttpClient, private configService: ConfigService
+      , private workflowService: WorkflowService) {
       this.candidateId = route.snapshot.params['id'];
     }
 
@@ -70,5 +73,6 @@ export class AddressComponent implements OnInit {
             return;
 
         this.formDataService.setAddress(this.address);
+      this.workflowService.validateStep(STEPS.address);
     }
 }

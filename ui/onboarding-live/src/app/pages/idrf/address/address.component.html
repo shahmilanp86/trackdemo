@@ -9,11 +9,13 @@
   <div class="form-group">
     <label class="control-label col-sm-3" for="sponsorId">Sponsor SID</label>
     <div class="col-sm-3">
-      <input class="form-control input-md" #sponsorId="ngModel" id="sponsorId" name="sponsorId" type="text" placeholder="" [(ngModel)]="address.sponsorId">
+      <input class="form-control input-md" #sponsorId="ngModel" id="sponsorId" name="sponsorId" type="text" placeholder="" pattern="[a-zA-Z 0-9]*" [(ngModel)]="address.sponsorId">
+      <div class="alert alert-danger" [hidden]="sponsorId.valid">Sid should be alpha numeric</div>
     </div>
     <label class="control-label col-sm-2" for="sponsorFirstName">Sponsor First Name</label>
     <div class="col-sm-3">
-      <input class="form-control input-md" #sponsorFirstName="ngModel" id="sponsorFirstName" name="sponsorFirstName" type="text" placeholder="" [(ngModel)]="address.sponsorFirstName">
+      <input class="form-control input-md" #sponsorFirstName="ngModel" id="sponsorFirstName" required pattern="[a-zA-Z 0-9]*" name="sponsorFirstName" type="text" placeholder="" [(ngModel)]="address.sponsorFirstName">
+      <div class="alert alert-danger" [hidden]="sponsorFirstName.valid">First Name is required with valid characters</div>
     </div>
   </div>
   <div class="form-group">
@@ -28,16 +30,17 @@
       <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="address.emailRequired" value="NO" > No</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" *ngIf="address.emailRequired == 'YES'">
     <label class="control-label col-sm-3" for="spocEmail">Spoc Email</label>
     <div class="col-sm-3">
-      <input class="form-control input-md" #spocEmail="ngModel" id="spocEmail" name="spocEmail" type="text" placeholder="" [(ngModel)]="address.spocEmail">
+      <input class="form-control input-md" #spocEmail="ngModel" id="spocEmail" name="spocEmail" type="text" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" placeholder="" [(ngModel)]="address.spocEmail">
+      <div class="alert alert-danger" [hidden]="spocEmail.valid">Email is required and must be valid</div>
     </div>
   </div>
 
 </form>
 <div class="form-group text-center space-20">
   <a routerLink="/idrf/work/{{candidateId}}"><button   class="btn btn-outline-rounded btn-default" (click)="save(addressForm)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button></a>
-  <a routerLink="/idrf/result/{{candidateId}}"><button   class="btn btn-outline-rounded btn-info" [disabled]="!addressForm.valid" (click)="save(addressForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
+  <a routerLink="/idrf/result/{{candidateId}}"><button   class="btn btn-outline-rounded btn-info" [disabled]="!addressForm.valid" (click)="save(addressForm)"> Save & Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
 </div>
 

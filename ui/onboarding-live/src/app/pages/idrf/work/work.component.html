@@ -129,6 +129,6 @@
 </form>
 <div class="form-group text-center space-20">
   <a routerLink="/idrf/personal/{{candidateId}}"><button  class="btn btn-outline-rounded btn-default" (click)="save(workForm)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button></a>
-  <a  routerLink="/idrf/address/{{candidateId}}"><button  class="btn btn-outline-rounded btn-info" [disabled]="!workForm.valid" (click)="save(workForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
+  <a  routerLink="/idrf/address/{{candidateId}}"><button  class="btn btn-outline-rounded btn-info" [disabled]="!workForm.valid" (click)="save(workForm)"> Save & Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
 </div>
 

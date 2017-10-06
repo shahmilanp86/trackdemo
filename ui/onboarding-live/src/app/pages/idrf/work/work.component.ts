@@ -4,6 +4,9 @@ import {ActivatedRoute} from '@angular/router';
 import { FormDataService } from '../data/formData.service';
 import { ConfigService } from '../../../services/config.service';
 import { HttpClient } from '@angular/common/http';
+import { WorkflowService } from '../workflow/workflow.service';
+import { STEPS } from '../workflow/workflow.model';
+
 @Component ({
     selector:     'mt-wizard-work',
     templateUrl: './work.component.html'
@@ -15,7 +18,8 @@ export class WorkComponent implements OnInit {
     form: any;
     candidateId: string;
     constructor(private formDataService: FormDataService, route: ActivatedRoute
-                , private http: HttpClient, private configService: ConfigService) {
+                , private http: HttpClient, private configService: ConfigService
+                , private workflowService: WorkflowService) {
       this.candidateId = route.snapshot.params['id'];
     }
 
@@ -79,6 +83,7 @@ export class WorkComponent implements OnInit {
           return;
         }
         this.formDataService.setWork(this.work);
+        this.workflowService.validateStep(STEPS.work);
     }
 
 

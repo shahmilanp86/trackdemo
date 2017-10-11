@@ -16,6 +16,30 @@ export class DashboardComponent implements OnInit {
   selectedRow: string;
   isProcessing: boolean = false;
   tabProcessing: boolean = false;
+  statusList= [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 301, 302];
+  statusMap: object =
+    {
+      '101': 'AID CREATED',
+      '102': 'AWAITING CANDIDATE INFO',
+      '103': 'SPOC REVIEW',
+      '104': 'SPOC TO FILL INFO',
+      '105': 'HR REVIEW',
+      '106': 'HR TO GET PI',
+      '107': 'HR TO NOTIFY CLIENT',
+      '108': 'AWAITING SID',
+      '109': 'AWAITING BG AND DEMOGRAPH',
+      '110': 'AWAITING BG AND COMPLETED DEMOGRAPH',
+      '111': 'COMPLETED BG AND AWAITING DEMOGRAPH',
+      '112': 'SPOC TO CHECK VENDOR MGMT',
+      '113': 'CCB FLAG',
+      '114': 'START DATE',
+      '301': 'CANDIDATE INITIATE BG',
+      '302': 'CANDIDATE INITIATE DEMOGRAPH'
+    };
+  completedSteps: Array<string>;
+  inCompleteSteps: Array<string>;
+  progressPercent: number;
+  progressColor: string;
   constructor(private http: HttpClient, route: ActivatedRoute, private configService: ConfigService) {
     // this.onBoardingDetails = [
     //   new OnBoardingDetail('e464649','Robert Will', 'Candidate to be informed', 'N/A', null, 'Today', 'N/A', null),
@@ -60,11 +84,30 @@ export class DashboardComponent implements OnInit {
   activateRow(onBoardingDetail) {
     this.selectedRow = onBoardingDetail.aid;
   }
-  showProgress() {
+
+  showProgress(statusCode) {
+    this.completedSteps = [];
+    this.inCompleteSteps = [];
     this.tabProcessing = true;
+    for (const entry of this.statusList) {
+      this.completedSteps.push(this.statusMap[entry]);
+      if (entry === statusCode) {
+        this.getIncompleteSteps(statusCode);
+        break;
+      }
+    }
+    this.progressPercent = Math.round((this.completedSteps.length) * 100 / Object.keys(this.statusMap).length);
+    this.progressPercent > 50 ? this.progressColor = 'success' : this.progressColor = 'danger';
     this.isProcessing = true;
     this.tabProcessing = false;
   }
+
+  getIncompleteSteps(statusCode) {
+    const index = this.statusList.indexOf(statusCode);
+    for (let i = index + 1; i < this.statusList.length; i++) {
+      this.inCompleteSteps.push(this.statusMap[this.statusList[i]]);
+    }
+    }
 
 
 }

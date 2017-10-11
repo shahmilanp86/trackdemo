@@ -19,7 +19,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor='let onBoardingDetail of onBoardingDetails' class='pointer' (click)="activateRow(onBoardingDetail);showProgress();" [ngClass]="{'selected': onBoardingDetail.aid == selectedRow}">
+							<tr *ngFor='let onBoardingDetail of onBoardingDetails' class='pointer' (click)="activateRow(onBoardingDetail);showProgress(onBoardingDetail.status);" [ngClass]="{'selected': onBoardingDetail.aid == selectedRow}">
 
 								<td><a routerLink="/candidate-details/{{ onBoardingDetail.aid }}" routerLinkActive="active" style="text-decration:none;"
                        [ngClass]="{'anchorSelected': onBoardingDetail.aid == selectedRow}">{{ onBoardingDetail.aid }}</a></td>
@@ -40,13 +40,20 @@
       <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
     </div>
     <div *ngIf="isProcessing">
-      <tabset>
-        <tab heading="Candidate Progess">
+      <tabset style="font-weight: bold;">
+        <tab heading="Candidate Progess" >
           <div class="col-xs-12 progressBar">
-            <progressbar class="progress-striped" value="70" type="success">70%</progressbar>
+            <progressbar class="progress-striped" value="{{progressPercent}}" type="{{progressColor}}">{{progressPercent}}%</progressbar>
           </div>
-          <div class="col-xs-12">
-            Info will load Here
+          <div class="col-xs-12" style="padding-top:15px;">
+              <div class="col-xs-6" *ngFor='let completedSteps of completedSteps'>
+                <div class="col-xs-10">{{completedSteps}}</div>
+                <div class="col-xs-2"><span class="glyphicon glyphicon-ok"></span></div>
+              </div>
+              <div class="col-xs-6" *ngFor='let inCompleteSteps of inCompleteSteps'>
+                <div class="col-xs-10">{{inCompleteSteps}}</div>
+                <div class="col-xs-2"><span class="glyphicon glyphicon-remove"></span></div>
+              </div>
           </div>
         </tab>
 

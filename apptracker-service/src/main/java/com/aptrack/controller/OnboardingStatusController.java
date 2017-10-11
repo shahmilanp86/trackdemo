@@ -1,6 +1,7 @@
 package com.aptrack.controller;
 
 import com.aptrack.entity.OnboardingStatus;
+import com.aptrack.entity.StatusView;
 import com.aptrack.service.OnboardingStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,14 @@ public class OnboardingStatusController {
     public ResponseEntity<OnboardingStatus> get(
             @PathVariable("id") Long id) {
         return new ResponseEntity<OnboardingStatus>(statusService.get(id), HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            value = "/api/onboard/nextstatus",
+            method = RequestMethod.PUT,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<StatusView> nextStatus( @RequestBody StatusView uiStatus) {
+
+        return new ResponseEntity<StatusView>(statusService.nextStatus(uiStatus), HttpStatus.OK);
     }
 }

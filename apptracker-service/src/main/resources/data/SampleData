@@ -564,3 +564,13 @@ GET
     "lastUpdTm": "07-28-2019 22:41:00",
     "lastUpdBy": "Mike"
 }
+
+localhost:8080/api/onboard/nextstatus
+PUT
+
+{
+
+    "aid": 1234,
+    "bgCheck": 100,
+    "demograph": 100
+}

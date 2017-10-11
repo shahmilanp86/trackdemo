@@ -43,7 +43,4 @@ public class OnboardingViewController {
         return new ResponseEntity<OnboardingSummaryView>(onboardingViewService.summary(id), HttpStatus.OK);
     }
 
-
-
-
 }

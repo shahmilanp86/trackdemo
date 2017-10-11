@@ -18,14 +18,14 @@ export class CandidateIdrfComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.http.get(this.configService.getAPIURL('getContracts') + '/' + this.candidateId).subscribe(serviceResp => {
+      this.http.get(this.configService.getAPIURL('getCandidateIdrfDetails') + '/' + this.candidateId).subscribe(serviceResp => {
         this.populateBasicInfo(serviceResp);
       });
   }
   populateBasicInfo(serviceResp){
-    this.CandidateIDRFInfo.firstName= serviceResp.personalInfo['firstName'];
-    this.CandidateIDRFInfo.lastName= serviceResp.personalInfo['lastName'];
-    this.CandidateIDRFInfo.emailID= serviceResp.personalInfo['email'];
+    this.CandidateIDRFInfo.firstName= serviceResp['firstName'];
+    this.CandidateIDRFInfo.lastName= serviceResp['lastName'];
+    this.CandidateIDRFInfo.emailID= serviceResp['email'];
     this.CandidateIDRFInfo.appprovedContactNum= serviceResp.contractInfo['appprovedContactNum'];
     this.CandidateIDRFInfo.contractEndDte= serviceResp.contractInfo['contractEndDte'];
     this.CandidateIDRFInfo.cwAssignmentEndDte= serviceResp.contractInfo['cwAssignmentEndDte'];
@@ -38,14 +38,14 @@ export class CandidateIdrfComponent implements OnInit {
     this.CandidateIDRFInfo.cwWorkCity= serviceResp.contractInfo['cwWorkCity'];
     this.CandidateIDRFInfo.cwWorkLocation= serviceResp.contractInfo['cwWorkLocation'];
     this.CandidateIDRFInfo.cwWorkMailDrop= serviceResp.contractInfo['cwWorkMailDrop'];
-    this.CandidateIDRFInfo.homeZip= serviceResp.personalInfo['homeZip'];
+    this.CandidateIDRFInfo.homeZip= serviceResp['homeZip'];
     this.CandidateIDRFInfo.usArmedForces= serviceResp.contractInfo['usArmedForces'];
     this.CandidateIDRFInfo.registeredNotaryPublic= serviceResp.contractInfo['registeredNotaryPublic'];
     this.CandidateIDRFInfo.csiInfoAccess= serviceResp.contractInfo['csiInfoAccess'];
     this.CandidateIDRFInfo.candidateReferredToYou= serviceResp.contractInfo['candidateReferredToYou'];
     this.CandidateIDRFInfo.referralOriginate= serviceResp.contractInfo['referralOriginate'];
     this.CandidateIDRFInfo.candiateSeletedWithinGuidelines= serviceResp.contractInfo['candiateSeletedWithinGuidelines'];
-    this.CandidateIDRFInfo.currentAddress= serviceResp.personalInfo['currentAddress'];
+    this.CandidateIDRFInfo.currentAddress= serviceResp['currentAddress'];
     this.CandidateIDRFInfo.serviceType= serviceResp.contractInfo['serviceType'];
     this.CandidateIDRFInfo.fullORPartTime= serviceResp.contractInfo['fullORPartTime'];
     this.CandidateIDRFInfo.paymentType= serviceResp.contractInfo['paymentType'];

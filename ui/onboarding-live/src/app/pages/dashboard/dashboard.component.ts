@@ -13,7 +13,9 @@ import { ConfigService } from "./../../services/config.service";
 })
 export class DashboardComponent implements OnInit {
   onBoardingDetails: OnBoardingDetail[];
-
+  selectedRow: string;
+  isProcessing: boolean = false;
+  tabProcessing: boolean = false;
   constructor(private http: HttpClient, route: ActivatedRoute, private configService: ConfigService) {
     // this.onBoardingDetails = [
     //   new OnBoardingDetail('e464649','Robert Will', 'Candidate to be informed', 'N/A', null, 'Today', 'N/A', null),
@@ -53,6 +55,15 @@ export class DashboardComponent implements OnInit {
 
       }
     }
+  }
+
+  activateRow(onBoardingDetail) {
+    this.selectedRow = onBoardingDetail.aid;
+  }
+  showProgress() {
+    this.tabProcessing = true;
+    this.isProcessing = true;
+    this.tabProcessing = false;
   }
 
 

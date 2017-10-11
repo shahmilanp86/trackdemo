@@ -9,16 +9,18 @@
     <div class="form-group">
       <label class="control-label col-sm-3" for="candidateBasicInfo.aid">AID</label>
       <div class="col-sm-5">
-        <input type="text" class="form-control input-md" ngControl="candidateBasicInfo.aid" [(ngModel)]="candidateBasicInfo.aid"
-          name="candidateBasicInfo.aid" id="candidateBasicInfo.aid" required>
+        <input type="text" class="form-control input-md" ngControl="candidateBasicInfo.aid" #aid="ngModel" [(ngModel)]="candidateBasicInfo.aid"
+          name="candidateBasicInfo.aid" id="candidateBasicInfo.aid" required pattern="[a-zA-Z 0-9]*">
+        <div class="alert alert-danger" [hidden]="aid.valid">AID is required and should be alpha numeric</div>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-3" for="candidateBasicInfo.firstName">First Name</label>
       <div class="col-sm-5">
-        <input type="text" class="form-control input-md" [(ngModel)]="candidateBasicInfo.firstName" id="candidateBasicInfo.firstName"
-          name="candidateBasicInfo.firstName" required>
+        <input type="text" class="form-control input-md" #firstName="ngModel" [(ngModel)]="candidateBasicInfo.firstName" id="candidateBasicInfo.firstName"
+          name="candidateBasicInfo.firstName" required pattern="[a-zA-Z 0-9]*">
+        <div class="alert alert-danger" [hidden]="firstName.valid">First Name is required with valid characters</div>
       </div>
 
     </div>
@@ -35,31 +37,33 @@
       <label class="control-label col-sm-3" for="candidateBasicInfo.lastName">Last Name</label>
       <div class="col-sm-5">
         <input type="text" class="form-control input-md" ngControl="candidateBasicInfo.lastName" [(ngModel)]="candidateBasicInfo.lastName"
-          name="candidateBasicInfo.lastName" id="candidateBasicInfo.lastName" required>
+          name="candidateBasicInfo.lastName" id="candidateBasicInfo.lastName">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-3" for="candidateBasicInfo.email">Email ID</label>
       <div class="col-sm-5">
-        <input type="email" class="form-control input-md" ngControl="candidateBasicInfo.email" [(ngModel)]="candidateBasicInfo.email"
-          name="candidateBasicInfo.email" id="candidateBasicInfo.email" required>
+        <input type="email" class="form-control input-md" ngControl="candidateBasicInfo.email" #emailID="ngModel" [(ngModel)]="candidateBasicInfo.email"
+          name="candidateBasicInfo.email" id="candidateBasicInfo.email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+        <div class="alert alert-danger" [hidden]="emailID.valid">Email is required and must be valid</div>
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-3" for="candidateBasicInfo.contactNumber">Mobile</label>
       <div class="col-sm-5">
-        <input type="tel" class="form-control input-md" ngControl="candidateBasicInfo.contactNumber" [(ngModel)]="candidateBasicInfo.contactNumber"
-          name="candidateBasicInfo.contactNumber" id="candidateBasicInfo.contactNumber" required>
+        <input type="tel" class="form-control input-md" ngControl="candidateBasicInfo.contactNumber" #contactNumber="ngModel" [(ngModel)]="candidateBasicInfo.contactNumber"
+          name="candidateBasicInfo.contactNumber" id="candidateBasicInfo.contactNumber" required pattern="[0-9]*" [maxLength]="10">
+        <div class="alert alert-danger" [hidden]="contactNumber.valid">Phone number should be 10 digit number</div>
       </div>
     </div>
 
     <div class="row bottom-action-CTA">
       <div class="col-xs-12 text-center">
-        <button class="btn btn-success btn-outline-rounded" (click)="onSaveEmail()">Save & E-mail Candidate <span class="glyphicon glyphicon-arrow-right" style="margin-left:10px;"></span></button>
+        <button class="btn btn-success btn-outline-rounded" [disabled]="!addressForm.valid" (click)="onSaveEmail()">Save & E-mail Candidate <span class="glyphicon glyphicon-arrow-right" style="margin-left:10px;"></span></button>
       </div>
-      <!--     
+      <!--
          <button type="button" class="col-xs-4 col-sm-3 col-md-2" (click)="onCancel()">Cancel</button> -->
     </div>
 

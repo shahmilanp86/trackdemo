@@ -3,9 +3,9 @@
 <div class="content-box-large">
   				<div class="panel panel-primary">
 					<div class="panel-heading">Onboarding Live</div>
-				
-  				<div class="panel-body">
-  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+
+  				<div class="panel-body" style="height:370px;overflow-y:scroll;">
+  					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example" >
 						<thead>
 							<tr>
 								<th>AID</th>
@@ -19,9 +19,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor='let onBoardingDetail of onBoardingDetails'>
- 
-								<td><a routerLink="/candidate-details/{{ onBoardingDetail.aid }}" routerLinkActive="active">{{ onBoardingDetail.aid }}</a></td>
+							<tr *ngFor='let onBoardingDetail of onBoardingDetails' class='pointer' (click)="activateRow(onBoardingDetail);showProgress();" [ngClass]="{'selected': onBoardingDetail.aid == selectedRow}">
+
+								<td><a routerLink="/candidate-details/{{ onBoardingDetail.aid }}" routerLinkActive="active" style="text-decration:none;"
+                       [ngClass]="{'anchorSelected': onBoardingDetail.aid == selectedRow}">{{ onBoardingDetail.aid }}</a></td>
 								<td>{{ onBoardingDetail.fullName }}</td>
 								<td>{{ onBoardingDetail.status }}</td>
 								<td>{{ onBoardingDetail.bg }}</td>
@@ -29,9 +30,26 @@
 								<td>{{ onBoardingDetail.sla }}</td>
 								<td>{{ onBoardingDetail.contactPhone }}</td>
 								<td>{{ onBoardingDetail.comments }}</td>
-							</tr>							
+							</tr>
 						</tbody>
 					</table>
   				</div>
   			</div>
         </div>
+    <div *ngIf="tabProcessing">
+      <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+    </div>
+    <div *ngIf="isProcessing">
+      <tabset>
+        <tab heading="Candidate Progess">
+          <div class="col-xs-12 progressBar">
+            <progressbar class="progress-striped" value="70" type="success">70%</progressbar>
+          </div>
+          <div class="col-xs-12">
+            Info will load Here
+          </div>
+        </tab>
+
+      </tabset>
+
+    </div>

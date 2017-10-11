@@ -30,6 +30,14 @@ export const APIURLs = {
         qa: '/contract/update',
         prod: '/contract/update',
         isExternal: false
+    },
+    'getCandidateIdrfDetails': {
+      default: '/onboard/view',
+      dev: '/candidateIDRF.json?',
+      qa: '/onboard/view',
+      prod: '/onboard/view',
+      isExternal: false
     }
+
 
 };

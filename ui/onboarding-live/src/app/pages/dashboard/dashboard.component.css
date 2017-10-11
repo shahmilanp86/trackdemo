@@ -1,0 +1,14 @@
+.selected{
+  background-color:#1677be !important;
+  font-weight: bold;
+  color:#ffffff !important;
+}
+.pointer{
+  cursor:pointer;
+}
+.anchorSelected{
+  color:#ffffff;
+}
+.progressBar{
+  padding:30px 15px 5px 15px;background-color:white;
+}

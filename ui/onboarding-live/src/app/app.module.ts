@@ -35,6 +35,7 @@ import {IDRFFormFlow} from './services/idrf-flow-guard.service';
 import { DatepickerModule, PopoverModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import {CandidateIdrfComponent} from './pages/candidate-idrf/candidate-idrf.component';
+import { ProgressbarModule, TabsModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,9 @@ import {CandidateIdrfComponent} from './pages/candidate-idrf/candidate-idrf.comp
     FormsModule,
     DatepickerModule.forRoot(),
     PopoverModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    TabsModule.forRoot()
    ],
   providers: [ConfigService, Location, DatePipe,
     { provide: FormDataService, useClass: FormDataService },

@@ -66,7 +66,7 @@
   <div class="form-group">
     <label class="control-label col-sm-3" for="phoneNum">Contact Phone</label>
     <div class="col-sm-3">
-      <input class="form-control input-md" #phoneNum="ngModel" id="phoneNum" name="phoneNum" pattern="[0-9]*" type="text" placeholder="Contact Number" [maxLength]="10" [(ngModel)]="personal.phoneNum">
+      <input class="form-control input-md" #phoneNum="ngModel" id="phoneNum" name="phoneNum" required pattern="[0-9]*" type="text" placeholder="Contact Number" [maxLength]="10" [(ngModel)]="personal.phoneNum">
       <div class="alert alert-danger" [hidden]="phoneNum.valid">Phone number should be 10 digit number</div>
     </div>
   </div>

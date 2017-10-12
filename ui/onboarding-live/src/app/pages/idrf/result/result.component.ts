@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormData } from '../data/formData.model';
 import { FormDataService } from '../data/formData.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ConfigService } from '../../../services/config.service';
 import { DatePipe } from '@angular/common';
 @Component ({
@@ -19,8 +19,9 @@ export class ResultComponent implements OnInit {
     personalInfo: object = {};
     contractInfo: object = {};
     constructor(private formDataService: FormDataService
-    , private http: HttpClient, route: ActivatedRoute, private configService: ConfigService,
-                public datepipe: DatePipe) {
+    , private http: HttpClient, route: ActivatedRoute, private configService: ConfigService
+    , public datepipe: DatePipe
+    , private router: Router) {
     this.candidateId = route.snapshot.params['id'];
     }
 
@@ -37,6 +38,7 @@ export class ResultComponent implements OnInit {
 
     submit() {
       this.http.put(this.configService.getAPIURL('addUpdateContracts'), this.idrfObject).subscribe(serviceResp => {
+        this.router.navigate(['candidate-details/' + this.candidateId]);
       });
     }
 

@@ -21,7 +21,7 @@ export class AddCandidateComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Make the HTTP request: 
+    // Make the HTTP request:
     //  NOTE: add service URL in api-urls.ts
     //this.http.get(this.configService.getAPIURL('addCandidateDetails') + '/' +this.candidateBasicInfo).subscribe(serviceResp => {
     // Read the result field from the JSON response.
@@ -31,7 +31,7 @@ export class AddCandidateComponent implements OnInit {
   }
 
   onSaveEmail() {
-
+     alert(this.candidateBasicInfo.aid);
 
     this.http.post(this.configService.getAPIURL('addCandidate'), {
       "aid": this.candidateBasicInfo.aid,
@@ -42,9 +42,9 @@ export class AddCandidateComponent implements OnInit {
       "contactPhone": this.candidateBasicInfo.contactNumber
     }).subscribe(serviceResp => {
       console.warn(serviceResp)
-      alert("Candidate have been added");      
+      alert("Candidate have been added");
       this.clearForm();
-    
+
     });
 
 
@@ -63,7 +63,7 @@ export class AddCandidateComponent implements OnInit {
     this.clearForm();
   }
     clearForm() {
-    
+
     //todo;
     this.candidateBasicInfo.aid = "";
     this.candidateBasicInfo.firstName = "";

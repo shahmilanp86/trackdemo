@@ -18,47 +18,47 @@ export class CandidateIdrfComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.http.get(this.configService.getAPIURL('getContracts') + '/' + this.candidateId).subscribe(serviceResp => {
+      this.http.get(this.configService.getAPIURL('getCandidateIdrfDetails') + '/' + this.candidateId).subscribe(serviceResp => {
         this.populateBasicInfo(serviceResp);
       });
   }
   populateBasicInfo(serviceResp){
     this.CandidateIDRFInfo.firstName= serviceResp['firstName'];
     this.CandidateIDRFInfo.lastName= serviceResp['lastName'];
-    this.CandidateIDRFInfo.emailID= serviceResp['emailID'];
-    this.CandidateIDRFInfo.appprovedContactNum= serviceResp['appprovedContactNum'];
-    this.CandidateIDRFInfo.contractEndDte= serviceResp['contractEndDte'];
-    this.CandidateIDRFInfo.cwAssignmentEndDte= serviceResp['cwAssignmentEndDte'];
-    this.CandidateIDRFInfo.candidateRoleTyp= serviceResp['candidateRoleTyp'];
-    this.CandidateIDRFInfo.returnStatus= serviceResp['returnStatus'];
-    this.CandidateIDRFInfo.formaerWorker= serviceResp['formaerWorker'];
-    this.CandidateIDRFInfo.priorSid= serviceResp['priorSid'];
-    this.CandidateIDRFInfo.priorDates= serviceResp['priorDates'];
-    this.CandidateIDRFInfo.supplierName= serviceResp['supplierName'];
-    this.CandidateIDRFInfo.cwWorkCity= serviceResp['cwWorkCity'];
-    this.CandidateIDRFInfo.cwWorkLocation= serviceResp['cwWorkLocation'];
-    this.CandidateIDRFInfo.cwWorkMailDrop= serviceResp['cwWorkMailDrop'];
+    this.CandidateIDRFInfo.emailID= serviceResp['email'];
+    this.CandidateIDRFInfo.appprovedContactNum= serviceResp.contractInfo['appprovedContactNum'];
+    this.CandidateIDRFInfo.contractEndDte= serviceResp.contractInfo['contractEndDte'];
+    this.CandidateIDRFInfo.cwAssignmentEndDte= serviceResp.contractInfo['cwAssignmentEndDte'];
+    this.CandidateIDRFInfo.candidateRoleTyp= serviceResp.contractInfo['candidateRoleTyp'];
+    this.CandidateIDRFInfo.returnStatus= serviceResp.contractInfo['returnStatus'];
+    this.CandidateIDRFInfo.formaerWorker= serviceResp.contractInfo['formaerWorker'];
+    this.CandidateIDRFInfo.priorSid= serviceResp.contractInfo['priorSid'];
+    this.CandidateIDRFInfo.priorDates= serviceResp.contractInfo['priorDates'];
+    this.CandidateIDRFInfo.supplierName= serviceResp.contractInfo['supplierName'];
+    this.CandidateIDRFInfo.cwWorkCity= serviceResp.contractInfo['cwWorkCity'];
+    this.CandidateIDRFInfo.cwWorkLocation= serviceResp.contractInfo['cwWorkLocation'];
+    this.CandidateIDRFInfo.cwWorkMailDrop= serviceResp.contractInfo['cwWorkMailDrop'];
     this.CandidateIDRFInfo.homeZip= serviceResp['homeZip'];
-    this.CandidateIDRFInfo.usArmedForces= serviceResp['usArmedForces'];
-    this.CandidateIDRFInfo.registeredNotaryPublic= serviceResp['registeredNotaryPublic'];
-    this.CandidateIDRFInfo.csiInfoAccess= serviceResp['csiInfoAccess'];
-    this.CandidateIDRFInfo.candidateReferredToYou= serviceResp['candidateReferredToYou'];
-    this.CandidateIDRFInfo.referralOriginate= serviceResp['referralOriginate'];
-    this.CandidateIDRFInfo.candiateSeletedWithinGuidelines= serviceResp['candiateSeletedWithinGuidelines'];
+    this.CandidateIDRFInfo.usArmedForces= serviceResp.contractInfo['usArmedForces'];
+    this.CandidateIDRFInfo.registeredNotaryPublic= serviceResp.contractInfo['registeredNotaryPublic'];
+    this.CandidateIDRFInfo.csiInfoAccess= serviceResp.contractInfo['csiInfoAccess'];
+    this.CandidateIDRFInfo.candidateReferredToYou= serviceResp.contractInfo['candidateReferredToYou'];
+    this.CandidateIDRFInfo.referralOriginate= serviceResp.contractInfo['referralOriginate'];
+    this.CandidateIDRFInfo.candiateSeletedWithinGuidelines= serviceResp.contractInfo['candiateSeletedWithinGuidelines'];
     this.CandidateIDRFInfo.currentAddress= serviceResp['currentAddress'];
-    this.CandidateIDRFInfo.serviceType= serviceResp['serviceType'];
-    this.CandidateIDRFInfo.fullORPartTime= serviceResp['fullORPartTime'];
-    this.CandidateIDRFInfo.paymentType= serviceResp['paymentType'];
-    this.CandidateIDRFInfo.costCenter= serviceResp['costCenter'];
-    this.CandidateIDRFInfo.cwJobCode= serviceResp['cwJobCode'];
-    this.CandidateIDRFInfo.lobName= serviceResp['lobName'];
-    this.CandidateIDRFInfo.cwAssignmentStartDte= serviceResp['cwAssignmentStartDte'];
-    this.CandidateIDRFInfo.sponsorId= serviceResp['sponsorId'];
-    this.CandidateIDRFInfo.sponsorLastName= serviceResp['sponsorLastName'];
-    this.CandidateIDRFInfo.sponsorFirstName= serviceResp['sponsorFirstName'];
-    this.CandidateIDRFInfo.emailRequired= serviceResp['emailRequired'];
-    this.CandidateIDRFInfo.spocEmail= serviceResp['spocEmail'];
-    this.CandidateIDRFInfo.itornonIT= serviceResp['itornonIT'];
+    this.CandidateIDRFInfo.serviceType= serviceResp.contractInfo['serviceType'];
+    this.CandidateIDRFInfo.fullORPartTime= serviceResp.contractInfo['fullORPartTime'];
+    this.CandidateIDRFInfo.paymentType= serviceResp.contractInfo['paymentType'];
+    this.CandidateIDRFInfo.costCenter= serviceResp.contractInfo['costCenter'];
+    this.CandidateIDRFInfo.cwJobCode= serviceResp.contractInfo['cwJobCode'];
+    this.CandidateIDRFInfo.lobName= serviceResp.contractInfo['lobName'];
+    this.CandidateIDRFInfo.cwAssignmentStartDte= serviceResp.contractInfo['cwAssignmentStartDte'];
+    this.CandidateIDRFInfo.sponsorId= serviceResp.contractInfo['sponsorId'];
+    this.CandidateIDRFInfo.sponsorLastName= serviceResp.contractInfo['sponsorLastName'];
+    this.CandidateIDRFInfo.sponsorFirstName= serviceResp.contractInfo['sponsorFirstName'];
+    this.CandidateIDRFInfo.emailRequired= serviceResp.contractInfo['emailRequired'];
+    this.CandidateIDRFInfo.spocEmail= serviceResp.contractInfo['spocEmail'];
+    this.CandidateIDRFInfo.itornonIT= serviceResp.contractInfo['itornonIT'];
   }
 
 

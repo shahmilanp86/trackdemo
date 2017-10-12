@@ -4,7 +4,8 @@ import { Personal } from '../data/formData.model';
 import { FormDataService } from '../data/formData.service';
 import { ConfigService } from '../../../services/config.service';
 import { HttpClient } from '@angular/common/http';
-
+import { WorkflowService } from '../workflow/workflow.service';
+import { STEPS } from '../workflow/workflow.model';
 
 @Component ({
     selector:     'mt-wizard-personal',
@@ -18,7 +19,8 @@ export class PersonalComponent implements OnInit, PipeTransform {
     candidateId: string;
 
     constructor(private formDataService: FormDataService
-                , private http: HttpClient, route: ActivatedRoute, private configService: ConfigService) {
+                , private http: HttpClient, route: ActivatedRoute, private configService: ConfigService
+                , private workflowService: WorkflowService) {
       this.candidateId = route.snapshot.params['id'];
     }
 
@@ -67,6 +69,7 @@ export class PersonalComponent implements OnInit, PipeTransform {
           return;
         }
         this.formDataService.setPersonal(this.personal);
+        this.workflowService.validateStep(STEPS.personal);
     }
 
   transform(value: any, args?: any[]): any[] {

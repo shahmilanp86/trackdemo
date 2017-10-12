@@ -64,7 +64,7 @@ export class FormDataService {
         this.formData.paymentType = data.paymentType;
         this.formData.itornonIT = data.itornonIT;
         // Validate Personal Step in Workflow
-        this.workflowService.validateStep(STEPS.personal);
+
     }
 
     getWork(): Work {
@@ -134,7 +134,7 @@ export class FormDataService {
         this.formData.cwAssignmentStartDte = data.cwAssignmentStartDte;
         /*this.formData.itornonIT = data.itornonIT;*/
         // Validate Work Step in Workflow
-        this.workflowService.validateStep(STEPS.work);
+
     }
 
     getAddress(): Address {
@@ -158,7 +158,7 @@ export class FormDataService {
         this.formData.emailRequired = data.emailRequired;
         this.formData.spocEmail = data.spocEmail;
         // Validate Address Step in Workflow
-        this.workflowService.validateStep(STEPS.address);
+
     }
 
     getFormData(): FormData {

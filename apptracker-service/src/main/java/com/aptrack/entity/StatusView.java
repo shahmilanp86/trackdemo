@@ -1,5 +1,6 @@
 package com.aptrack.entity;
 
+import com.aptrack.common.StatusFlag;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Builder;
 import lombok.Data;
@@ -15,15 +16,17 @@ public class StatusView {
     public StatusView() {
 
     }
-    public StatusView(Long aid, Integer bgCheck,Integer demograph,Integer currentStatus) {
+    public StatusView(Long aid, Integer bgCheck, Integer demograph, Integer currentStatus, StatusFlag inputFlg) {
         this.aid =aid;
         this.bgCheck=bgCheck;
         this.demograph =demograph;
         this.currentStatus=currentStatus;
+        this.inputFlg = inputFlg;
     }
     private Long aid;
     private Integer bgCheck;
     private Integer demograph;
     private Integer currentStatus;
+    private StatusFlag inputFlg;
 
 }

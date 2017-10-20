@@ -18,8 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.aptrack.common.CommonPoperties.CANDIDAE_INITIAL_SLA;
-import static com.aptrack.common.Status.CANDIDATE_INITIATE_BG;
-import static com.aptrack.common.Status.CANDIDATE_INITIATE_DEMOGRAPH;
+import static com.aptrack.common.Status.*;
 import static java.util.stream.Collectors.toList;
 
 
@@ -91,8 +90,9 @@ public class NotificationServiceImpl implements NotificationService {
         }*/
     }
 
-    private static List<Status> candidateStatus = Lists.newArrayList(CANDIDATE_INITIATE_BG,
-            CANDIDATE_INITIATE_DEMOGRAPH);
+    private static List<Status> candidateStatus = Lists.newArrayList(INITIATED_BG_AND_AWAITING_DEMOGRAPH,
+            AWAITING_BG_AND_INITIATED_DEMOGRAPH,
+            INITIATED_BG_AND_INITIATED_DEMOGRAPH);
 
     private List<String> getEmailsByRoles(List<UserInfo> users, CandidateInfo candidate, Status status) {
 

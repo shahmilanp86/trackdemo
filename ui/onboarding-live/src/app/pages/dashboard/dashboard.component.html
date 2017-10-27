@@ -19,7 +19,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor='let onBoardingDetail of onBoardingDetails' class='pointer' (click)="activateRow(onBoardingDetail);showProgress(onBoardingDetail.status);" [ngClass]="{'selected': onBoardingDetail.aid == selectedRow}">
+							<tr *ngFor='let onBoardingDetail of onBoardingDetails' class='pointer' (click)="activateRow(onBoardingDetail.aid);showProgress(onBoardingDetail.aid, onBoardingDetail.status);" [ngClass]="{'selected': onBoardingDetail.aid == selectedRow}">
 
 								<td><a routerLink="/candidate-details/{{ onBoardingDetail.aid }}" routerLinkActive="active" style="text-decration:none;"
                        [ngClass]="{'anchorSelected': onBoardingDetail.aid == selectedRow}">{{ onBoardingDetail.aid }}</a></td>
@@ -42,10 +42,18 @@
     <div *ngIf="isProcessing">
       <tabset style="font-weight: bold;">
         <tab heading="Candidate Progess" >
-          <div class="col-xs-12 progressBar">
-            <progressbar class="progress-striped" value="{{progressPercent}}" type="{{progressColor}}">{{progressPercent}}%</progressbar>
+          <div class="pull-right">
+            <div class="pull-left" style="padding:10px 10px 10px 0px" *ngIf="showPrevButton">
+              <button  class="btn btn-success btn-outline-rounded btn-info" (click)= "updateStatus(prevBgButtonValue, nextBgButtonValue);" > {{prevButtonText}} <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+            </div>
+            <div class="pull-left" style="padding:10px 10px 10px 0px" *ngIf="showNxtButton">
+              <button  class="btn btn-success btn-outline-rounded btn-info" [disabled]="disableButton" (click)= "updateStatus(prevDgButtonValue, nextDgButtonValue);" > {{nextButtonText}} <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+            </div>
           </div>
-          <div class="col-xs-12" style="padding-top:15px;padding-bottom:20px;">
+         <!-- <div class="col-xs-12 progressBar">
+            <progressbar class="progress-striped" value="{{progressPercent}}" type="{{progressColor}}">{{progressPercent}}%</progressbar>
+          </div>-->
+         <!-- <div class="col-xs-12" style="padding-top:15px;padding-bottom:20px;">
               <div class="col-xs-6" *ngFor='let completedSteps of completedSteps'>
                 <div class="col-xs-10">{{completedSteps}}</div>
                 <div class="col-xs-2"><span class="glyphicon glyphicon-ok text-success"></span></div>
@@ -54,7 +62,7 @@
                 <div class="col-xs-10">{{inCompleteSteps}}</div>
                 <div class="col-xs-2"><span class="glyphicon glyphicon-remove text-danger"></span></div>
               </div>
-          </div>
+          </div>-->
         </tab>
 
       </tabset>

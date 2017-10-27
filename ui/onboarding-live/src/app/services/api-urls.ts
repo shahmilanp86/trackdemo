@@ -37,7 +37,14 @@ export const APIURLs = {
       qa: '/onboard/view',
       prod: '/onboard/view',
       isExternal: false
-    }
+    },
+    'updateNextStatus': {
+      default: '/onboard/nextstatus',
+      dev: '/onboard/nextstatus',
+      qa: '/onboard/nextstatus',
+      prod: '/onboard/nextstatus',
+      isExternal: false
+  }
 
 
 };

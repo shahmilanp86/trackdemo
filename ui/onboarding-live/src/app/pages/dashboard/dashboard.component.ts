@@ -27,26 +27,41 @@ export class DashboardComponent implements OnInit {
       '106': 'HR TO GET PI',
       '107': 'HR TO NOTIFY CLIENT',
       '108': 'AWAITING SID',
-      '109': 'AWAITING BG AND DEMOGRAPH',
-      '110': 'AWAITING BG AND COMPLETED DEMOGRAPH',
-      '111': 'COMPLETED BG AND AWAITING DEMOGRAPH',
-      '112': 'SPOC TO CHECK VENDOR MGMT',
-      '113': 'CCB FLAG',
-      '114': 'START DATE',
-      '301': 'CANDIDATE INITIATE BG',
-      '302': 'CANDIDATE INITIATE DEMOGRAPH'
+
+
+      '200': 'AWAITING BG AND DEMOGRAPH',
+      '201': 'AWAITING BG AND INITIATED DEMOGRAPH',
+      '202': 'AWAITING BG AND COMPLETED DEMOGRAPH',
+      '210': 'INITIATED BG AND AWAITING DEMOGRAPH',
+      '211': 'INITIATED BG AND INITIATED DEMOGRAPH',
+      '220': 'COMPLETED BG AND AWAITING DEMOGRAPH',
+      '221': 'COMPLETED BG AND INITIATED DEMOGRAPH',
+      '212': 'INITIATED BG AND COMPLETED DEMOGRAPH',
+      '222': 'COMPLETED BG AND COMPLETED DEMOGRAPH',
+
+
+      '300': 'SPOC TO CHECK VENDOR MGMT',
+      '301': 'CCB FLAG',
+      '302': 'START DATE'
     };
   completedSteps: Array<string>;
   inCompleteSteps: Array<string>;
   progressPercent: number;
   progressColor: string;
+  showPrevButton: boolean = false;
+  showNxtButton: boolean = false;
+  nextButtonText: string;
+  prevButtonText: string;
+  prevBgButtonValue: string ;
+  nextBgButtonValue: string ;
+  prevDgButtonValue: string ;
+  nextDgButtonValue: string ;
+  statusUpdateObj: object= {};
+  candidateID: any;
+  candidateStatus: number;
+  disableButton: boolean = false;
   constructor(private http: HttpClient, route: ActivatedRoute, private configService: ConfigService) {
-    // this.onBoardingDetails = [
-    //   new OnBoardingDetail('e464649','Robert Will', 'Candidate to be informed', 'N/A', null, 'Today', 'N/A', null),
-    //   new OnBoardingDetail('e464641','Tom Edward', 'Candidate info level 1 needed', 'N/A', null, 'Today', 'N/A', null),
-    //   new OnBoardingDetail('t464649','Sumit Adule', 'Awaiting BG and Demographics', 'Awaiting Vendor', 'Complete', '2 days', '9918105401', null),
-    //   new OnBoardingDetail('h464649','Lin Jin', 'Candidate to be informed', 'N/A', null, 'Today', '2809501253', null),
-    // ];
+
   }
 
   ngOnInit() {
@@ -81,36 +96,88 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  activateRow(onBoardingDetail) {
-    this.selectedRow = onBoardingDetail.aid;
+  activateRow(aid) {
+    this.selectedRow = aid;
   }
 
-  showProgress(statusCode) {
-    this.completedSteps = [];
-    this.inCompleteSteps = [];
-    this.tabProcessing = true;
-    for (const entry of this.statusList) {
-      this.completedSteps.push(this.statusMap[entry]);
-      if (entry === statusCode) {
-        this.getIncompleteSteps(statusCode);
-        break;
+  showProgress(aid, status) {
+    this.candidateStatus = status;
+    this.candidateID = aid;
+    this.isProcessing = true;
+    this.prevBgButtonValue = '';
+    this.nextBgButtonValue = '';
+    this.prevDgButtonValue = '';
+    this.nextDgButtonValue = '';
+    this.disableButton = false;
+    const regExpOne = /^1[0-9].*$/;
+    const regExpTwo = /^2[0-9].*$/;
+    const regExpThree = /^3[0-9].*$/;
+    if (regExpOne.test(this.candidateStatus.toString()) ) {
+      this.showPrevButton = false;
+      this.showNxtButton = true;
+      if (108 ===  this.candidateStatus) {
+        this.nextButtonText = 'AWAITING BG AND DEMOGRAPH';
+      }else {
+        this.nextButtonText = this.statusMap[this.candidateStatus + 1];
+      }
+    }else if (regExpTwo.test(this.candidateStatus.toString())) {
+      this.showPrevButton = true;
+      this.showNxtButton = true;
+      var digits = this.candidateStatus.toString().split('');
+      if (digits[1] === '0') {
+        this.prevButtonText = 'BG Awaiting';
+        this.prevBgButtonValue = 'BG';
+        this.prevDgButtonValue = '';
+      }else if (digits[1] === '1') {
+        this.prevButtonText = 'BG initiated by Spoc';
+        this.prevBgButtonValue = 'BG';
+        this.prevDgButtonValue = '';
+      }else{
+        this.showPrevButton = false;
+      }
+      if (digits[2] === '0') {
+        this.nextButtonText = 'DG Awaiting';
+        this.nextBgButtonValue = '';
+        this.nextDgButtonValue = 'DG';
+      }else if (digits[2] === '1') {
+        this.nextButtonText = 'DG initiated by Spoc';
+        this.nextBgButtonValue = '';
+        this.nextDgButtonValue = 'DG';
+      }else{
+        this.showNxtButton = false;
+      }
+    }else if(regExpThree.test(this.candidateStatus.toString())) {
+      this.showPrevButton = false;
+      this.showNxtButton = true;
+      if (302 ===  this.candidateStatus) {
+        this.nextButtonText = 'Completed';
+        this.disableButton = true;
+      }else {
+        this.nextButtonText = this.statusMap[this.candidateStatus + 1];
       }
     }
-    this.progressPercent = Math.round((this.completedSteps.length) * 100 / Object.keys(this.statusMap).length);
-    this.progressPercent > 50 ? this.progressColor = 'success' : this.progressColor = 'danger';
-    this.isProcessing = true;
-    this.tabProcessing = false;
   }
 
-  getIncompleteSteps(statusCode) {
-    const index = this.statusList.indexOf(statusCode);
-    for (let i = index + 1; i < this.statusList.length; i++) {
-      this.inCompleteSteps.push(this.statusMap[this.statusList[i]]);
-    }
-    }
+  updateStatus(bgButtonValue, dgButtonValue) {
+    this.statusUpdateObj['aid'] = this.candidateID;
+    this.statusUpdateObj['bgCheck'] = bgButtonValue;
+    this.statusUpdateObj['demograph'] = dgButtonValue;
+    this.http.put(this.configService.getAPIURL('updateNextStatus'), this.statusUpdateObj).subscribe(serviceResp => {
+      this.updateRecord();
+    });
+  }
+  updateRecord () {
+    this.http.get(this.configService.getAPIURL('candidateList')).subscribe(serviceResp => {
 
+      this.populateBasicInfo(serviceResp);
+      this.activateRow(this.candidateID);
+      this.showProgress(this.candidateID, this.candidateStatus);
+    });
 
+  }
 }
+
+
 
 class OnBoardingDetail {
 

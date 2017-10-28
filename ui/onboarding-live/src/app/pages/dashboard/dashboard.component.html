@@ -24,9 +24,9 @@
 								<td><a routerLink="/candidate-details/{{ onBoardingDetail.aid }}" routerLinkActive="active" style="text-decration:none;"
                        [ngClass]="{'anchorSelected': onBoardingDetail.aid == selectedRow}">{{ onBoardingDetail.aid }}</a></td>
 								<td>{{ onBoardingDetail.fullName }}</td>
-								<td>{{ onBoardingDetail.status }}</td>
-								<td>{{ onBoardingDetail.bg }}</td>
-								<td>{{ onBoardingDetail.demograph }}</td>
+								<td>{{ statusMap[onBoardingDetail.status] }}</td>
+								<td>{{ getBgDgContent(onBoardingDetail.bg, 'BG') }}</td>
+								<td>{{ getBgDgContent(onBoardingDetail.demograph, 'DG') }}</td>
 								<td>{{ onBoardingDetail.sla }}</td>
 								<td>{{ onBoardingDetail.contactPhone }}</td>
 								<td>{{ onBoardingDetail.comments }}</td>
@@ -50,10 +50,10 @@
               <button  class="btn btn-success btn-outline-rounded btn-info" [disabled]="disableButton" (click)= "updateStatus(prevDgButtonValue, nextDgButtonValue);" > {{nextButtonText}} <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
             </div>
           </div>
-         <!-- <div class="col-xs-12 progressBar">
+          <div class="col-xs-12 progressBar">
             <progressbar class="progress-striped" value="{{progressPercent}}" type="{{progressColor}}">{{progressPercent}}%</progressbar>
-          </div>-->
-         <!-- <div class="col-xs-12" style="padding-top:15px;padding-bottom:20px;">
+          </div>
+          <div class="col-xs-12" style="padding-top:15px;padding-bottom:20px;">
               <div class="col-xs-6" *ngFor='let completedSteps of completedSteps'>
                 <div class="col-xs-10">{{completedSteps}}</div>
                 <div class="col-xs-2"><span class="glyphicon glyphicon-ok text-success"></span></div>
@@ -62,7 +62,7 @@
                 <div class="col-xs-10">{{inCompleteSteps}}</div>
                 <div class="col-xs-2"><span class="glyphicon glyphicon-remove text-danger"></span></div>
               </div>
-          </div>-->
+          </div>
         </tab>
 
       </tabset>

@@ -203,8 +203,14 @@ export class DashboardComponent implements OnInit {
 
   updateStatus(bgButtonValue, dgButtonValue) {
     this.statusUpdateObj['aid'] = this.candidateID;
-    this.statusUpdateObj['bgCheck'] = bgButtonValue;
-    this.statusUpdateObj['demograph'] = dgButtonValue;
+    if(bgButtonValue != '') {
+      this.statusUpdateObj['inputFlg'] = bgButtonValue;
+    }else if(dgButtonValue != '') {
+      this.statusUpdateObj['inputFlg'] = 'DEMO';
+    }
+    else {
+      this.statusUpdateObj['inputFlg'] = '';
+    }
     this.http.put(this.configService.getAPIURL('updateNextStatus'), this.statusUpdateObj).subscribe(serviceResp => {
       this.updateRecord();
     });

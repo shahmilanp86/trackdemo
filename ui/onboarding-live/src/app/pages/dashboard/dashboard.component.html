@@ -25,8 +25,8 @@
                        [ngClass]="{'anchorSelected': onBoardingDetail.aid == selectedRow}">{{ onBoardingDetail.aid }}</a></td>
 								<td>{{ onBoardingDetail.fullName }}</td>
 								<td>{{ statusMap[onBoardingDetail.status] }}</td>
-								<td>{{ getBgDgContent(onBoardingDetail.bg, 'BG') }}</td>
-								<td>{{ getBgDgContent(onBoardingDetail.demograph, 'DG') }}</td>
+								<td>{{ onBoardingDetail.bg }}</td>
+								<td>{{ onBoardingDetail.demograph }}</td>
 								<td>{{ onBoardingDetail.sla }}</td>
 								<td>{{ onBoardingDetail.contactPhone }}</td>
 								<td>{{ onBoardingDetail.comments }}</td>

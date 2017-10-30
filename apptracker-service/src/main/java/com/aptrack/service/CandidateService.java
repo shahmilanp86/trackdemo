@@ -10,7 +10,7 @@ import java.util.Collection;
 public interface CandidateService {
     Collection<CandidateInfo> findAll();
 
-    CandidateInfo get(Long aid);
+    CandidateInfo get(String aid);
 
     CandidateInfo create(CandidateInfo candidate);
 

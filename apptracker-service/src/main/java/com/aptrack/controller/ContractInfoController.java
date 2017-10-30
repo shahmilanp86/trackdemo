@@ -6,10 +6,13 @@ import com.aptrack.service.ContingentWorkerDetailsService;
 import com.aptrack.service.ContractService;
 import com.aptrack.utils.ExcelUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.util.Optional;
 
 @RestController
 public class ContractInfoController {
@@ -44,7 +47,6 @@ public class ContractInfoController {
             @RequestBody ContractInfo contract) {
 
         ContractInfo savedContract = contractService.create(contract);
-
         return new ResponseEntity<ContractInfo>(savedContract, HttpStatus.CREATED);
     }
 
@@ -71,7 +73,7 @@ public class ContractInfoController {
             value = "/api/contract/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ContingentWorkerDetails> getDetails(@PathVariable("id") Long id) {
+    public ResponseEntity<ContingentWorkerDetails> getDetails(@PathVariable("id") String id) {
 
         ContingentWorkerDetails contingentWorkerDetails = contingentWorkerDetailsService.get(id);
         if (contingentWorkerDetails == null) {
@@ -91,17 +93,42 @@ public class ContractInfoController {
             @RequestBody ContingentWorkerDetails contract) {
 
         //TODO Test
+        ExcelUtils.generateWithByteArray(contract);
         ContingentWorkerDetails updatedContract = contingentWorkerDetailsService.update(contract);
-
-      //  ExcelUtils.generate(contract);
-
-
-
         if (updatedContract == null) {
             return new ResponseEntity<ContingentWorkerDetails>(
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<ContingentWorkerDetails>(updatedContract, HttpStatus.CREATED);
+    }
+
+
+    @RequestMapping(
+            value = "/api/contract/download/{id}",
+            method = RequestMethod.GET)
+    public  @ResponseBody HttpEntity<byte[]> download(@PathVariable("id") String id) throws IOException {
+
+        byte[] document = Optional.ofNullable(contingentWorkerDetailsService.download(id)).map(arr -> arr.toByteArray())
+                .orElse(null);
+
+
+        HttpHeaders header = new HttpHeaders();
+       // header.setContentType(new MediaType("application", "pdf"));
+       // header.set("Content-Disposition", "inline; filename=" + id);
+        header.setContentType(new MediaType("application", "octet-stream"));
+
+        header.set( "Content-Disposition", "Attachment;Filename=\""+id+".xls\"");
+
+        header.setContentLength(document.length);
+        return new HttpEntity<byte[]>(document, header);
+        // ...
+       // ByteArrayResource resource = new ByteArrayResource(contingentWorkerDetailsService.download(id).toByteArray());
+/*
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(resource.length())
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .body(resource);*/
     }
 
 

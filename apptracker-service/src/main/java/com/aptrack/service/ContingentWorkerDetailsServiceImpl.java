@@ -5,10 +5,12 @@ import com.aptrack.entity.ContingentWorkerDetails;
 import com.aptrack.entity.ContractInfo;
 import com.aptrack.repository.CandidateInfoRepository;
 import com.aptrack.repository.ContractInfoRepository;
+import com.aptrack.utils.ExcelUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -42,7 +44,7 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
     }
 
     @Override
-    public ContingentWorkerDetails get(Long aid) {
+    public ContingentWorkerDetails get(String aid) {
 
 
        /* CandidateInfo candidate = candidateInfoRepository.findOne(aid);
@@ -70,12 +72,15 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
     @Transactional
     public ContingentWorkerDetails update(ContingentWorkerDetails details) {
 
-        /*candidateService.update(details.getPersonalInfo());
-        contractService.create(details.getContractInfo());
-*/
-
-        return new ContingentWorkerDetails(details.getAid(),candidateService.update(details.getPersonalInfo()),
+      return new ContingentWorkerDetails(details.getAid(),candidateService.update(details.getPersonalInfo()),
                 contractService.update(details.getContractInfo()));
+
+    }
+
+
+    public ByteArrayOutputStream download(String id){
+        ;
+        return ExcelUtils.generateWithByteArray(get(id)) ;
 
     }
 
@@ -83,7 +88,7 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
 
 
         ContractInfo contractInfo = contracts.stream()
-                .filter(con -> con.getAid() == candidate.getAid())
+                .filter(con -> con.getAid().equalsIgnoreCase(candidate.getAid()))
                 .findFirst()
                 .orElse(null);
         return new ContingentWorkerDetails(contractInfo.getAid(),candidate,contractInfo);

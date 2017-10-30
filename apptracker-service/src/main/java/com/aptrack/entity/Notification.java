@@ -12,21 +12,19 @@ import lombok.Data;
 @Data
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, isGetterVisibility = JsonAutoDetect.Visibility.NONE)
 
-public class StatusView {
-    public StatusView() {
+public class Notification {
+    public Notification() {
 
     }
-    public StatusView(String aid, Integer bgCheck, Integer demograph, Integer currentStatus, StatusFlag inputFlg) {
+    public Notification(String aid, Integer currentStatus, Boolean remainder) {
         this.aid =aid;
-        this.bgCheck=bgCheck;
-        this.demograph =demograph;
-        this.currentStatus=currentStatus;
-        this.inputFlg = inputFlg;
+        this.remainder=remainder;
+        this.currentStatus =currentStatus;
+        this.remainder = remainder;
     }
     private String aid;
-    private Integer bgCheck;
-    private Integer demograph;
     private Integer currentStatus;
-    private StatusFlag inputFlg;
+    private Boolean remainder;
+
 
 }

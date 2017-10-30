@@ -19,7 +19,7 @@ import javax.persistence.OneToOne;
 public class CandidateInfo {
 
     @Id
-    private Long aid;
+    private String aid;
     private String lastName;
     private String firstName;
     private String midInitial;

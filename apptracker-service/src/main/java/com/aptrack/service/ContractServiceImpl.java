@@ -24,7 +24,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public ContractInfo get(Long aid) {
+    public ContractInfo get(String aid) {
         return contractInfoRepository.findOne(aid);
     }
 
@@ -37,12 +37,12 @@ public class ContractServiceImpl implements ContractService {
     public ContractInfo update(ContractInfo updated) {
 
         ContractInfo  existing = contractInfoRepository.findOne(updated.getAid());
-        ContractInfo data =  Optional.ofNullable(existing).map(ext -> {copyProperties(updated,existing,
-                getNullPropertyNames(updated));
-        return updated;})
+        ContractInfo data = Optional.ofNullable(existing).map(ext -> {
+            copyProperties(updated, existing, getNullPropertyNames(updated));
+            return updated;
+        })
                 .orElse(updated);
        // copyProperties(updated,existing, getNullPropertyNames(updated));
-
 
         //return contractInfoRepository.save(existing);
         return contractInfoRepository.save(data);

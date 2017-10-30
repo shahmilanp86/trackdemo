@@ -45,7 +45,7 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public CandidateInfo get(Long aid) {
+    public CandidateInfo get(String aid) {
 
         return candidateInfoRepository.findOne(aid);
     }
@@ -64,7 +64,8 @@ public class CandidateServiceImpl implements CandidateService {
     private CandidateInfo saveDetails(CandidateInfo candidate) {
         CandidateInfo candidateInfo = candidateInfoRepository.save(candidate);
         //TODO null values of DATETIME feilds in DB table tobe fixed.
-        onboardingStatusService.update(candidate.getAid());
+        //onboardingStatusService.update(candidate.getAid());
+        onboardingStatusService.add(candidate.getAid());
 
 
         // String[] toList = {candidate.getEmail()};

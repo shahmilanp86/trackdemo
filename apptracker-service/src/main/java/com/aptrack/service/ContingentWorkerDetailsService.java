@@ -2,6 +2,7 @@ package com.aptrack.service;
 
 import com.aptrack.entity.ContingentWorkerDetails;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Collection;
 
 /**
@@ -11,9 +12,12 @@ public interface ContingentWorkerDetailsService {
 
     Collection<ContingentWorkerDetails> findAll();
 
-    ContingentWorkerDetails get(Long aid);
+    ContingentWorkerDetails get(String aid);
 
     ContingentWorkerDetails create(ContingentWorkerDetails contract);
 
     ContingentWorkerDetails update(ContingentWorkerDetails contract);
+
+    ByteArrayOutputStream download(String id);
+
 }

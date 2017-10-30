@@ -3,14 +3,11 @@ package com.aptrack.entity;
 import com.aptrack.common.FormerWorker;
 import com.aptrack.common.YesORNo;
 import com.aptrack.entity.converter.LocalDateConverter;
-import com.aptrack.entity.converter.LocalDateTimeConverter;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Data;
 
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Date;
 
 /**
  * Created by Murthy on 7/16/2017.
@@ -22,7 +19,7 @@ import java.sql.Date;
 public class ContractInfo {
 
     @Id
-    private Long aid;
+    private String aid;
     private Long appprovedContactNum;
 
     @Convert(converter = LocalDateConverter.class)

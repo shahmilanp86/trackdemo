@@ -37,7 +37,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     // @Transactional
-    public void sendEmail(Long aid, Status status, Boolean remainder) {
+    public Boolean sendEmail(String aid, Status status, Boolean remainder) {
         //Get roles to act on the status
         final List<Integer> roles = Arrays.asList(status
                 .getRoles())
@@ -88,6 +88,8 @@ public class NotificationServiceImpl implements NotificationService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }*/
+
+    return true;
     }
 
     private static List<Status> candidateStatus = Lists.newArrayList(INITIATED_BG_AND_AWAITING_DEMOGRAPH,
@@ -120,7 +122,7 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     //TODO
-    private String[] attachmentLoc(Long id) {
+    private String[] attachmentLoc(String id) {
         return null;
     }
 

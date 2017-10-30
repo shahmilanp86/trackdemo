@@ -7,7 +7,11 @@ import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import java.time.LocalDateTime;
+import java.util.Optional;
 
+
+import static com.aptrack.utils.ApptrackerUtils.dateTimeTotring;
 /**
  * Created by Murthy on 7/19/2017.
  */
@@ -15,7 +19,7 @@ import javax.persistence.Transient;
 @Entity
 public class OnboardingStatus {
     @Id
-    private Long aid;
+    private String aid;
     private Integer bgCheck;
     @Convert(converter = LocalDateTimeConverter.class)
     private String bgCheckUpdTm;
@@ -35,5 +39,6 @@ public class OnboardingStatus {
     private String urlCreatedTm;
     @Transient
     private Integer currentSLA;
+
 
 }

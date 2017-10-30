@@ -567,10 +567,16 @@ GET
 
 localhost:8080/api/onboard/nextstatus
 PUT
-
 {
 
-    "aid": 1234,
-    "bgCheck": 100,
-    "demograph": 100
+    "aid": "7777",
+    "inputFlg": "BG" // BG or DEMO ... AND null for currentStatus
 }
+
+localhost:8080/api/onboard/notify
+POST
+ {
+        "aid": "123",
+        "currentStatus": 200,
+        "remainder": false
+    }

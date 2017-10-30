@@ -7,6 +7,6 @@ import com.aptrack.common.Status;
  */
 public interface NotificationService {
 
-    void sendEmail(Long aid, Status status, Boolean remainder);
+    Boolean sendEmail(String aid, Status status, Boolean remainder);
 
 }

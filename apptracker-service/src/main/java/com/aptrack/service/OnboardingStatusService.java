@@ -8,10 +8,12 @@ import com.aptrack.entity.StatusView;
  */
 public interface OnboardingStatusService {
 
-    OnboardingStatus get(Long aid);
+    OnboardingStatus get(String aid);
+    //OnboardingStatus add(OnboardingStatus status);
     OnboardingStatus update(OnboardingStatus status);
-    OnboardingStatus update(Long aid);
+    OnboardingStatus update(String aid);
 
     StatusView nextStatus(StatusView statusView);
 
+    OnboardingStatus add(String aid);
 }

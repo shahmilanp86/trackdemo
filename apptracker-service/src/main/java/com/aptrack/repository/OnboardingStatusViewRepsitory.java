@@ -23,7 +23,7 @@ public interface OnboardingStatusViewRepsitory extends CrudRepository<CandidateI
     List<OnboardingView> findStatusAll();
 
     @Query("SELECT o FROM OnboardingSummaryView o left join o.onboardingStatus s left join o.contractInfo c  where o.aid =:id")
-    OnboardingSummaryView findStatusSummary(@Param("id") Long id);
+    OnboardingSummaryView findStatusSummary(@Param("id") String id);
 
 
 

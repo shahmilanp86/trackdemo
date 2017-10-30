@@ -31,7 +31,7 @@ public class OnboardingViewServiceImpl implements OnboardingViewService {
     }
 
     @Override
-    public OnboardingSummaryView summary(Long aid) {
+    public OnboardingSummaryView summary(String aid) {
         return viewRepsitory.findStatusSummary(aid);
     }
 

@@ -3,22 +3,16 @@ package com.aptrack.utils;
 import com.aptrack.entity.CandidateInfo;
 import com.aptrack.entity.ContingentWorkerDetails;
 import com.aptrack.entity.ContractInfo;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OptionalDataException;
 import java.util.Optional;
-import java.util.function.Function;
 
 /**
  * Created by admin on 9/26/17.
@@ -29,8 +23,10 @@ public static void main(String[] s){
     //generate();
 }
 
-private static final String OUTFILE = "/Users/admin/Documents/workspace/apptracker-service-murthy/apptracker-service/src/main/resources/data/new.xlsx";
-    private static final String TEMPLATE = "/Users/admin/Documents/workspace/apptracker-service-murthy/apptracker-service/src/main/resources/data/OnboardingTemplate.xlsx";
+private static final String OUTFILE = "C:\\data\\Murthy\\work\\POC\\apptracker\\apptracker-service\\src\\main" +
+        "\\resources\\data\\new.xlsx";
+    private static final String TEMPLATE = "C:\\data\\Murthy\\work\\POC\\apptracker\\apptracker-service\\src\\main" +
+            "\\resources\\data\\OnboardingTemplate.xlsx";
 
 
 
@@ -61,6 +57,30 @@ public static void generate(ContingentWorkerDetails details) {
 
     
     }
+
+
+    public static ByteArrayOutputStream generateWithByteArray(ContingentWorkerDetails details) {
+        try (FileInputStream fis = new FileInputStream(TEMPLATE); ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+
+            XSSFWorkbook wb = new XSSFWorkbook(fis);
+            //Sheet mySheet = wb.getSheetAt(0);
+            XSSFSheet sheet1 = wb.getSheet("Template for Data Entry");
+
+
+            XSSFRow row = sheet1.getRow(6);
+            buildRow(details,row);
+
+            wb.write(bos);
+
+            return bos;
+
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
 
 
     private  static void buildRow(ContingentWorkerDetails details,XSSFRow row){

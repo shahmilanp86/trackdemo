@@ -20,13 +20,13 @@ public class ContingentWorkerDetails {
     public ContingentWorkerDetails(){
     }
 
-    public ContingentWorkerDetails(Long aid,CandidateInfo personalInfo, ContractInfo contractInfo ){
+    public ContingentWorkerDetails(String aid,CandidateInfo personalInfo, ContractInfo contractInfo ){
         this.aid = aid;
         this.contractInfo = contractInfo;
         this.personalInfo = personalInfo;
     }
 
-    private Long aid;
+    private String aid;
     private CandidateInfo personalInfo;
     private ContractInfo contractInfo;
 

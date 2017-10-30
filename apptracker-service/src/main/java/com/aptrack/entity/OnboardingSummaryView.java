@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class OnboardingSummaryView //extends CandidateData
 {
     @Id
-    private Long aid;
+    private String aid;
 
     private String lastName;
     private String firstName;

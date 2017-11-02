@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   selectedRow: string;
   isProcessing: boolean = false;
   tabProcessing: boolean = false;
-  statusList= [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 301, 302];
+  statusList= [101, 102, 103, 104, 105, 106, 107, 108, 299, 300, 301, 302];
   statusMap: object =
     {
       '101': 'AID CREATED',
@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
       '221': 'COMPLETED BG AND INITIATED DEMOGRAPH',
       '212': 'INITIATED BG AND COMPLETED DEMOGRAPH',
       '222': 'COMPLETED BG AND COMPLETED DEMOGRAPH',
+      '299': 'Bg and Demographics',
 
 
       '300': 'SPOC TO CHECK VENDOR MGMT',
@@ -101,6 +102,8 @@ export class DashboardComponent implements OnInit {
   }
 
   showProgress(aid, status) {
+    this.completedSteps = [];
+    this.inCompleteSteps = [];
     this.candidateStatus = status;
     this.candidateID = aid;
     this.isProcessing = true;
@@ -121,9 +124,14 @@ export class DashboardComponent implements OnInit {
         this.nextButtonText = this.statusMap[this.candidateStatus + 1];
       }
     }else if (regExpTwo.test(this.candidateStatus.toString())) {
+      if (222 === this.candidateStatus) {
+        this.showPrevButton = false;
+        this.showNxtButton = true;
+        this.nextButtonText = this.statusMap[300];
+      }else {
       this.showPrevButton = true;
       this.showNxtButton = true;
-      var digits = this.candidateStatus.toString().split('');
+      const digits = this.candidateStatus.toString().split('');
       if (digits[1] === '0') {
         this.prevButtonText = 'BG Awaiting';
         this.prevBgButtonValue = 'BG';
@@ -132,7 +140,7 @@ export class DashboardComponent implements OnInit {
         this.prevButtonText = 'BG initiated by Spoc';
         this.prevBgButtonValue = 'BG';
         this.prevDgButtonValue = '';
-      }else{
+      }else {
         this.showPrevButton = false;
       }
       if (digits[2] === '0') {
@@ -143,10 +151,11 @@ export class DashboardComponent implements OnInit {
         this.nextButtonText = 'DG initiated by Spoc';
         this.nextBgButtonValue = '';
         this.nextDgButtonValue = 'DG';
-      }else{
+      }else {
         this.showNxtButton = false;
       }
-    }else if(regExpThree.test(this.candidateStatus.toString())) {
+      }
+    }else if (regExpThree.test(this.candidateStatus.toString())) {
       this.showPrevButton = false;
       this.showNxtButton = true;
       if (302 ===  this.candidateStatus) {
@@ -156,12 +165,52 @@ export class DashboardComponent implements OnInit {
         this.nextButtonText = this.statusMap[this.candidateStatus + 1];
       }
     }
+    for (const entry of this.statusList){
+      this.completedSteps.push(this.statusMap[entry]);
+      if (entry === this.candidateStatus) {
+        this.getIncompleteSteps(entry);
+        break;
+      }
+      if (regExpTwo.test(entry.toString()) && this.candidateStatus < entry) {
+          if (this.candidateStatus !== 222) {
+            this.completedSteps.splice(-1, 1);
+            this.getIncompleteSteps(299);
+          }else {
+            this.completedSteps.splice(-1,1);
+            this.completedSteps.push(this.statusMap[299]);
+            this.getIncompleteSteps(222);
+          }
+          break;
+      }
+    }
+    this.progressPercent = Math.round((this.completedSteps.length) * 100 / this.statusList.length);
+    this.progressPercent > 50 ? this.progressColor = 'success' : this.progressColor = 'danger';
+  }
+
+  getIncompleteSteps(statusCode) {
+    const regExpTwo = /^2[0-9].*$/;
+    if (regExpTwo.test(statusCode.toString()) && statusCode !== 222) {
+      this.inCompleteSteps.push(this.statusMap[299]);
+    }else if (statusCode === 222) {
+      statusCode = 299;
+    }
+    const index = this.statusList.indexOf(statusCode);
+    for (let i = index + 1; i < this.statusList.length; i++) {
+      this.inCompleteSteps.push(this.statusMap[this.statusList[i]]);
+    }
+
   }
 
   updateStatus(bgButtonValue, dgButtonValue) {
     this.statusUpdateObj['aid'] = this.candidateID;
-    this.statusUpdateObj['bgCheck'] = bgButtonValue;
-    this.statusUpdateObj['demograph'] = dgButtonValue;
+    if(bgButtonValue != '') {
+      this.statusUpdateObj['inputFlg'] = bgButtonValue;
+    }else if(dgButtonValue != '') {
+      this.statusUpdateObj['inputFlg'] = 'DEMO';
+    }
+    else {
+      this.statusUpdateObj['inputFlg'] = '';
+    }
     this.http.put(this.configService.getAPIURL('updateNextStatus'), this.statusUpdateObj).subscribe(serviceResp => {
       this.updateRecord();
     });
@@ -173,6 +222,24 @@ export class DashboardComponent implements OnInit {
       this.activateRow(this.candidateID);
       this.showProgress(this.candidateID, this.candidateStatus);
     });
+
+  }
+
+  getBgDgContent(statusCode, text) {
+    const digits = statusCode.toString().split('');
+    if (text === 'BG') {
+      if (digits[1] === '0') {
+        return text + ' Awaiting';
+      }else if (digits[1] === '1') {
+        return text + ' initiated by Spoc';
+      }
+    }else {
+      if (digits[2] === '0') {
+        return text + ' Awaiting';
+      }else if (digits[2] === '1') {
+        return text + ' initiated by Spoc';
+      }
+    }
 
   }
 }

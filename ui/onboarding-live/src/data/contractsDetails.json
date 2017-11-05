@@ -1,5 +1,6 @@
 {
   "aid": "1234",
+  "role": "candidate1",
   "personalInfo": {
     "aid": "1234",
     "firstName": "SURYA",

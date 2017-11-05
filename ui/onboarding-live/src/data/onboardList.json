@@ -6,22 +6,7 @@
         "midInitial": "T",
         "prefFirstName": "ccc",
         "email": "ccc@gmail.com",
-        "contactPhone": "4448883456",
-      "onboardingStatus": {
-        "aid": 123,
-        "bgCheck": 212,
-        "bgCheckUpdTm": "09-03-2017 00:36:54",
-        "demograph": 200,
-        "demographUpdTm": "09-03-2017 00:36:54",
-        "comments": "Candidate was notified.",
-        "lastUpdTm": "09-03-2017 00:36:54",
-        "lastUpdBy": "Admin",
-        "currentStatus": 101,
-        "currentStatusUpdTm": "09-03-2017 00:36:54",
-        "urlString": "3fefd52ddcc6bf4a",
-        "urlCreatedTm": "09-03-2017 00:36:54",
-        "currentSLA": 1
-      }
+        "contactPhone": "4448883456"
     },
     {
         "aid": 902,

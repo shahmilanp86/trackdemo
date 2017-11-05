@@ -10,7 +10,9 @@
       "assets": [
         "assets",
         "data",
-        "favicon.ico"
+        "favicon.ico",
+        "loginPage.html",
+        "thankyou.html"
       ],
       "index": "index.html",
       "main": "main.ts",

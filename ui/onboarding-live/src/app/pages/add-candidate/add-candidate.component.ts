@@ -31,7 +31,7 @@ export class AddCandidateComponent implements OnInit {
   }
 
   onSaveEmail() {
-     alert(this.candidateBasicInfo.aid);
+     console.log(this.candidateBasicInfo.aid);
 
     this.http.post(this.configService.getAPIURL('addCandidate'), {
       "aid": this.candidateBasicInfo.aid,
@@ -42,7 +42,7 @@ export class AddCandidateComponent implements OnInit {
       "contactPhone": this.candidateBasicInfo.contactNumber
     }).subscribe(serviceResp => {
       console.warn(serviceResp)
-      alert("Candidate have been added");
+      //alert("Candidate have been added");
       this.clearForm();
 
     });

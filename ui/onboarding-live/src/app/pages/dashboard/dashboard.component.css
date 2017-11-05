@@ -12,3 +12,9 @@
 .progressBar{
   padding:30px 15px 5px 15px;background-color:white;
 }
+.lastStep{
+  background-color:green;
+  font-weight: 400px;
+  color:white;
+
+}

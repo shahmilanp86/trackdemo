@@ -115,6 +115,10 @@ export class DashboardComponent implements OnInit {
     const regExpOne = /^1[0-9].*$/;
     const regExpTwo = /^2[0-9].*$/;
     const regExpThree = /^3[0-9].*$/;
+    if (status === ''  || status === undefined) {
+      this.progressPercent = 0;
+      return;
+    }
     if (regExpOne.test(this.candidateStatus.toString()) ) {
       this.showPrevButton = false;
       this.showNxtButton = true;
@@ -185,6 +189,8 @@ export class DashboardComponent implements OnInit {
     }
     this.progressPercent = Math.round((this.completedSteps.length) * 100 / this.statusList.length);
     this.progressPercent > 50 ? this.progressColor = 'success' : this.progressColor = 'danger';
+
+
   }
 
   getIncompleteSteps(statusCode) {
@@ -209,39 +215,65 @@ export class DashboardComponent implements OnInit {
       this.statusUpdateObj['inputFlg'] = 'DEMO';
     }
     else {
-      this.statusUpdateObj['inputFlg'] = '';
+      this.statusUpdateObj['inputFlg'] = null;
     }
     this.http.put(this.configService.getAPIURL('updateNextStatus'), this.statusUpdateObj).subscribe(serviceResp => {
-      this.updateRecord();
+      this.updateRecord(serviceResp);
     });
   }
-  updateRecord () {
+  updateRecord (serviceResponse) {
     this.http.get(this.configService.getAPIURL('candidateList')).subscribe(serviceResp => {
 
       this.populateBasicInfo(serviceResp);
       this.activateRow(this.candidateID);
-      this.showProgress(this.candidateID, this.candidateStatus);
+      console.log('Candidate ID --> ' + this.candidateID + '-- Current Status -->' + serviceResponse.currentStatus);
+      this.showProgress(this.candidateID, serviceResponse.currentStatus);
     });
 
   }
 
   getBgDgContent(statusCode, text) {
-    const digits = statusCode.toString().split('');
-    if (text === 'BG') {
-      if (digits[1] === '0') {
-        return text + ' Awaiting';
-      }else if (digits[1] === '1') {
-        return text + ' initiated by Spoc';
-      }
-    }else {
-      if (digits[2] === '0') {
-        return text + ' Awaiting';
-      }else if (digits[2] === '1') {
-        return text + ' initiated by Spoc';
-      }
-    }
+    if (statusCode !== '' &&  statusCode !== undefined ) {
 
+      const regExpOne = /^1[0-9].*$/;
+      const regExpTwo = /^2[0-9].*$/;
+      const regExpThree = /^3[0-9].*$/;
+      if (regExpOne.test(statusCode.toString()) ){
+        return text + ' Awaiting';
+
+      } else if (regExpTwo.test(statusCode.toString()) ) {
+        const digits = statusCode.toString().split('');
+        if (text === 'BG') {
+          if (digits[1] === '0') {
+            return text + ' Awaiting';
+          } else if (digits[1] === '1') {
+            return text + ' initiated by Spoc';
+          } else if (digits[1] === '2') {
+            return text + ' Completed';
+          }
+        } else {
+          if (digits[2] === '0') {
+            return text + ' Awaiting';
+          } else if (digits[2] === '1') {
+            return text + ' initiated by Spoc';
+          } else if (digits[2] === '2') {
+            return text + ' Completed';
+          }
+        }
+      } else if (regExpThree.test(statusCode.toString())) {
+
+        return text + ' Completed';
+      }
+
+
+
+
+
+
+    }
   }
+
+
 }
 
 

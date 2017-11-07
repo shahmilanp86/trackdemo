@@ -48,7 +48,7 @@ export class PersonalComponent implements OnInit, PipeTransform {
     }
 
     populatePersonalInfo(serviceResp) {
-      if (serviceResp.role === 'candidate') {
+      if (serviceResp.role === 100) {
         this.isCandidate = true;
       }else {
         this.isCandidate = false;
@@ -64,7 +64,7 @@ export class PersonalComponent implements OnInit, PipeTransform {
         returnStatus : serviceResp.contractInfo['returnStatus'],
         formaerWorker : serviceResp.contractInfo['formaerWorker'],
         priorSid : serviceResp.contractInfo['priorSid'],
-        priorDates : serviceResp.contractInfo['priorDates'],
+        priorDates : serviceResp.contractInfo['priorDates'] === '' ? serviceResp.contractInfo['priorDates'] = null : serviceResp.contractInfo['priorDates'] = serviceResp.contractInfo['priorDates'],
         homeZip : serviceResp.personalInfo['homeZip'],
         usArmedForces : serviceResp.contractInfo['usArmedForces'],
         registeredNotaryPublic : serviceResp.contractInfo['registeredNotaryPublic'],

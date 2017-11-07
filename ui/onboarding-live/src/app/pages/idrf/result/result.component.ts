@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
 })
 
 export class ResultComponent implements OnInit {
-    title = 'Confirmation!';
+    title = 'Verify Below Details';
     @Input() formData: FormData;
     isFormValid: boolean = false;
     candidateId: string;
@@ -37,6 +37,7 @@ export class ResultComponent implements OnInit {
     }
 
     submit() {
+      console.log('Final Request---'+JSON.stringify(this.idrfObject));
       this.http.put(this.configService.getAPIURL('addUpdateContracts'), this.idrfObject).subscribe(serviceResp => {
         this.router.navigate(['candidate-details/' + this.candidateId]);
       });

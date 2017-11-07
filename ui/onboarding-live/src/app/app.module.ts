@@ -37,6 +37,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import {CandidateIdrfComponent} from './pages/candidate-idrf/candidate-idrf.component';
 import { ProgressbarModule, TabsModule } from 'ngx-bootstrap';
 import {SharedService} from './services/sharedService';
+import {ProgressBarComponent} from './pages/progress-bar/progressBar.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -58,7 +59,8 @@ import {SharedService} from './services/sharedService';
     ResultComponent,
     NavbarComponent,
     DatepickerComponent,
-    CandidateIdrfComponent
+    CandidateIdrfComponent,
+    ProgressBarComponent
   ],
   imports: [
     AppRoutingModule,

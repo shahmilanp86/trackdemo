@@ -14,20 +14,20 @@ export class CandidateDetailsComponent implements OnInit {
    candidateId: string;
    candidateBasicInfo: CandidateBasicInfo;
    currentStaus: string;
-  
+
   constructor(private http: HttpClient ,route: ActivatedRoute,private configService : ConfigService ) {
     this.candidateBasicInfo =  new CandidateBasicInfo();
-    this.candidateId = route.snapshot.params['id']; 
+    this.candidateId = route.snapshot.params['id'];
   }
   ngOnInit() {
-       // Make the HTTP request: 
+       // Make the HTTP request:
       //  NOTE: add service URL in api-urls.ts
-      this.http.get(this.configService.getAPIURL('getCandidateDetails') + '/' +this.candidateId).subscribe(serviceResp => {
+      this.http.get(this.configService.getAPIURL('getCandidateIdrfDetails') + '/' +this.candidateId).subscribe(serviceResp => {
       // Read the result field from the JSON response.
       this.populateBasicInfo(serviceResp);
       console.warn(serviceResp)
     });
-  
+
   }
   populateBasicInfo(serviceResp){
 
@@ -37,8 +37,8 @@ export class CandidateDetailsComponent implements OnInit {
     this.candidateBasicInfo.middleName = serviceResp.midInitial;
     this.candidateBasicInfo.email = serviceResp.email;
     this.candidateBasicInfo.contactNumber = serviceResp.contactPhone;
-    this.currentStaus = serviceResp.curStatus;
+    this.currentStaus = serviceResp.onboardingStatus.currentStatus;
   }
- 
+
 
 }

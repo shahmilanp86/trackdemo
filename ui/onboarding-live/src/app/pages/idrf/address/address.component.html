@@ -26,11 +26,11 @@
     <label class="control-label col-sm-2">Email Required</label>
     <div class="col-sm-3">
       <!--<input class="form-control input-md" #emailRequired="ngModel" id="emailRequired" name="emailRequired" type="text" placeholder="" [(ngModel)]="work.emailRequired">-->
-      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="address.emailRequired" value="YES" > Yes</span>
-      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="address.emailRequired" value="NO" > No</span>
+      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="address.emailRequired" value="Yes" > Yes</span>
+      <span class="col-sm-3"><input type="radio" #emailRequired="ngModel" name="emailRequired" [(ngModel)]="address.emailRequired" value="No" > No</span>
     </div>
   </div>
-  <div class="form-group" *ngIf="address.emailRequired == 'YES'">
+  <div class="form-group" *ngIf="address.emailRequired == 'Yes'">
     <label class="control-label col-sm-3" for="spocEmail">Spoc Email</label>
     <div class="col-sm-3">
       <input class="form-control input-md" #spocEmail="ngModel" id="spocEmail" name="spocEmail" type="text" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" placeholder="" [(ngModel)]="address.spocEmail">

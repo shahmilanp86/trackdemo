@@ -36,7 +36,8 @@ import { DatepickerModule, PopoverModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import {CandidateIdrfComponent} from './pages/candidate-idrf/candidate-idrf.component';
 import { ProgressbarModule, TabsModule } from 'ngx-bootstrap';
-
+import {SharedService} from './services/sharedService';
+import {ProgressBarComponent} from './pages/progress-bar/progressBar.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -58,7 +59,8 @@ import { ProgressbarModule, TabsModule } from 'ngx-bootstrap';
     ResultComponent,
     NavbarComponent,
     DatepickerComponent,
-    CandidateIdrfComponent
+    CandidateIdrfComponent,
+    ProgressBarComponent
   ],
   imports: [
     AppRoutingModule,
@@ -76,7 +78,7 @@ import { ProgressbarModule, TabsModule } from 'ngx-bootstrap';
     { provide: FormDataService, useClass: FormDataService },
     { provide: WorkflowService, useClass: WorkflowService },
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    { provide: IDRFFormFlow, useClass: IDRFFormFlow }],
+    { provide: IDRFFormFlow, useClass: IDRFFormFlow }, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

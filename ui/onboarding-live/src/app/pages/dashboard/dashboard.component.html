@@ -1,3 +1,4 @@
+
 <app-page-heading heading="Dashboard">
 </app-page-heading>
 <div class="content-box-large">
@@ -16,6 +17,7 @@
                 <th>SLA</th>
                 <th>Contact</th>
                 <th>Notes</th>
+                <th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -25,11 +27,12 @@
                        [ngClass]="{'anchorSelected': onBoardingDetail.aid == selectedRow}">{{ onBoardingDetail.aid }}</a></td>
 								<td>{{ onBoardingDetail.fullName }}</td>
 								<td>{{ statusMap[onBoardingDetail.status] }}</td>
-								<td>{{ onBoardingDetail.bg }}</td>
-								<td>{{ onBoardingDetail.demograph }}</td>
+								<td>{{ getBgDgContent(onBoardingDetail.status, 'BG') }}</td>
+								<td>{{ getBgDgContent(onBoardingDetail.status, 'DG') }}</td>
 								<td>{{ onBoardingDetail.sla }}</td>
 								<td>{{ onBoardingDetail.contactPhone }}</td>
 								<td>{{ onBoardingDetail.comments }}</td>
+                <td><a href="/api/contract/download/{{ onBoardingDetail.aid }}" [ngClass]="{'anchorSelected': onBoardingDetail.aid == selectedRow}" download><span class="glyphicon glyphicon-save-file" title="idrf download"></span></a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -42,6 +45,9 @@
     <div *ngIf="isProcessing">
       <tabset style="font-weight: bold;">
         <tab heading="Candidate Progess" >
+          <div class="pull-left" style="padding:10px 10px 10px 0px">
+            <button  class="btn btn-success btn-outline-rounded btn-info" *ngIf="!disableButton"> <span class="glyphicon glyphicon-bell"></span> Send Reminder </button>
+          </div>
           <div class="pull-right">
             <div class="pull-left" style="padding:10px 10px 10px 0px" *ngIf="showPrevButton">
               <button  class="btn btn-success btn-outline-rounded btn-info" (click)= "updateStatus(prevBgButtonValue, nextBgButtonValue);" > {{prevButtonText}} <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
@@ -54,8 +60,8 @@
             <progressbar class="progress-striped" value="{{progressPercent}}" type="{{progressColor}}">{{progressPercent}}%</progressbar>
           </div>
           <div class="col-xs-12" style="padding-top:15px;padding-bottom:20px;">
-              <div class="col-xs-6" *ngFor='let completedSteps of completedSteps'>
-                <div class="col-xs-10">{{completedSteps}}</div>
+              <div class="col-xs-6" *ngFor='let completedSteps of completedSteps; let first = first; let last = last'>
+                <div class="col-xs-10" [ngClass]="{  lastStep: last }">{{completedSteps}}</div>
                 <div class="col-xs-2"><span class="glyphicon glyphicon-ok text-success"></span></div>
               </div>
               <div class="col-xs-6" *ngFor='let inCompleteSteps of inCompleteSteps'>

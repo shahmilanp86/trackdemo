@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 @Component ({
     selector: 'msw-navbar'
@@ -8,6 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 
 export class NavbarComponent {
   candidateId: string;
+  @Input() candidateNav: boolean;
   constructor( route: ActivatedRoute) {
     this.candidateId = route.snapshot.params['id'];
   }

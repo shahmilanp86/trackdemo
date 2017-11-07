@@ -1,11 +1,13 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit, Pipe, PipeTransform, Input } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Personal } from '../data/formData.model';
 import { FormDataService } from '../data/formData.service';
 import { ConfigService } from '../../../services/config.service';
+import { SharedService } from '../../../services/sharedService';
 import { HttpClient } from '@angular/common/http';
 import { WorkflowService } from '../workflow/workflow.service';
 import { STEPS } from '../workflow/workflow.model';
+import { FormData } from '../data/formData.model';
 
 @Component ({
     selector:     'mt-wizard-personal',
@@ -17,10 +19,17 @@ export class PersonalComponent implements OnInit, PipeTransform {
     personal: Personal;
     form: any;
     candidateId: string;
+    isCandidate: boolean;
+    @Input() formData: FormData;
+    idrfObject: object = {};
+    personalInfo: object = {};
+    contractInfo: object = {};
 
     constructor(private formDataService: FormDataService
                 , private http: HttpClient, route: ActivatedRoute, private configService: ConfigService
-                , private workflowService: WorkflowService) {
+                , private workflowService: WorkflowService
+                , private router: Router
+                , private _sharedService: SharedService) {
       this.candidateId = route.snapshot.params['id'];
     }
 
@@ -31,6 +40,7 @@ export class PersonalComponent implements OnInit, PipeTransform {
          this.http.get(this.configService.getAPIURL('getContracts') + '/' + this.candidateId).subscribe(serviceResp => {
            // Read the result field from the JSON response.
            this.populatePersonalInfo(serviceResp);
+           this._sharedService.setRole(serviceResp['role']);
            console.warn(serviceResp);
          });
        }
@@ -38,6 +48,11 @@ export class PersonalComponent implements OnInit, PipeTransform {
     }
 
     populatePersonalInfo(serviceResp) {
+      if (serviceResp.role === 100) {
+        this.isCandidate = true;
+      }else {
+        this.isCandidate = false;
+      }
       const personal: Personal = {
         firstName: serviceResp.personalInfo['firstName'],
         lastName: serviceResp.personalInfo['lastName'],
@@ -49,7 +64,7 @@ export class PersonalComponent implements OnInit, PipeTransform {
         returnStatus : serviceResp.contractInfo['returnStatus'],
         formaerWorker : serviceResp.contractInfo['formaerWorker'],
         priorSid : serviceResp.contractInfo['priorSid'],
-        priorDates : serviceResp.contractInfo['priorDates'],
+        priorDates : serviceResp.contractInfo['priorDates'] === '' ? serviceResp.contractInfo['priorDates'] = null : serviceResp.contractInfo['priorDates'] = serviceResp.contractInfo['priorDates'],
         homeZip : serviceResp.personalInfo['homeZip'],
         usArmedForces : serviceResp.contractInfo['usArmedForces'],
         registeredNotaryPublic : serviceResp.contractInfo['registeredNotaryPublic'],
@@ -71,6 +86,15 @@ export class PersonalComponent implements OnInit, PipeTransform {
         this.formDataService.setPersonal(this.personal);
         this.workflowService.validateStep(STEPS.personal);
     }
+
+  saveCandidate(form: any){
+    this.formDataService.setPersonal(this.personal);
+    this.formData = this.formDataService.getFormData();
+    this.populateFinalIDRFRequest();
+    this.http.put(this.configService.getAPIURL('addUpdateContracts'), this.idrfObject).subscribe(serviceResp => {
+      window.location.href = 'thankyou.html';
+    });
+  }
 
   transform(value: any, args?: any[]): any[] {
     // create instance vars to store keys and final output
@@ -96,5 +120,53 @@ export class PersonalComponent implements OnInit, PipeTransform {
       // invalid character, prevent input
       event.preventDefault();
     }
+  }
+
+  private populateFinalIDRFRequest() {
+    this.idrfObject['aid'] = this.candidateId;
+    this.personalInfo['aid'] = this.candidateId;
+    this.personalInfo['firstName'] = this.formData.firstName;
+    this.personalInfo['lastName'] = this.formData.lastName;
+    this.personalInfo['midInitial'] = this.formData.middleName;
+    this.personalInfo['prefFirstName'] = this.formData.prefFirstName;
+    this.personalInfo['email'] = this.formData.emailID;
+    this.personalInfo['contactPhone'] = this.formData.phoneNum;
+    this.personalInfo['currentAddress'] = this.formData.currentAddress;
+    this.personalInfo['homeZip'] = this.formData.homeZip;
+    this.contractInfo['aid'] = this.candidateId;
+    this.contractInfo['appprovedContactNum'] = this.formData.appprovedContactNum;
+    this.contractInfo['contractEndDte'] = '';
+    this.contractInfo['cwAssignmentEndDte'] = '';
+    this.contractInfo['candidateRoleTyp'] = this.formData.candidateRoleTyp;
+    this.contractInfo['returnStatus'] = this.formData.returnStatus;
+    this.contractInfo['formaerWorker'] = this.formData.formaerWorker;
+    this.contractInfo['priorSid'] = this.formData.priorSid;
+    this.contractInfo['priorDates'] = '';
+    this.contractInfo['supplierName'] = this.formData.supplierName;
+    this.contractInfo['cwWorkCity'] = this.formData.cwWorkCity;
+    this.contractInfo['cwWorkLocation'] = this.formData.cwWorkLocation;
+    this.contractInfo['cwWorkMailDrop'] = this.formData.cwWorkMailDrop;
+    this.contractInfo['usArmedForces'] = this.formData.usArmedForces;
+    this.contractInfo['registeredNotaryPublic'] = this.formData.registeredNotaryPublic;
+    this.contractInfo['csiInfoAccess'] = this.formData.csiInfoAccess;
+    this.contractInfo['candidateReferredToYou'] = this.formData.candidateReferredToYou;
+    this.contractInfo['referralOriginate'] = this.formData.referralOriginate;
+    this.contractInfo['candiateSeletedWithinGuidelines'] = this.formData.candiateSeletedWithinGuidelines;
+    this.contractInfo['serviceType'] = this.formData.serviceType;
+    this.contractInfo['fullORPartTime'] = this.formData.fullORPartTime;
+    this.contractInfo['paymentType'] = this.formData.paymentType;
+    this.contractInfo['costCenter'] = this.formData.costCenter;
+    this.contractInfo['cwJobCode'] = this.formData.cwJobCode;
+    this.contractInfo['lobName'] = this.formData.lobName;
+    this.contractInfo['cwAssignmentStartDte'] = '';
+    this.contractInfo['sponsorId'] = this.formData.sponsorId;
+    this.contractInfo['sponsorLastName'] = this.formData.sponsorLastName;
+    this.contractInfo['sponsorFirstName'] = this.formData.sponsorFirstName;
+    this.contractInfo['emailRequired'] = this.formData.emailRequired;
+    this.contractInfo['spocEmail'] = this.formData.spocEmail;
+    this.contractInfo['itornonIT'] = this.formData.itornonIT;
+    this.idrfObject['personalInfo'] = this.personalInfo;
+    this.idrfObject['contractInfo'] = this.contractInfo;
+
   }
 }

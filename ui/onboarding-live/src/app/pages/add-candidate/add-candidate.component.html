@@ -1,9 +1,13 @@
 <app-page-heading heading="Add Candidate">
 </app-page-heading>
+<div *ngIf="successText">
+  <h2 class="head  text-center" style="color:green">Candidate Added Successfully
+    <br> <a style="font-size:20px;"  routerLink="/add-candidate" (click)="successText = !successText">Add Another Candidate</a>
+    <br> <a style="font-size:20px;"  routerLink="/dashboard">Dashboard <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+  </h2>
 
-
-
-<div class="container form-container">
+</div>
+<div class="container form-container" *ngIf="!successText">
   <form #addressForm="ngForm" class="editForm form-horizontal" novalidate>
 
     <div class="form-group">

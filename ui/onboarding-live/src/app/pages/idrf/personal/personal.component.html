@@ -1,6 +1,6 @@
 
 
-<msw-navbar></msw-navbar>
+<msw-navbar [candidateNav] = isCandidate></msw-navbar>
 <form #personalForm="ngForm" class="editForm form-horizontal" novalidate>
   <h2 class="head  text-center">{{title}}</h2>
   <div class="clearfix"></div>
@@ -85,13 +85,13 @@
   <div class="form-group">
     <label class="control-label col-sm-3" for="">US Armed Force</label>
     <div class="col-sm-3">
-      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="personal.usArmedForces" value="YES" > Yes</span>
-      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="personal.usArmedForces" value="NO" > No</span>
+      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="personal.usArmedForces" value="Yes" > Yes</span>
+      <span class="col-sm-3"><input type="radio" #usArmedForces="ngModel" name="usArmedForces" [(ngModel)]="personal.usArmedForces" value="No" > No</span>
     </div>
     <label class="control-label col-sm-2" for="">Registered Notary Public</label>
     <div class="col-sm-3">
-      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="personal.registeredNotaryPublic" value="YES" > Yes</span>
-      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="personal.registeredNotaryPublic" value="NO" > No</span>
+      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="personal.registeredNotaryPublic" value="Yes" > Yes</span>
+      <span class="col-sm-3"><input type="radio" #registeredNotaryPublic="ngModel" name="registeredNotaryPublic" [(ngModel)]="personal.registeredNotaryPublic" value="No" > No</span>
     </div>
   </div>
 
@@ -147,7 +147,12 @@
 
 </form>
 <div class="form-group text-center">
-  <a routerLink="/idrf/work/{{candidateId}}"><button  class="btn btn-success btn-outline-rounded btn-info" [disabled]="!personalForm.valid" (click)="save(personalForm)"> Save & Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
+  <div *ngIf="isCandidate">
+    <a><button  class="btn btn-success btn-outline-rounded btn-info" [disabled]="!personalForm.valid" (click)="saveCandidate(personalForm)"> Submit</button></a>
+  </div>
+  <div *ngIf="!isCandidate">
+      <a routerLink="/idrf/work/{{candidateId}}"><button  class="btn btn-success btn-outline-rounded btn-info" [disabled]="!personalForm.valid" (click)="save(personalForm)"> Save & Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button></a>
+  </div>
 </div>
 
 

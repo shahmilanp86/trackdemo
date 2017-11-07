@@ -27,6 +27,7 @@ export class CandidateIdrfComponent implements OnInit {
     this.CandidateIDRFInfo.lastName= serviceResp['lastName'];
     this.CandidateIDRFInfo.emailID= serviceResp['email'];
     this.CandidateIDRFInfo.appprovedContactNum= serviceResp.contractInfo['appprovedContactNum'];
+    this.CandidateIDRFInfo.prefFirstName = serviceResp['prefFirstName'];
     this.CandidateIDRFInfo.contractEndDte= serviceResp.contractInfo['contractEndDte'];
     this.CandidateIDRFInfo.cwAssignmentEndDte= serviceResp.contractInfo['cwAssignmentEndDte'];
     this.CandidateIDRFInfo.candidateRoleTyp= serviceResp.contractInfo['candidateRoleTyp'];

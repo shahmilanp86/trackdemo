@@ -15,7 +15,7 @@ import { ConfigService } from "./../../services/config.service";
 export class AddCandidateComponent implements OnInit {
 
   candidateBasicInfo: CandidateBasicInfo;
-
+  successText: boolean = false;
   constructor(private http: HttpClient, route: ActivatedRoute, private configService: ConfigService) {
     this.candidateBasicInfo = new CandidateBasicInfo();
   }
@@ -31,8 +31,8 @@ export class AddCandidateComponent implements OnInit {
   }
 
   onSaveEmail() {
-     alert(this.candidateBasicInfo.aid);
-
+     console.log(this.candidateBasicInfo.aid);
+    //this.successText = true;
     this.http.post(this.configService.getAPIURL('addCandidate'), {
       "aid": this.candidateBasicInfo.aid,
       "lastName": this.candidateBasicInfo.lastName,
@@ -42,8 +42,9 @@ export class AddCandidateComponent implements OnInit {
       "contactPhone": this.candidateBasicInfo.contactNumber
     }).subscribe(serviceResp => {
       console.warn(serviceResp)
-      alert("Candidate have been added");
+      //alert("Candidate have been added");
       this.clearForm();
+      this.successText = true;
 
     });
 

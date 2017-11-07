@@ -1,5 +1,5 @@
 .selected{
-  background-color:#1677be !important;
+  background-color:#5bc0de !important;
   font-weight: bold;
   color:#ffffff !important;
 }
@@ -11,4 +11,10 @@
 }
 .progressBar{
   padding:30px 15px 5px 15px;background-color:white;
+}
+.lastStep{
+  background-color:green;
+  font-weight: 400px;
+  color:white;
+
 }

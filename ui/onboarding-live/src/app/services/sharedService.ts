@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class SharedService {
-  role: string;
+  role: number;
 
-  setRole(data: string){
+  setRole(data: number) {
     this.role = data;
   }
   getRole() {

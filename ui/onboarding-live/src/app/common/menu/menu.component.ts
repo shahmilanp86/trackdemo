@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit, AfterViewChecked{
 
   }
   ngAfterViewChecked(){
-    if(this._sharedService.getRole() === 'candidate') {
+    if(this._sharedService.getRole() === 100) {
       this.isCandidate = true;
     }else {
       this.isCandidate = false;

@@ -15,7 +15,7 @@ import javax.persistence.Transient;
 @Entity
 public class OnboardingStatus {
     @Id
-    private Long aid;
+    private String aid;
     private Integer bgCheck;
     @Convert(converter = LocalDateTimeConverter.class)
     private String bgCheckUpdTm;
@@ -35,5 +35,6 @@ public class OnboardingStatus {
     private String urlCreatedTm;
     @Transient
     private Integer currentSLA;
+
 
 }

@@ -18,8 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.aptrack.common.CommonPoperties.CANDIDAE_INITIAL_SLA;
-import static com.aptrack.common.Status.CANDIDATE_INITIATE_BG;
-import static com.aptrack.common.Status.CANDIDATE_INITIATE_DEMOGRAPH;
+import static com.aptrack.common.Status.*;
 import static java.util.stream.Collectors.toList;
 
 
@@ -38,7 +37,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     // @Transactional
-    public void sendEmail(Long aid, Status status, Boolean remainder) {
+    public Boolean sendEmail(String aid, Status status, Boolean remainder) {
         //Get roles to act on the status
         final List<Integer> roles = Arrays.asList(status
                 .getRoles())
@@ -89,10 +88,13 @@ public class NotificationServiceImpl implements NotificationService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }*/
+
+    return true;
     }
 
-    private static List<Status> candidateStatus = Lists.newArrayList(CANDIDATE_INITIATE_BG,
-            CANDIDATE_INITIATE_DEMOGRAPH);
+    private static List<Status> candidateStatus = Lists.newArrayList(INITIATED_BG_AND_AWAITING_DEMOGRAPH,
+            AWAITING_BG_AND_INITIATED_DEMOGRAPH,
+            INITIATED_BG_AND_INITIATED_DEMOGRAPH);
 
     private List<String> getEmailsByRoles(List<UserInfo> users, CandidateInfo candidate, Status status) {
 
@@ -120,7 +122,7 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     //TODO
-    private String[] attachmentLoc(Long id) {
+    private String[] attachmentLoc(String id) {
         return null;
     }
 

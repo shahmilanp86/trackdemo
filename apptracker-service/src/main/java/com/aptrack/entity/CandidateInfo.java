@@ -1,5 +1,6 @@
 package com.aptrack.entity;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -13,10 +14,12 @@ import javax.persistence.OneToOne;
 
 @Data
 @Entity
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+
 public class CandidateInfo {
 
     @Id
-    private Long aid;
+    private String aid;
     private String lastName;
     private String firstName;
     private String midInitial;
@@ -24,7 +27,9 @@ public class CandidateInfo {
     private String email;
     private String contactPhone;
 
-/*    @OneToOne
-    @JoinColumn(name="AID", nullable=true)
-    private OnboardingStatus onboardingStatus;*/
+    //New
+    private String currentAddress;
+    private String homeZip;
+
+
 }

@@ -17,7 +17,7 @@ public class LocalDateConverter implements AttributeConverter<String, Date> {
 
     @Override
     public Date convertToDatabaseColumn(String attribute) {
-        return attribute == null ? null : stringToDbDate(attribute);
+        return attribute == null || attribute.equals("") ? null : stringToDbDate(attribute);
     }
 
     @Override

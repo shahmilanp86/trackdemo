@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class OnboardingSummaryView //extends CandidateData
 {
     @Id
-    private Long aid;
+    private String aid;
 
     private String lastName;
     private String firstName;
@@ -21,6 +21,10 @@ public class OnboardingSummaryView //extends CandidateData
     private String prefFirstName;
     private String email;
     private String contactPhone;
+
+
+    private String currentAddress;
+    private String homeZip;
 
     @OneToOne
     @JoinColumn(name="AID", nullable=true)

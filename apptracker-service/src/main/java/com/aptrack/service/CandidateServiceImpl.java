@@ -2,6 +2,7 @@ package com.aptrack.service;
 
 import com.aptrack.common.Status;
 import com.aptrack.entity.CandidateInfo;
+import com.aptrack.entity.ContractInfo;
 import com.aptrack.repository.CandidateInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Autowired
     private OnboardingStatusService onboardingStatusService;
+    @Autowired
+    private ContractService contractService;
     //private OnboardingStatusViewRepsitory onboardingStatusRepsitory;
 
     @Autowired
@@ -45,7 +48,7 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public CandidateInfo get(Long aid) {
+    public CandidateInfo get(String aid) {
 
         return candidateInfoRepository.findOne(aid);
     }
@@ -64,8 +67,11 @@ public class CandidateServiceImpl implements CandidateService {
     private CandidateInfo saveDetails(CandidateInfo candidate) {
         CandidateInfo candidateInfo = candidateInfoRepository.save(candidate);
         //TODO null values of DATETIME feilds in DB table tobe fixed.
-        onboardingStatusService.update(candidate.getAid());
-
+        //onboardingStatusService.update(candidate.getAid());
+        onboardingStatusService.add(candidate.getAid());
+        ContractInfo contractInfo = new ContractInfo();
+        contractInfo.setAid(candidate.getAid());
+        contractService.create(contractInfo);
 
         // String[] toList = {candidate.getEmail()};
         //String[] copyList = spocs.stream().toArray(String[]::new);

@@ -118,7 +118,7 @@ public class Notifier {
     /**
      * Test sending e-mail with attachments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
 
         // message info
@@ -143,7 +143,7 @@ public class Notifier {
             ex.printStackTrace();
         }
     }
-
+*/
 
 
 }

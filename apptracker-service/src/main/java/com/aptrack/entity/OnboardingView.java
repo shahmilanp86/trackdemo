@@ -14,13 +14,16 @@ import javax.persistence.*;
 public class OnboardingView {
 
     @Id
-    private Long aid;
+    private String aid;
     private String lastName;
     private String firstName;
     private String midInitial;
     private String prefFirstName;
     private String email;
     private String contactPhone;
+
+    private String currentAddress;
+    private String homeZip;
 
     @OneToOne
     @JoinColumn(name="AID", nullable=true)

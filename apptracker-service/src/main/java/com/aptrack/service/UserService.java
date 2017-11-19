@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserService {
      List<UserInfo> getUsers(List<Integer> roles);
 
+     UserInfo findById(Long id);
+
 }

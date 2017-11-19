@@ -33,7 +33,7 @@ public class CandidateInfoController {
             value = "/api/candidate/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CandidateInfo> getCandidates(@PathVariable("id") Long id) {
+    public ResponseEntity<CandidateInfo> getCandidates(@PathVariable("id") String id) {
 
         CandidateInfo candidate = candidateService.get(id);
         if (candidate == null) {

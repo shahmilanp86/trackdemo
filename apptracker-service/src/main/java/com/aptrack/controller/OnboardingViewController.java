@@ -38,12 +38,9 @@ public class OnboardingViewController {
             value = "/api/onboard/view/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<OnboardingSummaryView> summary(@PathVariable("id") Long id) {
+    public ResponseEntity<OnboardingSummaryView> summary(@PathVariable("id") String id) {
 
         return new ResponseEntity<OnboardingSummaryView>(onboardingViewService.summary(id), HttpStatus.OK);
     }
-
-
-
 
 }

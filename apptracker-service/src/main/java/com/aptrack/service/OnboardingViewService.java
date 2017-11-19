@@ -13,5 +13,5 @@ public interface OnboardingViewService {
 
     List<OnboardingView> viewList();
    // OnboardingStatus update(OnboardingStatus status);
-    OnboardingSummaryView summary(Long aid);
+    OnboardingSummaryView summary(String aid);
 }

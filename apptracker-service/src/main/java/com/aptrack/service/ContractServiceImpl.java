@@ -2,12 +2,14 @@ package com.aptrack.service;
 
 import com.aptrack.entity.ContractInfo;
 import com.aptrack.repository.ContractInfoRepository;
-import static org.springframework.beans.BeanUtils.copyProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import  static com.aptrack.utils.ApptrackerUtils.getNullPropertyNames;
+
 import java.util.Collection;
 import java.util.Optional;
+
+import static com.aptrack.utils.ApptrackerUtils.getNullPropertyNames;
+import static org.springframework.beans.BeanUtils.copyProperties;
 
 /**
  * Created by Murthy on 7/18/2017.
@@ -42,9 +44,6 @@ public class ContractServiceImpl implements ContractService {
             return updated;
         })
                 .orElse(updated);
-       // copyProperties(updated,existing, getNullPropertyNames(updated));
-
-        //return contractInfoRepository.save(existing);
-        return contractInfoRepository.save(data);
+     return contractInfoRepository.save(data);
     }
 }

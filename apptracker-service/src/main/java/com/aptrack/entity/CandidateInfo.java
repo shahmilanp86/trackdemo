@@ -32,7 +32,4 @@ public class CandidateInfo {
     private String homeZip;
 
 
-/*    @OneToOne
-    @JoinColumn(name="AID", nullable=true)
-    private OnboardingStatus onboardingStatus;*/
 }

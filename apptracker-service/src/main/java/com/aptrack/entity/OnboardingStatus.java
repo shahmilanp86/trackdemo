@@ -7,11 +7,7 @@ import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import java.time.LocalDateTime;
-import java.util.Optional;
 
-
-import static com.aptrack.utils.ApptrackerUtils.dateTimeTotring;
 /**
  * Created by Murthy on 7/19/2017.
  */

@@ -1,6 +1,5 @@
 package com.aptrack.entity;
 
-import com.aptrack.common.StatusFlag;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +17,6 @@ public class Notification {
     }
     public Notification(String aid, Integer currentStatus, Boolean remainder) {
         this.aid =aid;
-        this.remainder=remainder;
         this.currentStatus =currentStatus;
         this.remainder = remainder;
     }

@@ -54,8 +54,6 @@ public class OnboardingStatusController {
         return new ResponseEntity<StatusView>(statusService.nextStatus(uiStatus), HttpStatus.OK);
     }
 
-
-
     @RequestMapping(
             value = "/api/onboard/notify",
             method = RequestMethod.POST,

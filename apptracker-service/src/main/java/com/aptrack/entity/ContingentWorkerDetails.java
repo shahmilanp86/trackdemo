@@ -1,31 +1,33 @@
 package com.aptrack.entity;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.*;
+import lombok.Data;
 
 /**
  * Created by Murthy on 9/16/2017.
  */
-//@Builder
-//@Data
-//@Getter
-//@Setter
+
 @Data
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, isGetterVisibility = JsonAutoDetect.Visibility.NONE)
 
-//@AllArgsConstructor(onConstructor=@__(@JsonCreator))
 public class ContingentWorkerDetails {
 
-    public ContingentWorkerDetails(){
+    public ContingentWorkerDetails() {
     }
 
-    public ContingentWorkerDetails(String aid,CandidateInfo personalInfo, ContractInfo contractInfo ){
+    public ContingentWorkerDetails(String aid, CandidateInfo personalInfo, ContractInfo contractInfo, Integer role) {
+        this(aid, personalInfo, contractInfo);
+        this.role = role;
+
+    }
+
+    public ContingentWorkerDetails(String aid, CandidateInfo personalInfo, ContractInfo contractInfo) {
         this.aid = aid;
         this.contractInfo = contractInfo;
         this.personalInfo = personalInfo;
     }
 
+    private Integer role;
     private String aid;
     private CandidateInfo personalInfo;
     private ContractInfo contractInfo;

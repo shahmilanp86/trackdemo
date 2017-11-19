@@ -22,6 +22,10 @@ public class OnboardingSummaryView //extends CandidateData
     private String email;
     private String contactPhone;
 
+
+    private String currentAddress;
+    private String homeZip;
+
     @OneToOne
     @JoinColumn(name="AID", nullable=true)
     private OnboardingStatus onboardingStatus;

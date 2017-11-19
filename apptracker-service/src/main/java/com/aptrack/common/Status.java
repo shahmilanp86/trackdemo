@@ -37,7 +37,11 @@ public enum Status {
 
     SPOC_TO_CHECK_VENDOR_MGMT(10,300,1,Role.SPOC),
     CCB_FLAG(11,301,1,Role.SPOC),
-    START_DATE(12,302,1,Role.SPOC);
+    START_DATE(12,302,1,Role.SPOC),
+
+
+    COMPLETED(13,999,1,Role.SPOC)
+    ;
 
 
 

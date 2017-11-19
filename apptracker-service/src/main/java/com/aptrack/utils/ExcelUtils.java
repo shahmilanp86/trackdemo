@@ -36,7 +36,7 @@ private static void init(){
 }
 
 
-public static void generate(ContingentWorkerDetails details) {
+/*public static void generate(ContingentWorkerDetails details) {
 
     try (FileInputStream fis = new FileInputStream(TEMPLATE); FileOutputStream fos = new FileOutputStream(OUTFILE)) {
 
@@ -45,7 +45,7 @@ public static void generate(ContingentWorkerDetails details) {
         XSSFSheet sheet1 = wb.getSheet("Template for Data Entry");
 
 
-        XSSFRow row = sheet1.getRow(6);
+        XSSFRow row = sheet1.getRow(5);
         buildRow(details,row);
 
        wb.write(fos);
@@ -56,7 +56,7 @@ public static void generate(ContingentWorkerDetails details) {
     }
 
     
-    }
+    }*/
 
 
     public static ByteArrayOutputStream generateWithByteArray(ContingentWorkerDetails details) {
@@ -86,6 +86,9 @@ public static void generate(ContingentWorkerDetails details) {
     private  static void buildRow(ContingentWorkerDetails details,XSSFRow row){
         ContractInfo contractInfo = details.getContractInfo();
         CandidateInfo candidateInfo = details.getPersonalInfo();
+
+        Optional.ofNullable(contractInfo).orElseThrow(() -> new UnsupportedOperationException("No contract data " +
+                "present"));
 
         setValue(0,contractInfo.getAppprovedContactNum(),row);
         setValue(1,contractInfo.getContractEndDte(),row);

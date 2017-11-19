@@ -21,11 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetailsService {
 
-   /* @Autowired
-    private ContractInfoRepository contractInfoRepository;
-    @Autowired
-    private CandidateInfoRepository candidateInfoRepository;
-*/
+
 
     @Autowired
     private  ContractService contractService;
@@ -46,20 +42,11 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
     @Override
     public ContingentWorkerDetails get(String aid) {
 
-
-       /* CandidateInfo candidate = candidateInfoRepository.findOne(aid);
-        ContractInfo contractInfo = contractInfoRepository.findOne(aid);
-*/
-
-        return Optional.ofNullable(contractService.get(aid))
-                .map(candidateInfo -> new ContingentWorkerDetails(aid,candidateService.get(aid),contractService.get(aid)))
+        return Optional.ofNullable(candidateService.get(aid))
+                .map(candidateInfo -> new ContingentWorkerDetails(aid,candidateService.get(aid),contractService.get
+                        (aid),101   )) //TODO: Session management
                 .orElse(null);
 
-       /* return ContingentWorkerDetails.builder().aid(aid)
-                .personalInfo(candidateInfoRepository.findOne(aid))
-                .contractInfo(contractInfoRepository.findOne(aid))
-                .build();
-*/
     }
 
     @Override
@@ -79,7 +66,7 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
 
 
     public ByteArrayOutputStream download(String id){
-        ;
+
         return ExcelUtils.generateWithByteArray(get(id)) ;
 
     }
@@ -91,7 +78,7 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
                 .filter(con -> con.getAid().equalsIgnoreCase(candidate.getAid()))
                 .findFirst()
                 .orElse(null);
-        return new ContingentWorkerDetails(contractInfo.getAid(),candidate,contractInfo);
+        return new ContingentWorkerDetails(contractInfo.getAid(),candidate,contractInfo,100);
 
     }
 }

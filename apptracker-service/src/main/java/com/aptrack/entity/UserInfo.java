@@ -1,11 +1,8 @@
 package com.aptrack.entity;
 
-import com.aptrack.common.FormerWorker;
-import com.aptrack.common.YesORNo;
-import com.aptrack.entity.converter.LocalDateConverter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -15,7 +12,8 @@ import javax.persistence.Table;
  */
 @Data
 @Entity
-@Table(name = "users",schema = "apptracker")
+@Table(name = "users", schema = "apptracker")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UserInfo {
 
     @Id

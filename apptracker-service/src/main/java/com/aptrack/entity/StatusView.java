@@ -16,13 +16,15 @@ public class StatusView {
     public StatusView() {
 
     }
+
     public StatusView(String aid, Integer bgCheck, Integer demograph, Integer currentStatus, StatusFlag inputFlg) {
-        this.aid =aid;
-        this.bgCheck=bgCheck;
-        this.demograph =demograph;
-        this.currentStatus=currentStatus;
+        this.aid = aid;
+        this.bgCheck = bgCheck;
+        this.demograph = demograph;
+        this.currentStatus = currentStatus;
         this.inputFlg = inputFlg;
     }
+
     private String aid;
     private Integer bgCheck;
     private Integer demograph;

@@ -1,5 +1,6 @@
 package com.aptrack.repository;
 
+import com.aptrack.entity.Login;
 import com.aptrack.entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,8 +13,5 @@ import java.util.List;
  * Created by Murthy on 7/30/2017.
  */
 @Repository
-public interface UserRepository extends JpaRepository<UserInfo, Long> {
-    @Query("SELECT u FROM UserInfo u where u.role in :roles ")
-    List<UserInfo> findByRole(@Param("roles") Iterable<Integer> roles);
-
+public interface LoginRepository extends JpaRepository<Login,String> {
 }

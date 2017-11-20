@@ -3,8 +3,8 @@
 
  <modelVersion>4.0.0</modelVersion>
 
- <groupId>com.aptracker</groupId>
- <artifactId>aptracker</artifactId>
+ <groupId>com.apptracker</groupId>
+ <artifactId>apptracker</artifactId>
  <version>1.0-SNAPSHOT</version>
 
  <parent>

@@ -7,6 +7,11 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -16,20 +21,28 @@ import java.util.Optional;
 /**
  * Created by admin on 9/26/17.
  */
-public class ExcelUtils {
+@Component
+public class ExcelUtility {
 
-public static void main(String[] s){
+/*public static void main(String[] s){
     //generate();
-}
+}*/
+
+
 
 private static final String OUTFILE = "C:\\data\\Murthy\\work\\POC\\apptracker\\apptracker-service\\src\\main" +
         "\\resources\\data\\new.xlsx";
-    private static final String TEMPLATE = "C:\\data\\Murthy\\work\\POC\\apptracker\\apptracker-service\\src\\main" +
-            "\\resources\\data\\OnboardingTemplate.xlsx";
+    /*private static final String TEMPLATE = "C:\\data\\Murthy\\work\\POC\\apptracker\\apptracker-service\\src\\main" +
+            "\\resources\\data\\OnboardingTemplate.xlsx";*/
+
+    private  final String TEMPLATE = "data/OnboardingTemplate.xlsx";
 
 
-
-private static void init(){
+    @Value(value = "classpath:data/OnboardingTemplate.xlsx")
+    private Resource template;
+    @Autowired
+   private ResourceLoader resourceLoader;
+    private static void init(){
 
 
 }
@@ -58,8 +71,10 @@ private static void init(){
     }*/
 
 
-    public static ByteArrayOutputStream generateWithByteArray(ContingentWorkerDetails details) {
-        try (FileInputStream fis = new FileInputStream(TEMPLATE); ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+    public  ByteArrayOutputStream generateWithByteArray(ContingentWorkerDetails details) {
+
+
+        try (FileInputStream fis = new FileInputStream(template.getFile()); ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
 
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             //Sheet mySheet = wb.getSheetAt(0);
@@ -82,7 +97,7 @@ private static void init(){
 
 
 
-    private  static void buildRow(ContingentWorkerDetails details,XSSFRow row){
+    private   void buildRow(ContingentWorkerDetails details,XSSFRow row){
         ContractInfo contractInfo = details.getContractInfo();
         CandidateInfo candidateInfo = details.getPersonalInfo();
 

@@ -3,7 +3,7 @@ package com.apptracker.service;
 import com.apptracker.entity.CandidateInfo;
 import com.apptracker.entity.ContingentWorkerDetails;
 import com.apptracker.entity.ContractInfo;
-import com.apptracker.utils.ExcelUtils;
+import com.apptracker.utils.ExcelUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,8 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
     private  ContractService contractService;
     @Autowired
     private CandidateService candidateService;
-
+@Autowired
+private ExcelUtility excelUtility;
     @Override
     public Collection<ContingentWorkerDetails> findAll() {
 
@@ -65,7 +66,7 @@ public class ContingentWorkerDetailsServiceImpl implements ContingentWorkerDetai
 
     public ByteArrayOutputStream download(String id){
 
-        return ExcelUtils.generateWithByteArray(get(id)) ;
+        return excelUtility.generateWithByteArray(get(id)) ;
 
     }
 
